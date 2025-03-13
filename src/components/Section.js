@@ -13,6 +13,7 @@ export default function Section({ title, content, image, reverse }) {
         <h2 className="text-3xl font-bold mb-4">{title}</h2>
         <p className="text-lg text-gray-300">{content}</p>
       </div>
+      <div className="md:m-5"></div>
       <div className="md:w-1/2">
         <img src={image} alt={title} className="w-full rounded-lg shadow-lg" />
       </div>
