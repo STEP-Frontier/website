@@ -22,13 +22,13 @@ export default function Navbar() {
   return (
     <nav
       id="navbar"
-      className="fixed top-0 left-0 w-full p-4 flex justify-between items-center text-white z-50"
+      className="fixed top-0 left-0 w-full p-4 text-white z-50"
       style={{
         backgroundColor: `rgba(0, 0, 0, ${opacity})`, 
         backdropFilter: `blur(${blur}px)`, 
       }}
     >
-      <div className="w-full mx-auto px-4 md:px-8 lg:px-16 flex justify-between items-center">
+      <div className="max-w-[90rem] mx-auto px-4 md:px-8 lg:px-16 flex justify-between items-center">
         <a href="/">
           <Image src="/images/logo3.png" alt="STEP LOGO" width={200} height={100} priority />
         </a>
