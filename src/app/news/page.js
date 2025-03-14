@@ -4,9 +4,12 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
+const featuredNewsIds = ["2"];
 
 export default function News() {
     const [newsData, setNewsData] = useState([]);
+    
+    const featuredNews = newsData.filter((news) => featuredNewsIds.includes(news.id));
 
     // 🚀 组件加载时请求 API
     useEffect(() => {
@@ -84,20 +87,21 @@ export default function News() {
         {/* 右侧：置顶新闻 */}
         <div className="space-y-6">
           <h2 className="text-2xl font-bold text-white">Featured News</h2>
-          {newsData.slice(0, 3).map((news) => (
-            <motion.div
-              key={news.id}
-              className="bg-gray-800 p-4 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
-              initial={{ opacity: 0, y: 50 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-            >
-              <Link href={`/news/${news.id}`} className="block">
-                <h3 className="text-lg font-bold text-white">{news.title}</h3>
-                <p className="text-gray-400 text-sm">{news.date}</p>
-              </Link>
-            </motion.div>
-          ))}
+          {featuredNews.length === 0 ? (
+            <p className="text-gray-400">No featured news available</p>
+          ) : (
+            featuredNews.map((news) => (
+              <motion.div
+                key={news.id}
+                className="bg-gray-800 p-4 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+              >
+                <Link href={`/news/${news.id}`} className="block">
+                  <h3 className="text-lg font-bold text-white">{news.title}</h3>
+                  <p className="text-gray-400 text-sm">{news.date}</p>
+                </Link>
+              </motion.div>
+            ))
+          )}
         </div>
       </div>
     </div>
