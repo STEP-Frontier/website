@@ -4,47 +4,21 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-// 假设的新闻数据
-const newsData = [
-  {
-    id: 1,
-    title: "STEP 成功发射新型火箭",
-    date: "2024-03-10",
-    image: "/images/news1.jpg",
-    summary: "我们的团队成功发射了最新的实验性火箭，并完成了高空测试。",
-  },
-  {
-    id: 2,
-    title: "小型卫星计划取得突破",
-    date: "2024-02-25",
-    image: "/images/news2.jpg",
-    summary: "我们的卫星团队成功测试了新型通信系统，为未来任务奠定基础。",
-  },
-  {
-    id: 3,
-    title: "STEP 受邀参加全球航天会议",
-    date: "2024-02-15",
-    image: "/images/news3.jpg",
-    summary: "我们的团队将在国际航天大会上分享最新研究成果。",
-  },
-  {
-    id: 4,
-    title: "软件团队完成火箭飞行模拟系统",
-    date: "2024-01-30",
-    image: "/images/news4.jpg",
-    summary: "新的飞行模拟软件将提升火箭设计的精准度。",
-  },
-  {
-    id: 5,
-    title: "社团成员招募中！",
-    date: "2024-01-20",
-    image: "/images/news5.jpg",
-    summary: "如果你对航天充满热情，快来加入我们，一起探索太空！",
-  },
-];
 
 export default function News() {
-const [opacity, setOpacity] = useState(1);
+    const [newsData, setNewsData] = useState([]);
+
+    // 🚀 组件加载时请求 API
+    useEffect(() => {
+        async function fetchNews() {
+        const res = await fetch("/api/news"); // 🔹 向 API 请求数据
+        const data = await res.json();
+        setNewsData(data);
+        }
+        fetchNews();
+    }, []);
+
+    const [opacity, setOpacity] = useState(1);
     
     useEffect(() => {
         const handleScroll = () => {
