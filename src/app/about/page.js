@@ -6,25 +6,24 @@ import Image from "next/image";
 const departments = [
   {
     name: "機体班",
-    description: "機体設計",
+    description: "ロケット本体と分離機構を作成する班であり、飛翔シミュレーションも行っている",
     image: "/images/structure.jpg"
   },
   {
     name: "電装班",
-    description: "回路設計とプログラミング",
+    description: "ロケット管理用の回路やエンジンの地上燃焼試験用の回路を作成する",
     image: "/images/avionics.jpg"
   },
   {
     name: "エンジン班",
-    description: "エンジンの管理",
+    description: "打ち上げ時の地上支援装置の運用や、ハイブリットエンジンの管理を行う",
     image: "/images/engine.jpg"
   },
   {
     name: "衛星班",
-    description: "CanSatの開発",
+    description: "模擬人工衛星CanSatを作成し、コンテストに出場する",
     image: "/images/cansat.jpg"
   },
-
 ];
 
 export default function About() {
@@ -91,9 +90,9 @@ export default function About() {
       </section>
 
       {/* 🔥 2. 关于我们的介绍 */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-6 py-20">
         <motion.div
-          className="text-center"
+        //   className="text-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -101,6 +100,17 @@ export default function About() {
           <h2 className="text-4xl font-bold mb-6">Who We Are</h2>
           <p className="text-lg text-gray-300">
             私たち、筑波大学宇宙技術プロジェクト STEP は、航空宇宙工学と技術の研究開発を行う学生団体です。
+          </p>
+          <p className="text-lg text-gray-300 mt-4">
+            2006年5月に筑波大学の工学を専攻にする学生有志を中心として設立され、技術者になるためのトレーニングの場として、ロケットや人工衛星といった宇宙に関する技術を題材にしたものづくりを中心とした活動を展開しています。
+          </p>
+          <ul className="text-lg text-gray-300 text-left mt-6 space-y-2 inline-block">
+                <li>① 実際の製作技術の習得</li>
+                <li>② ものづくりをチームで行う上で裁かれるプロジェクト体制の運用を経験すること</li>
+                <li>③ コミュニケーション能力やプレゼンテーション技術など個人能力向上</li>
+          </ul>
+          <p className="text-lg text-gray-300 mt-4">
+          といった，机上で学ぶことのできない総合的実践力を楽しみながら養うことを目的に活動しています。
           </p>
         </motion.div>
       </section>
@@ -134,7 +144,7 @@ export default function About() {
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          部门活动
+          各班の活動
         </motion.h2>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
@@ -148,7 +158,7 @@ export default function About() {
             >
               <Image src={dept.image} alt={dept.name} width={300} height={200} className="rounded-lg mx-auto mb-4" />
               <h3 className="text-2xl font-bold text-white">{dept.name}</h3>
-              <p className="text-lg text-gray-300 mt-2">{dept.description}</p>
+              <p className="text-lg text-gray-300 mt-2 ml-12 mr-12">{dept.description}</p>
             </motion.div>
           ))}
         </div>
