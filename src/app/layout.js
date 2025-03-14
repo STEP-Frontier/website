@@ -1,5 +1,5 @@
 import Navbar from "@/components/Navbar";
-// import Footer from "@/components/Footer";
+import Footer from "@/components/Footer";
 import "./globals.css"; // 确保 Tailwind CSS 生效
 
 export default function RootLayout({ children }) {
@@ -8,7 +8,7 @@ export default function RootLayout({ children }) {
       <body className="bg-black text-white">
         <Navbar /> {/* ✅ 添加导航栏 */}
         <main>{children}</main>
-        {/* <Footer /> ✅ 添加页脚（如果有） */}
+        <Footer /> 
       </body>
     </html>
   );
