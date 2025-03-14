@@ -3,17 +3,6 @@ import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-const teamMembers = [
-  { name: "Alice", year: "4th Year", department: "Rocket Team" },
-  { name: "Bob", year: "4th Year", department: "Satellite Team" },
-  { name: "Charlie", year: "3rd Year", department: "Avionics Team" },
-  { name: "David", year: "3rd Year", department: "Mission Planning" },
-  { name: "Emma", year: "2nd Year", department: "Software Development" },
-  { name: "Frank", year: "2nd Year", department: "Rocket Team" },
-  { name: "Grace", year: "1st Year", department: "PR & Outreach" },
-  { name: "Harry", year: "1st Year", department: "Finance & Admin" },
-];
-
 const departments = [
   {
     name: "機体班",
@@ -38,15 +27,30 @@ const departments = [
 
 ];
 
-const groupedByYear = teamMembers.reduce((acc, member) => {
-  if (!acc[member.year]) acc[member.year] = [];
-  acc[member.year].push(member);
-  return acc;
-}, {});
-
 export default function About() {
   const [opacity, setOpacity] = useState(1);
+
+  const [members, setMembers] = useState([]);
+//   const currentYear = new Date().getFullYear();
+  const currentYear = 2025;
   
+  useEffect(() => {
+    async function fetchMembers() {
+      const res = await fetch("/api/about");
+      const data = await res.json();
+      setMembers(data);
+    }
+    fetchMembers();
+  }, []);
+
+  const groupedByYear = members.reduce((acc, member) => {
+    const grade = currentYear - member.year + 1; // 计算年级
+    if (grade > 4) return acc; 
+    if (!acc[grade]) acc[grade] = [];
+    acc[grade].push(member);
+    return acc;
+  }, {});
+
     useEffect(() => {
       const handleScroll = () => {
         const maxScroll = 300; // 300px 后箭头完全消失
@@ -102,7 +106,7 @@ export default function About() {
       </section>
 
       {/* 🔥 3. 交错布局的 Section */}
-      <section className="max-w-6xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-6 py-20">
         {/* 🚀 左文右图 */}
         <motion.div
           className="flex flex-col md:flex-row items-center gap-10"
@@ -176,7 +180,7 @@ export default function About() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                   >
-                    <h3 className="text-2xl font-bold text-white">{year}</h3>
+                    <h3 className="text-2xl font-bold text-white">{year}年生</h3>
                     <ul className="mt-4 space-y-2">
                       {groupedByYear[year].map((member, index) => (
                         <li key={index} className="text-lg text-gray-300">
