@@ -2,7 +2,7 @@
 import { useState, useEffect } from "react";
 import Image from "next/image";
 
-export default function Navbar() {
+export default function Navbar({ isDark = false }) {
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
 
@@ -16,8 +16,8 @@ export default function Navbar() {
   }, []);
 
 
-  const opacity = Math.min(scrollY / 800, 1.0);  
-  const blur = Math.min(scrollY / 100, 10);  
+  const opacity = isDark ? 1 : Math.min(scrollY / 800, 1.0);  
+  const blur = isDark ? 0 : Math.min(scrollY / 100, 10); 
 
   return (
     <nav
