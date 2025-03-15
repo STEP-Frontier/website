@@ -73,19 +73,33 @@ export default function News() {
           {newsData.map((news, index) => (
             <motion.div
               key={news.id}
-              className="bg-gray-900 p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+              className="p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               <Link href={`/news/${news.id}`} className="block">
-                <div className="max-w-[600px] mx-auto">
-                  <Image src={news.image} alt={news.title} width={600} height={350} className="rounded-lg mx-auto" />
-                  <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white mt-4">{news.title}</h3>
+                <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] bg-gray-700 rounded-lg flex justify-center items-center overflow-hidden">
+                  <Image 
+                    src={news.image} 
+                    alt={news.title} 
+                    width={600} 
+                    height={350} 
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+
+                <div className="w-full">
+                  <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white mt-4">
+                    {news.title}
+                  </h3>
                   <p className="text-gray-400 text-[0.625rem] sm:text-xs md:text-sm mt-2">{news.date}</p>
-                  <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-2">{news.summary}</p>
+                  <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-2">
+                    {news.summary}
+                  </p>
                 </div>
               </Link>
+
             </motion.div>
           ))}
         </div>
