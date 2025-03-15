@@ -1,0 +1,18 @@
+[
+    { "name": "林 崇文", "year": 2022, "department": "エンジン班 機体班" },
+    { "name": "木村 護", "year": 2022, "department": "機体班 電装班" },
+    { "name": "小川 葉", "year": 2022, "department": "機体班" },
+    { "name": "中園 凌輔", "year": 2022, "department": "エンジン班 電装班" },
+    { "name": "胡 洋", "year": 2022, "department": "電装班" },
+
+    { "name": "村中 恵", "year": 2023, "department": "エンジン班" },
+    { "name": "井田 悠花", "year": 2023, "department": "エンジン班" },
+
+    { "name": "山田 遥己", "year": 2024, "department": "エンジン班 機体班" },
+    { "name": "岡部 考喜", "year": 2024, "department": "エンジン班 機体班" },
+    { "name": "関根 美月", "year": 2024, "department": "エンジン班 機体班" },
+    { "name": "池野 雅理", "year": 2024, "department": "電装班 機体班" },
+    { "name": "田端 侑心", "year": 2024, "department": "電装班 機体班" },
+    { "name": "白取 知季", "year": 2024, "department": "電装班 機体班" },
+    { "name": "三好 弘晃", "year": 2024, "department": "電装班 機体班" }
+  ]

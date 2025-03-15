@@ -1,0 +1,34 @@
+1:"$Sreact.fragment"
+2:I[4614,["766","static/chunks/766-b54ef7ae11cbc33b.js","874","static/chunks/874-4c2a8a1c5515f5e5.js","86","static/chunks/app/news/%5Bid%5D/page-bf6b11abdd68e4a1.js"],"default"]
+3:I[7555,[],""]
+4:I[1295,[],""]
+5:I[6219,["711","static/chunks/8e1d74a4-e9c1349d20d9ca91.js","766","static/chunks/766-b54ef7ae11cbc33b.js","874","static/chunks/874-4c2a8a1c5515f5e5.js","177","static/chunks/app/layout-939dab1e0c2b83fb.js"],"default"]
+7:I[9665,[],"OutletBoundary"]
+a:I[9665,[],"ViewportBoundary"]
+c:I[9665,[],"MetadataBoundary"]
+e:I[6614,[],""]
+:HL["/_next/static/css/843915343d117b9a.css","style"]
+:HL["/_next/static/css/cd104b6c1be58467.css","style"]
+0:{"P":null,"b":"qvijlAPsomXP6fJFZYjPT","p":"","c":["","news","2",""],"i":false,"f":[[["",{"children":["news",{"children":[["id","2","d"],{"children":["__PAGE__",{}]}]}]},"$undefined","$undefined",true],["",["$","$1","c",{"children":[[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/843915343d117b9a.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","html",null,{"lang":"zh-CN","children":["$","body",null,{"className":"bg-black text-white","children":[["$","$L2",null,{}]," ",["$","main",null,{"children":["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":[[["$","title",null,{"children":"404: This page could not be found."}],["$","div",null,{"style":{"fontFamily":"system-ui,\"Segoe UI\",Roboto,Helvetica,Arial,sans-serif,\"Apple Color Emoji\",\"Segoe UI Emoji\"","height":"100vh","textAlign":"center","display":"flex","flexDirection":"column","alignItems":"center","justifyContent":"center"},"children":["$","div",null,{"children":[["$","style",null,{"dangerouslySetInnerHTML":{"__html":"body{color:#000;background:#fff;margin:0}.next-error-h1{border-right:1px solid rgba(0,0,0,.3)}@media (prefers-color-scheme:dark){body{color:#fff;background:#000}.next-error-h1{border-right:1px solid rgba(255,255,255,.3)}}"}}],["$","h1",null,{"className":"next-error-h1","style":{"display":"inline-block","margin":"0 20px 0 0","padding":"0 23px 0 0","fontSize":24,"fontWeight":500,"verticalAlign":"top","lineHeight":"49px"},"children":404}],["$","div",null,{"style":{"display":"inline-block"},"children":["$","h2",null,{"style":{"fontSize":14,"fontWeight":400,"lineHeight":"49px","margin":0},"children":"This page could not be found."}]}]]}]}]],[]],"forbidden":"$undefined","unauthorized":"$undefined"}]}],["$","$L5",null,{}]]}]}]]}],{"children":["news",["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":[["id","2","d"],["$","$1","c",{"children":[null,["$","$L3",null,{"parallelRouterKey":"children","error":"$undefined","errorStyles":"$undefined","errorScripts":"$undefined","template":["$","$L4",null,{}],"templateStyles":"$undefined","templateScripts":"$undefined","notFound":"$undefined","forbidden":"$undefined","unauthorized":"$undefined"}]]}],{"children":["__PAGE__",["$","$1","c",{"children":["$L6","$undefined",[["$","link","0",{"rel":"stylesheet","href":"/_next/static/css/cd104b6c1be58467.css","precedence":"next","crossOrigin":"$undefined","nonce":"$undefined"}]],["$","$L7",null,{"children":["$L8","$L9",null]}]]}],{},null,false]},null,false]},null,false]},null,false],["$","$1","h",{"children":[null,["$","$1","Pnu1HZv0BjzFAkcdiWINw",{"children":[["$","$La",null,{"children":"$Lb"}],null]}],["$","$Lc",null,{"children":"$Ld"}]]}],false]],"m":"$undefined","G":["$e","$undefined"],"s":false,"S":true}
+f:I[3063,["766","static/chunks/766-b54ef7ae11cbc33b.js","874","static/chunks/874-4c2a8a1c5515f5e5.js","86","static/chunks/app/news/%5Bid%5D/page-bf6b11abdd68e4a1.js"],"Image"]
+11:I[6874,["766","static/chunks/766-b54ef7ae11cbc33b.js","874","static/chunks/874-4c2a8a1c5515f5e5.js","86","static/chunks/app/news/%5Bid%5D/page-bf6b11abdd68e4a1.js"],""]
+10:T518,<p>STEP has successfully conducted a full-duration static fire test of its latest rocket engine, marking a major milestone in the development of the club's aerospace projects.</p>
+<h2>🔥 Engine Test Details</h2>
+<p>The engine test took place at the Tsukuba University Aerospace Testing Facility and lasted for a full <strong>30 seconds</strong>. Engineers closely monitored <strong>thrust performance</strong>, <strong>fuel efficiency</strong>, and <strong>structural integrity</strong>.</p>
+<h3>🚀 Key Achievements:</h3>
+<ul>
+<li>Achieved <strong>stable combustion</strong> for 30 seconds</li>
+<li>Fuel efficiency improved by <strong>15%</strong></li>
+<li>Successfully tested new <strong>composite engine nozzle</strong></li>
+<li>Structural integrity remained within safety margins</li>
+</ul>
+<h2>🔭 Next Steps</h2>
+<p>The STEP team will now analyze the collected data and make necessary optimizations before the next round of testing. Future plans include a <strong>suborbital flight test</strong> scheduled for late 2024.</p>
+<p>🎥 <strong>Watch the engine test video:</strong> <a href="https://www.example.com/video">Click here</a></p>
+<p>For more updates, follow our official channels on<br>
+<a href="https://twitter.com">X (Twitter)</a> | <a href="https://instagram.com">Instagram</a>.</p>
+6:["$","div",null,{"className":"w-full","children":[["$","$L2",null,{"isDark":true}],["$","div",null,{"className":"max-w-4xl mx-auto pt-16 md:pt-22","children":["$","div",null,{"className":"relative w-full h-80 md:h-96","children":["$","$Lf",null,{"src":"/images/news/news_images/2.png","alt":"STEP Successfully Completes Rocket Engine Test","width":600,"height":350,"className":"w-full h-full object-cover"}]}]}],["$","div",null,{"className":"text-center mt-6","children":[["$","h1",null,{"className":"text-2xl sm:text-3xl md:text-4xl px-8 font-bold","children":"STEP Successfully Completes Rocket Engine Test"}],["$","p",null,{"className":"text-xs sm:text-sm text-gray-400 mt-2","children":"2024-04-05"}]]}],["$","div",null,{"className":"max-w-4xl mx-auto px-8 py-6 text-lg leading-relaxed","children":["$","div",null,{"className":"news-content","dangerouslySetInnerHTML":{"__html":"$10"}}]}],["$","div",null,{"className":"flex justify-center mt-10 mb-10","children":["$","$L11",null,{"href":"/news","children":["$","button",null,{"className":"px-6 py-3 border-2 border-gray-700 text-gray-500 rounded-full transition duration-300 ease-in-out hover:border-blue-800 hover:text-white hover:cursor-pointer","children":"← Back to News"}]}]}]]}]
+b:[["$","meta","0",{"charSet":"utf-8"}],["$","meta","1",{"name":"viewport","content":"width=device-width, initial-scale=1"}]]
+8:null
+9:null
+d:[]
