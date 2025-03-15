@@ -30,7 +30,7 @@ export default function Navbar({ isDark = false }) {
     >
       <div className="max-w-[90rem] mx-auto px-4 md:px-8 lg:px-16 flex justify-between items-center">
         <a href="/">
-          <Image src="/images/logo3.png" alt="STEP LOGO" width={200} height={100} className="w-32 sm:w-40 md:w-45 lg:w-50 h-auto" priority />
+          <Image src="/images/logo.png" alt="STEP LOGO" width={200} height={100} className="w-32 sm:w-40 md:w-45 lg:w-50 h-auto" priority />
         </a>
         <div className="md:flex hidden space-x-16 font-bold">
         <a href="/about" className="nav-link group">About</a>

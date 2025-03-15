@@ -9,7 +9,7 @@ export default function Home() {
       <Section
         title="宇宙技術プロジェクト STEP"
         content="筑波大学宇宙技術プロジェクトSTEPは、ロケットや模擬人工衛星(CanSat)の製作・運用を行っている学生団体です。"
-        image="/images/about.jpg"
+        image="/images/step.jpg"
         learnMoreLink="/about"
         reverse
       />

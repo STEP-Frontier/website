@@ -22,7 +22,7 @@ const departments = [
   {
     name: "衛星班",
     description: "模擬人工衛星CanSatを作成し、コンテストに出場する",
-    image: "/images/about/cansat.jpg"
+    image: "/images/about/eisei.jpg"
   },
 ];
 
@@ -134,7 +134,7 @@ export default function About() {
             </p>
           </div>
           <div className="md:w-1/2">
-            <Image src="/images/representative.jpg" alt="Representative" width={600} height={400} className="rounded-lg shadow-lg" />
+            <Image src="/images/about/representative.jpg" alt="Representative" width={600} height={400} className="rounded-lg shadow-lg" />
           </div>
         </motion.div>
       </section>
