@@ -24,7 +24,7 @@ export default function Hero() {
       ></div>
       <div className="relative flex flex-col items-center justify-center h-full text-center text-white">
         <motion.h1
-          className="text-5xl font-bold"
+          className="text-3xl sm:text-4xl md:text-5xl font-bold"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -32,7 +32,7 @@ export default function Hero() {
           STEPへようこそ
         </motion.h1>
         <motion.p
-          className="mt-4 text-lg max-w-xl font-bold"
+          className="mt-4 text-sm sm:text-base md:text-lg max-w-xl font-bold"
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1.5 }}

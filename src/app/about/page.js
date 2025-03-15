@@ -69,7 +69,7 @@ export default function About() {
         style={{ backgroundImage: "url('/images/about-hero.jpg')" }}>
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <motion.h1
-          className="relative text-5xl font-bold"
+          className="relative text-3xl sm:text-4xl md:text-5xl font-bold"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -90,43 +90,43 @@ export default function About() {
       </section>
 
       {/* 🔥 2. 关于我们的介绍 */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-16 py-20">
         <motion.div
         //   className="text-center"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          <h2 className="text-4xl font-bold mb-6">Who We Are</h2>
-          <p className="text-lg text-gray-300">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">Who We Are</h2>
+          <p className="text-sm sm:text-base md:text-lg text-gray-300">
             私たち、筑波大学宇宙技術プロジェクト STEP は、航空宇宙工学と技術の研究開発を行う学生団体です。
           </p>
-          <p className="text-lg text-gray-300 mt-4">
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-4">
             2006年5月に筑波大学の工学を専攻にする学生有志を中心として設立され、技術者になるためのトレーニングの場として、ロケットや人工衛星といった宇宙に関する技術を題材にしたものづくりを中心とした活動を展開しています。
           </p>
-          <ul className="text-lg text-gray-300 text-left mt-6 space-y-2 inline-block">
+          <ul className="text-sm sm:text-base md:text-lg text-gray-300 text-left mt-6 space-y-2 inline-block">
                 <li>① 実際の製作技術の習得</li>
                 <li>② ものづくりをチームで行う上で裁かれるプロジェクト体制の運用を経験すること</li>
                 <li>③ コミュニケーション能力やプレゼンテーション技術など個人能力向上</li>
           </ul>
-          <p className="text-lg text-gray-300 mt-4">
+          <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-4">
           といった，机上で学ぶことのできない総合的実践力を楽しみながら養うことを目的に活動しています。
           </p>
         </motion.div>
       </section>
 
       {/* 🔥 3. 交错布局的 Section */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-16 py-20">
         {/* 🚀 左文右图 */}
         <motion.div
-          className="flex flex-col md:flex-row items-center gap-10"
+          className="flex flex-col md:flex-row  gap-10"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
           <div className="md:w-1/2">
-            <h2 className="text-3xl font-bold mb-4">代表挨拶</h2>
-            <p className="text-lg text-gray-300">
+            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">代表挨拶</h2>
+            <p className="text-sm sm:text-base md:text-lg text-gray-300">
               昨日4時まで起きてたので今めっちゃ眠いです
             </p>
           </div>
@@ -137,7 +137,7 @@ export default function About() {
       </section>
 
       {/* 🔥 各部门的活动 */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-16 py-20">
         <motion.h2
           className="text-4xl font-bold text-center mb-10"
           initial={{ opacity: 0, y: 50 }}
@@ -157,15 +157,15 @@ export default function About() {
               transition={{ duration: 1 }}
             >
               <Image src={dept.image} alt={dept.name} width={300} height={200} className="rounded-lg mx-auto mb-4" />
-              <h3 className="text-2xl font-bold text-white">{dept.name}</h3>
-              <p className="text-lg text-gray-300 mt-2 ml-12 mr-12">{dept.description}</p>
+              <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white">{dept.name}</h3>
+              <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-2 ml-0 sm:ml-6 md:ml-12 mr-0 sm:mr-6 md:mr-12">{dept.description}</p>
             </motion.div>
           ))}
         </div>
       </section>
 
       {/* 🔥 Our Team Section */}
-      <section className="max-w-7xl mx-auto px-6 py-20">
+      <section className="max-w-7xl mx-auto px-16 py-20">
         <motion.h2
           className="text-4xl font-bold text-center mb-10"
           initial={{ opacity: 0, y: 50 }}
@@ -190,10 +190,10 @@ export default function About() {
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
                   >
-                    <h3 className="text-2xl font-bold text-white">{year}年生</h3>
+                    <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white">{year}年生</h3>
                     <ul className="mt-4 space-y-2">
                       {groupedByYear[year].map((member, index) => (
-                        <li key={index} className="text-lg text-gray-300">
+                        <li key={index} className="text-sm sm:text-base md:text-lg text-gray-300">
                           <span className="font-semibold text-white">{member.name}</span> - {member.department}
                         </li>
                       ))}

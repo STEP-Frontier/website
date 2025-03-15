@@ -42,7 +42,7 @@ export default function News() {
         style={{ backgroundImage: "url('/images/about-hero.jpg')" }}>
         <div className="absolute inset-0 bg-black bg-opacity-50"></div>
         <motion.h1
-          className="relative text-5xl font-bold"
+          className="relative text-3xl sm:text-4xl md:text-5xl font-bold"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -63,7 +63,7 @@ export default function News() {
       </section>
 
       {/* 🔥 2. 两列布局 */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto py-20">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto p-16 py-20">
         {/* 左侧：新闻列表 */}
         <div className="md:col-span-2 space-y-6">
           {newsData.map((news, index) => (
@@ -76,9 +76,9 @@ export default function News() {
             >
               <Link href={`/news/${news.id}`} className="block">
                 <Image src={news.image} alt={news.title} width={600} height={350} className="rounded-lg" />
-                <h3 className="text-2xl font-bold text-white mt-4">{news.title}</h3>
-                <p className="text-gray-400 text-sm mt-2">{news.date}</p>
-                <p className="text-lg text-gray-300 mt-2">{news.summary}</p>
+                <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white mt-4">{news.title}</h3>
+                <p className="text-gray-400 text-[0.625rem] sm:text-xs md:text-sm mt-2">{news.date}</p>
+                <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-2">{news.summary}</p>
               </Link>
             </motion.div>
           ))}
@@ -86,7 +86,7 @@ export default function News() {
 
         {/* 右侧：置顶新闻 */}
         <div className="space-y-6">
-          <h2 className="text-2xl font-bold text-white">Featured News</h2>
+          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white">Featured News</h2>
           {featuredNews.length === 0 ? (
             <p className="text-gray-400">No featured news available</p>
           ) : (
@@ -96,8 +96,8 @@ export default function News() {
                 className="bg-gray-800 p-4 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
               >
                 <Link href={`/news/${news.id}`} className="block">
-                  <h3 className="text-lg font-bold text-white">{news.title}</h3>
-                  <p className="text-gray-400 text-sm">{news.date}</p>
+                  <h3 className="text-sm sm:text-base md:text-lg font-bold text-white">{news.title}</h3>
+                  <p className="text-gray-400 text-[0.625rem] sm:text-xs md:text-sm">{news.date}</p>
                 </Link>
               </motion.div>
             ))
