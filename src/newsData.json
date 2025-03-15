@@ -1,0 +1,16 @@
+[
+  {
+    "id": "1",
+    "title": "STEP新公式ウェブサイトが公開されました！",
+    "date": "2025-03-15",
+    "image": "/images/news/news_images/1.png",
+    "summary": "筑波大学宇宙技術プロジェクト（STEP）の新しい公式ウェブサイトがついに公開されました。より分かりやすく、見やすいデザインで、最新の活動情報を発信していきます！"
+  },
+  {
+    "id": "2",
+    "title": "STEP Successfully Completes Rocket Engine Test",
+    "date": "2024-04-05",
+    "image": "/images/news/news_images/2.png",
+    "summary": "STEP has successfully completed a critical rocket engine test, bringing the team one step closer to launching its first experimental rocket."
+  }
+]

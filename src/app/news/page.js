@@ -1,25 +1,14 @@
 "use client";
 import { useState, useEffect } from "react";
+import newsData from "@/newsData.json"; // ✅ 直接导入 JSON 数据
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
 
-const featuredNewsIds = ["2"];
 
 export default function News() {
-    const [newsData, setNewsData] = useState([]);
-    
-    const featuredNews = newsData.filter((news) => featuredNewsIds.includes(news.id));
-
-    // 🚀 组件加载时请求 API
-    useEffect(() => {
-        async function fetchNews() {
-        const res = await fetch("/api/news"); // 🔹 向 API 请求数据
-        const data = await res.json();
-        setNewsData(data);
-        }
-        fetchNews();
-    }, []);
+  const featuredNewsIds = ["2"];
+  const featuredNews = newsData.filter((news) => featuredNewsIds.includes(news.id));
 
     const [opacity, setOpacity] = useState(1);
     

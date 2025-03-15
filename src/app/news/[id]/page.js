@@ -8,11 +8,24 @@ import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import "../news.css";
 
+export async function generateStaticParams() {
+  const newsDirectory = path.join(process.cwd(), "public/news");
+  const filenames = fs.readdirSync(newsDirectory);
+
+  return filenames.map((filename) => ({
+    id: filename.replace(".md", ""),
+  }));
+}
+
 export default async function NewsDetailPage({ params }) {
   const { id } = params;
   const filePath = path.join(process.cwd(), "public/news", `${id}.md`);
-  const fileContent = fs.readFileSync(filePath, "utf8");
 
+  if (!fs.existsSync(filePath)) {
+    return <div className="text-center py-10 text-red-500">News not found.</div>;
+  }
+
+  const fileContent = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(fileContent);
   const processedContent = await remark().use(html).process(content);
   const contentHtml = processedContent.toString();
@@ -26,8 +39,9 @@ export default async function NewsDetailPage({ params }) {
           <Image
             src={data.image}
             alt={data.title}
-            fill
-            style={{ objectFit: "cover" }}
+            width={600}
+            height={350}
+            className="w-full h-full object-cover"
           />
         </div>
       </div>
@@ -38,10 +52,7 @@ export default async function NewsDetailPage({ params }) {
       </div>
 
       <div className="max-w-4xl mx-auto px-8 py-6 text-lg leading-relaxed">
-        <div
-          className="news-content"
-          dangerouslySetInnerHTML={{ __html: contentHtml }}
-        />
+        <div className="news-content" dangerouslySetInnerHTML={{ __html: contentHtml }} />
       </div>
 
       <div className="flex justify-center mt-10 mb-10">

@@ -1,5 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
+import membersData from "@/membersData.json";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -26,29 +27,18 @@ const departments = [
   },
 ];
 
+const currentYear = 2025; // 这里你可以用 `new Date().getFullYear()` 让它变成动态的
+
+const groupedByYear = membersData.reduce((acc, member) => {
+  const grade = currentYear - member.year + 1;
+  if (grade > 4) return acc;
+  if (!acc[grade]) acc[grade] = [];
+  acc[grade].push(member);
+  return acc;
+}, {});
+
 export default function About() {
   const [opacity, setOpacity] = useState(1);
-
-  const [members, setMembers] = useState([]);
-//   const currentYear = new Date().getFullYear();
-  const currentYear = 2025;
-  
-  useEffect(() => {
-    async function fetchMembers() {
-      const res = await fetch("/api/about");
-      const data = await res.json();
-      setMembers(data);
-    }
-    fetchMembers();
-  }, []);
-
-  const groupedByYear = members.reduce((acc, member) => {
-    const grade = currentYear - member.year + 1; // 计算年级
-    if (grade > 4) return acc; 
-    if (!acc[grade]) acc[grade] = [];
-    acc[grade].push(member);
-    return acc;
-  }, {});
 
     useEffect(() => {
       const handleScroll = () => {
