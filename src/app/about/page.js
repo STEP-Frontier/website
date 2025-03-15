@@ -154,12 +154,14 @@ export default function About() {
           {departments.map((dept, index) => (
             <motion.div
               key={index}
-              className="bg-gray-900 p-6 rounded-lg text-center"
+              className="bg-gray-1000 p-6 rounded-lg text-center"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <Image src={dept.image} alt={dept.name} width={400} height={300} className="rounded-lg mx-auto mb-4" />
+              <div className="w-full h-[150px] sm:h-[200px] md:h-[250px] lg:h-[300px] bg-gray-700 rounded-lg flex justify-center items-center overflow-hidden mb-4">
+                <Image src={dept.image} alt={dept.name} width={600} height={350} className="w-full h-full object-cover" />
+              </div>
               <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white">{dept.name}</h3>
               <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-2 ml-0 sm:ml-6 md:ml-12 mr-0 sm:mr-6 md:mr-12">{dept.description}</p>
             </motion.div>
