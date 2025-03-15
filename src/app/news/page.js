@@ -63,8 +63,9 @@ export default function News() {
       </section>
 
       {/* 🔥 2. 两列布局 */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 max-w-6xl mx-auto p-16 py-20">
-        {/* 左侧：新闻列表 */}
+      <div className="max-w-6xl mx-auto px-16 xl:px-0 pb-20 flex flex-col-reverse md:grid md:grid-cols-3 gap-10">
+        
+        {/* 📌 普通新闻列表 */}
         <div className="md:col-span-2 space-y-6">
           {newsData.map((news, index) => (
             <motion.div
@@ -83,10 +84,10 @@ export default function News() {
             </motion.div>
           ))}
         </div>
-
-        {/* 右侧：置顶新闻 */}
+        
+        {/* 📌 Featured News 在手机端显示在上方，桌面端在右侧 */}
         <div className="space-y-6">
-          <h2 className="text-lg sm:text-xl md:text-2xl font-bold text-white">Featured News</h2>
+          <h2 className="text-2xl font-bold text-white">Featured News</h2>
           {featuredNews.length === 0 ? (
             <p className="text-gray-400">No featured news available</p>
           ) : (
