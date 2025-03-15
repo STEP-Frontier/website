@@ -7,22 +7,22 @@ const departments = [
   {
     name: "機体班",
     description: "ロケット本体と分離機構を作成する班であり、飛翔シミュレーションも行っている",
-    image: "/images/structure.jpg"
+    image: "/images/about/structure.jpg"
   },
   {
     name: "電装班",
     description: "ロケット管理用の回路やエンジンの地上燃焼試験用の回路を作成する",
-    image: "/images/avionics.jpg"
+    image: "/images/about/avionics.jpg"
   },
   {
     name: "エンジン班",
     description: "打ち上げ時の地上支援装置の運用や、ハイブリットエンジンの管理を行う",
-    image: "/images/engine.jpg"
+    image: "/images/about/engine.jpg"
   },
   {
     name: "衛星班",
     description: "模擬人工衛星CanSatを作成し、コンテストに出場する",
-    image: "/images/cansat.jpg"
+    image: "/images/about/cansat.jpg"
   },
 ];
 
@@ -66,8 +66,11 @@ export default function About() {
     <div className="w-full">
       {/* 🔥 1. Hero Section */}
       <section className="relative h-screen flex flex-col items-center justify-center text-white text-center bg-cover bg-center" 
-        style={{ backgroundImage: "url('/images/about-hero.jpg')" }}>
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        style={{ backgroundImage: "url('/images/about/about-hero.jpg')" }}>
+        <div
+          className="absolute inset-0"
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
+        ></div>
         <motion.h1
           className="relative text-3xl sm:text-4xl md:text-5xl font-bold"
           initial={{ opacity: 0, y: -50 }}
@@ -90,7 +93,7 @@ export default function About() {
       </section>
 
       {/* 🔥 2. 关于我们的介绍 */}
-      <section className="max-w-7xl mx-auto px-16 py-20">
+      <section className="max-w-7xl mx-auto px-8 md:px-16 py-20">
         <motion.div
         //   className="text-center"
           initial={{ opacity: 0, y: 50 }}
@@ -116,7 +119,7 @@ export default function About() {
       </section>
 
       {/* 🔥 3. 交错布局的 Section */}
-      <section className="max-w-7xl mx-auto px-16 py-20">
+      <section className="max-w-7xl mx-auto px-8 md:px-16 py-20">
         {/* 🚀 左文右图 */}
         <motion.div
           className="flex flex-col md:flex-row  gap-10"
@@ -156,7 +159,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <Image src={dept.image} alt={dept.name} width={300} height={200} className="rounded-lg mx-auto mb-4" />
+              <Image src={dept.image} alt={dept.name} width={400} height={300} className="rounded-lg mx-auto mb-4" />
               <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white">{dept.name}</h3>
               <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-2 ml-0 sm:ml-6 md:ml-12 mr-0 sm:mr-6 md:mr-12">{dept.description}</p>
             </motion.div>
@@ -176,10 +179,10 @@ export default function About() {
         </motion.h2>
 
         {/* 🚀 主体部分：左边成员列表 + 右边团队照片 */}
-        <div className="flex flex-col md:flex-row items-center gap-10">
+        <div className="flex flex-col md:flex-row items-center">
           {/* 📌 左边：成员列表 */}
-          <div className="md:w-1/2">
-            <div className="space-y-10">
+          <div className="md:w-1/3">
+            <div className="mb-10">
               {Object.keys(groupedByYear)
                 .sort((a, b) => parseInt(b) - parseInt(a)) // 年级降序排列
                 .map((year) => (
@@ -203,22 +206,25 @@ export default function About() {
             </div>
           </div>
 
-          {/* 📌 右边：团队合照 */}
-          <div className="md:w-1/2 flex justify-center">
-            <motion.div
-              className="relative w-full max-w-md"
-              initial={{ opacity: 0, scale: 0.8 }}
-              whileInView={{ opacity: 1, scale: 1 }}
-              transition={{ duration: 1 }}
-            >
-              <Image 
-                src="/images/team-photo.jpg"
-                alt="Team Photo"
-                width={500}
-                height={500}
-                className="rounded-lg shadow-lg"
-              />
-            </motion.div>
+          {/* 📌 右边：团队合照 - 使用 Grid 布局 */}
+          <div className="md:w-2/3 grid grid-cols-1">
+            {["/images/about/team-photo-1.jpg", "/images/about/team-photo-2.jpg"].map((src, index) => (
+              <motion.div
+                key={index}
+                className="relative w-full md:p-12 mb-10"
+                initial={{ opacity: 0, scale: 0.8 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 1 }}
+              >
+                <Image 
+                  src={src}
+                  alt={`Team Photo ${index + 1}`}
+                  width={200}
+                  height={200}
+                  className=" shadow-lg w-full object-cover"
+                />
+              </motion.div>
+            ))}
           </div>
         </div>
       </section>

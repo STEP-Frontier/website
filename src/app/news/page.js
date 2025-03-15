@@ -39,8 +39,11 @@ export default function News() {
     <div className="w-full">
       {/* 🔥 1. Hero Section */}
       <section className="relative h-screen flex flex-col items-center justify-center text-white text-center bg-cover bg-center" 
-        style={{ backgroundImage: "url('/images/about-hero.jpg')" }}>
-        <div className="absolute inset-0 bg-black bg-opacity-50"></div>
+        style={{ backgroundImage: "url('/images/news/news-hero.jpg')" }}>
+        <div
+          className="absolute inset-0"
+          style={{ backgroundColor: "rgba(0, 0, 0, 0.3)" }}
+        ></div>
         <motion.h1
           className="relative text-3xl sm:text-4xl md:text-5xl font-bold"
           initial={{ opacity: 0, y: -50 }}
@@ -63,7 +66,7 @@ export default function News() {
       </section>
 
       {/* 🔥 2. 两列布局 */}
-      <div className="max-w-6xl mx-auto px-16 xl:px-0 pb-20 flex flex-col-reverse md:grid md:grid-cols-3 gap-10">
+      <div className="max-w-6xl mx-auto px-16 pt-20 xl:px-0 pb-20 flex flex-col-reverse md:grid md:grid-cols-3 gap-10">
         
         {/* 📌 普通新闻列表 */}
         <div className="md:col-span-2 space-y-6">
@@ -76,10 +79,12 @@ export default function News() {
               transition={{ duration: 0.6, delay: index * 0.1 }}
             >
               <Link href={`/news/${news.id}`} className="block">
-                <Image src={news.image} alt={news.title} width={600} height={350} className="rounded-lg" />
-                <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white mt-4">{news.title}</h3>
-                <p className="text-gray-400 text-[0.625rem] sm:text-xs md:text-sm mt-2">{news.date}</p>
-                <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-2">{news.summary}</p>
+                <div className="max-w-[600px] mx-auto">
+                  <Image src={news.image} alt={news.title} width={600} height={350} className="rounded-lg mx-auto" />
+                  <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white mt-4">{news.title}</h3>
+                  <p className="text-gray-400 text-[0.625rem] sm:text-xs md:text-sm mt-2">{news.date}</p>
+                  <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-2">{news.summary}</p>
+                </div>
               </Link>
             </motion.div>
           ))}
