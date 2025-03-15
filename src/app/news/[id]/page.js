@@ -4,6 +4,7 @@ import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
 import Image from "next/image";
+import "../news.css";
 
 export default async function NewsDetailPage({ params }) {
   // 👇 这里从 params 解构出 id
@@ -28,7 +29,7 @@ export default async function NewsDetailPage({ params }) {
           className="rounded-lg"
         />
         <div className="absolute inset-0 bg-black bg-opacity-40"></div>
-        <h1 className="absolute bottom-5 left-5 text-3xl md:text-4xl font-bold">
+        <h1 className="absolute bottom-5 left-5 text-[1.75rem] md:text-[2.0rem] lg:text-[2.25rem] font-bold">
           {data.title}
         </h1>
       </div>
@@ -39,7 +40,7 @@ export default async function NewsDetailPage({ params }) {
 
       {/* News Content */}
       <div
-        className="text-lg leading-relaxed"
+        className="news-content text-lg leading-relaxed"
         dangerouslySetInnerHTML={{ __html: contentHtml }}
       />
     </div>
