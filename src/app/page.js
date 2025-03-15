@@ -17,13 +17,13 @@ export default function Home() {
         title="ロケットプロジェクト"
         content="現在STEPロケット班が開発中のロケットです。（まだ名前すらつけてないけど）"
         image="/images/rocket.jpg"
-        learnMoreLink="/projects/rocket"
+        learnMoreLink="/rocket"
       />
       <Section
         title="衛星プロジェクト"
         content="現在STEP衛星班が開発中のCanSatです。（図がなーい）"
         image="/images/cansat.jpg"
-        learnMoreLink="/projects/satellite"
+        learnMoreLink="/cansat"
         reverse
       />
       </div>

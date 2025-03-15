@@ -34,9 +34,9 @@ export default function Navbar() {
         </a>
         <div className="md:flex hidden space-x-16 font-bold">
         <a href="/about" className="nav-link group">About</a>
-          <a href="/projects" className="nav-link group">Projects</a>
+          <a href="/rocket" className="nav-link group">Rocket</a>
+          <a href="/cansat" className="nav-link group">CanSat</a>
           <a href="/news" className="nav-link group">News</a>
-          <a href="/contact" className="nav-link group">Contact</a>
         </div>
         <button className="md:hidden" onClick={() => setIsOpen(!isOpen)}>☰</button>
       </div>
@@ -45,9 +45,9 @@ export default function Navbar() {
       {isOpen && (
         <div className="absolute top-full left-0 w-full bg-black flex flex-col items-center space-y-4 p-4">
           <a href="/about" className="nav-link group">About</a>
-          <a href="/projects" className="nav-link group">Projects</a>
+          <a href="/rocket" className="nav-link group">Rocket</a>
+          <a href="/cansat" className="nav-link group">CanSat</a>
           <a href="/news" className="nav-link group">News</a>
-          <a href="/contact" className="nav-link group">Contact</a>
         </div>
       )}
     </nav>
