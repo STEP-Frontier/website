@@ -55,7 +55,7 @@ export default function News() {
       </section>
 
       {/* 🔥 2. 两列布局 */}
-      <div className="max-w-7xl mx-auto md:px-16 pt-20 xl:px-0 pb-20 flex flex-col-reverse md:grid md:grid-cols-3">
+      <div className="max-w-7xl mx-auto md:px-16 pt-20 xl:px-0 pb-20 flex flex-col-reverse lg:grid lg:grid-cols-3">
         
         {/* 📌 普通新闻列表 */}
         <div className="md:col-span-2 space-y-6">

@@ -112,19 +112,19 @@ export default function About() {
       <section className="max-w-7xl mx-auto px-8 md:px-16 py-20">
         {/* 🚀 左文右图 */}
         <motion.div
-          className="flex flex-col md:flex-row gap-10"
+          className="flex flex-col lg:flex-row gap-10"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
         >
-          <div className="md:w-1/2">
+          <div className="lg:w-1/2">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">代表挨拶</h2>
             <p className="text-sm sm:text-base md:text-lg text-gray-300">
               昨日4時まで起きてたので今めっちゃ眠いです
             </p>
           </div>
-          <div className="md:w-1/2">
-            <Image src="/images/about/representative.jpg" alt="Representative" width={600} height={400} className="rounded-lg shadow-lg" />
+          <div className="lg:w-1/2">
+            <Image src="/images/about/representative.jpg" alt="Representative" width={600} height={400} className="rounded-lg shadow-lg w-full object-cover" />
           </div>
         </motion.div>
       </section>
@@ -140,7 +140,7 @@ export default function About() {
           各班の活動
         </motion.h2>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 lg:grid-cols-2 gap-10">
           {departments.map((dept, index) => (
             <motion.div
               key={index}
@@ -149,7 +149,7 @@ export default function About() {
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <div className="w-full h-[200px] sm:h-[300px] md:h-[200px] lg:h-[300px] bg-gray-700 rounded-lg flex justify-center items-center overflow-hidden mb-4">
+              <div className="w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[400px] bg-gray-700 rounded-lg flex justify-center items-center overflow-hidden mb-4">
                 <Image src={dept.image} alt={dept.name} width={600} height={350} className="w-full h-full object-cover" />
               </div>
               <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white">{dept.name}</h3>
@@ -171,9 +171,9 @@ export default function About() {
         </motion.h2>
 
         {/* 🚀 主体部分：左边成员列表 + 右边团队照片 */}
-        <div className="flex flex-col md:flex-row items-center">
+        <div className="flex flex-col lg:flex-row items-center">
           {/* 📌 左边：成员列表 */}
-          <div className="md:w-1/3">
+          <div className="lg:w-1/3">
             <div className="mb-10">
               {Object.keys(groupedByYear)
                 .sort((a, b) => parseInt(b) - parseInt(a)) // 年级降序排列
@@ -199,7 +199,7 @@ export default function About() {
           </div>
 
           {/* 📌 右边：团队合照 - 使用 Grid 布局 */}
-          <div className="md:w-2/3 grid grid-cols-1">
+          <div className="lg:w-2/3 grid grid-cols-1">
             {["/images/about/team-photo-1.jpg", "/images/about/team-photo-2.jpg"].map((src, index) => (
               <motion.div
                 key={index}
