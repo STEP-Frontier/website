@@ -112,7 +112,7 @@ export default function About() {
       <section className="max-w-7xl mx-auto px-8 md:px-16 py-20">
         {/* 🚀 左文右图 */}
         <motion.div
-          className="flex flex-col md:flex-row  gap-10"
+          className="flex flex-col md:flex-row gap-10"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
@@ -130,7 +130,7 @@ export default function About() {
       </section>
 
       {/* 🔥 各部门的活动 */}
-      <section className="max-w-7xl mx-auto px-16 py-20">
+      <section className="max-w-7xl mx-auto sm:px-8 md:px-16 py-20">
         <motion.h2
           className="text-4xl font-bold text-center mb-10"
           initial={{ opacity: 0, y: 50 }}
@@ -144,12 +144,12 @@ export default function About() {
           {departments.map((dept, index) => (
             <motion.div
               key={index}
-              className="bg-gray-1000 p-6 rounded-lg text-center"
+              className="bg-gray-1000 p-8 rounded-lg text-center"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
             >
-              <div className="w-full h-[150px] sm:h-[200px] md:h-[250px] lg:h-[300px] bg-gray-700 rounded-lg flex justify-center items-center overflow-hidden mb-4">
+              <div className="w-full h-[200px] sm:h-[300px] md:h-[200px] lg:h-[300px] bg-gray-700 rounded-lg flex justify-center items-center overflow-hidden mb-4">
                 <Image src={dept.image} alt={dept.name} width={600} height={350} className="w-full h-full object-cover" />
               </div>
               <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white">{dept.name}</h3>
@@ -160,7 +160,7 @@ export default function About() {
       </section>
 
       {/* 🔥 Our Team Section */}
-      <section className="max-w-7xl mx-auto px-16 py-20">
+      <section className="max-w-7xl mx-auto px-8 md:px-16 py-20">
         <motion.h2
           className="text-4xl font-bold text-center mb-10"
           initial={{ opacity: 0, y: 50 }}
@@ -203,7 +203,7 @@ export default function About() {
             {["/images/about/team-photo-1.jpg", "/images/about/team-photo-2.jpg"].map((src, index) => (
               <motion.div
                 key={index}
-                className="relative w-full md:p-12 mb-10"
+                className="relative w-full md:p-12 mb-16 md:mb-8"
                 initial={{ opacity: 0, scale: 0.8 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 1 }}

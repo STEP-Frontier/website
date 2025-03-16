@@ -55,7 +55,7 @@ export default function News() {
       </section>
 
       {/* 🔥 2. 两列布局 */}
-      <div className="max-w-6xl mx-auto px-16 pt-20 xl:px-0 pb-20 flex flex-col-reverse md:grid md:grid-cols-3 gap-10">
+      <div className="max-w-7xl mx-auto md:px-16 pt-20 xl:px-0 pb-20 flex flex-col-reverse md:grid md:grid-cols-3">
         
         {/* 📌 普通新闻列表 */}
         <div className="md:col-span-2 space-y-6">
@@ -94,7 +94,7 @@ export default function News() {
         </div>
         
         {/* 📌 Featured News 在手机端显示在上方，桌面端在右侧 */}
-        <div className="space-y-6">
+        <div className="space-y-6 p-6">
           <h2 className="text-2xl font-bold text-white">Featured News</h2>
           {featuredNews.length === 0 ? (
             <p className="text-gray-400">No featured news available</p>

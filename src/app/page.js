@@ -5,7 +5,7 @@ export default function Home() {
   return (
     <div>
       <Hero />
-      <div className="max-w-[90rem] mx-auto px-16 items-center mt-1">
+      <div className="max-w-[90rem] mx-auto sm:px-8 md:px-16 items-center mt-1">
       <Section
         title="宇宙技術プロジェクト STEP"
         content="筑波大学宇宙技術プロジェクトSTEPは、ロケットや模擬人工衛星(CanSat)の製作・運用を行っている学生団体です。"
