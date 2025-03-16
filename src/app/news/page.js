@@ -62,10 +62,11 @@ export default function News() {
           {newsData.map((news, index) => (
             <motion.div
               key={news.id}
-              className="p-6 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+              className="p-6 rounded-lg shadow-lg"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ scale: 1.05 }} // 让 framer-motion 处理悬停动画
+              transition={{ duration: 0.3, delay: index * 0.1 }}
             >
               <Link href={`/news/${news.id}`} className="block">
                 <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] bg-gray-700 rounded-lg flex justify-center items-center overflow-hidden">
@@ -77,7 +78,7 @@ export default function News() {
                     className="w-full h-full object-cover"
                   />
                 </div>
-
+            
                 <div className="w-full">
                   <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white mt-4">
                     {news.title}
@@ -88,7 +89,6 @@ export default function News() {
                   </p>
                 </div>
               </Link>
-
             </motion.div>
           ))}
         </div>
