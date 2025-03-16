@@ -35,9 +35,9 @@
     margin-top: 1.25rem;
     margin-bottom: 0.75rem;
 }
-@media (min-width: 640px) { .news-content h2 { font-size: 1.25rem; } } /* 28px */
-@media (min-width: 768px) { .news-content h2 { font-size: 1.5rem; } } /* 32px */
-@media (min-width: 1024px) { .news-content h2 { font-size: 1.75rem; } } /* 36px */
+@media (min-width: 640px) { .news-content h3 { font-size: 1.25rem; } } /* 28px */
+@media (min-width: 768px) { .news-content h3 { font-size: 1.5rem; } } /* 32px */
+@media (min-width: 1024px) { .news-content h3 { font-size: 1.75rem; } } /* 36px */
 
 
 /* Default */
