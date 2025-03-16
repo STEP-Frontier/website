@@ -59,7 +59,7 @@ export default function News() {
         
         {/* 📌 普通新闻列表 */}
         <div className="md:col-span-2 space-y-6">
-          {newsData.map((news, index) => (
+          {newsData.sort((a, b) => new Date(b.date) - new Date(a.date)).map((news, index) => (
             <motion.div
               key={news.id}
               className="p-6 rounded-lg shadow-lg"
