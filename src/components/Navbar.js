@@ -29,7 +29,7 @@ export default function Navbar({ isDark = false }) {
         backdropFilter: `blur(${blur}px)`, 
       }}
     >
-      <div className="max-w-[90rem] mx-auto px-4 md:px-8 lg:px-16 flex justify-between items-center">
+      <div className="max-w-[90rem] mx-auto px-2 sm:px-4 md:px-8 lg:px-16 flex justify-between items-center">
         <Link href="/">
           <Image src="/images/logo.png" alt="STEP LOGO" width={200} height={100} className="w-32 sm:w-40 md:w-45 lg:w-50 h-auto" priority />
         </Link>

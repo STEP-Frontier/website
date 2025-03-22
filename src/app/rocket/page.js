@@ -60,7 +60,7 @@ export default function Rocket() {
           style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
         ></div>
         <motion.h1
-          className="relative text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold"
+          className="relative text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold px-8"
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}

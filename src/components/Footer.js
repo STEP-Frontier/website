@@ -4,7 +4,7 @@ import { FaTwitter, FaInstagram } from "react-icons/fa";
 export default function Footer() {
   return (
     <footer className="bg-gray-900 text-gray-300 py-10">
-      <div className="max-w-7xl mx-auto px-12">
+      <div className="max-w-7xl mx-auto px-8 sm:px-12">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-10">
           {/* 📌 地址 */}
           <div>
