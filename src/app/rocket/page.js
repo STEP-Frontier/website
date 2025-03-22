@@ -98,8 +98,8 @@ export default function Rocket() {
             <div className="flex flex-col lg:flex-row items-center gap-10">
               <div className="lg:w-1/2 text-left">
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">機体概要</h3>
-                <p className="text-lg sm:text-xl md:text-2xl text-gray-300 mt-4 mb-4">{rocket.description}</p>
-                <ul className="text-lg sm:text-xl md:text-2xl text-gray-300 space-y-1">
+                <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-4 mb-4">{rocket.description}</p>
+                <ul className="text-sm sm:text-base md:text-lg text-gray-300 space-y-1">
                   {rocket.specs.map((spec, i) => (
                     <li key={i}>{spec}</li>
                   ))}
@@ -119,7 +119,7 @@ export default function Rocket() {
             <div className="flex flex-col lg:flex-row-reverse items-center gap-10 mt-20">
               <div className="lg:w-1/2 text-left">
                 <h3 className="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">実験結果</h3>
-                <p className="text-lg sm:text-xl md:text-2xl text-gray-300">
+                <p className="text-sm sm:text-base md:text-lg text-gray-300">
                   {rocket.results.split("\n").map((line, i) => (
                     <span key={i}>
                       {line}
