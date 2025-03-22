@@ -9,6 +9,7 @@ export default function Section({ title, content, image, reverse, learnMoreLink}
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       transition={{ duration: 1 }}
+      viewport={{ once: true }}
     >
       <div className="md:w-1/2 md:mb-0 mb-5">
       <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-4">{title}</h2>

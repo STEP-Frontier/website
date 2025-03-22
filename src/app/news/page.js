@@ -38,6 +38,7 @@ export default function News() {
           initial={{ opacity: 0, y: -50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
+          viewport={{ once: true }}
         >
           NEWS
         </motion.h1>
@@ -48,6 +49,7 @@ export default function News() {
                 height="20.2"
                 fill="white"  // ✅ 让箭头变成白色
                 className="svg-arrow-down"
+                viewport={{ once: true }}
             >
                 <path d="M0 12.4l7.8 7.8 7.7-7.8-1-1-6 6V0H7v17.4l-6-6z"></path>
             </svg>
@@ -67,6 +69,7 @@ export default function News() {
               whileInView={{ opacity: 1, y: 0 }}
               whileHover={{ scale: 1.05 }} // 让 framer-motion 处理悬停动画
               transition={{ duration: 0.3, delay: index * 0.1 }}
+              viewport={{ once: true }}
             >
               <Link href={`/news/${news.id}`} className="block">
                 <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] bg-gray-700 rounded-lg flex justify-center items-center overflow-hidden">
@@ -103,6 +106,7 @@ export default function News() {
               <motion.div
                 key={news.id}
                 className="bg-gray-800 p-4 rounded-lg shadow-lg hover:scale-105 transition-transform duration-300"
+                viewport={{ once: true }}
               >
                 <Link href={`/news/${news.id}`} className="block">
                   <h3 className="text-sm sm:text-base md:text-lg font-bold text-white">{news.title}</h3>

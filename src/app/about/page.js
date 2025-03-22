@@ -76,6 +76,7 @@ export default function About() {
                 height="20.2"
                 fill="white"  // ✅ 让箭头变成白色
                 className="svg-arrow-down"
+                viewport={{ once: true }}
             >
                 <path d="M0 12.4l7.8 7.8 7.7-7.8-1-1-6 6V0H7v17.4l-6-6z"></path>
             </svg>
@@ -89,6 +90,7 @@ export default function About() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
+          viewport={{ once: true }}
         >
           <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-6">Who We Are</h2>
           <p className="text-sm sm:text-base md:text-lg text-gray-300">
@@ -116,6 +118,7 @@ export default function About() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
+          viewport={{ once: true }}
         >
           <div className="lg:w-1/2">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">代表挨拶</h2>
@@ -136,6 +139,7 @@ export default function About() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
+          viewport={{ once: true }}
         >
           各班の活動
         </motion.h2>
@@ -148,6 +152,7 @@ export default function About() {
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
               transition={{ duration: 1 }}
+              viewport={{ once: true }}
             >
               <div className="w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[400px] bg-gray-700 rounded-lg flex justify-center items-center overflow-hidden mb-4">
                 <Image src={dept.image} alt={dept.name} width={600} height={350} className="w-full h-full object-cover" />
@@ -166,6 +171,7 @@ export default function About() {
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
+          viewport={{ once: true }}
         >
           Our Team
         </motion.h2>
@@ -184,6 +190,7 @@ export default function About() {
                     initial={{ opacity: 0, y: 50 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     transition={{ duration: 1 }}
+                    viewport={{ once: true }}
                   >
                     <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white">{year}年生</h3>
                     <ul className="mt-4 space-y-2">
@@ -204,9 +211,10 @@ export default function About() {
               <motion.div
                 key={index}
                 className="relative w-full md:p-12 mb-16 md:mb-8"
-                initial={{ opacity: 0, scale: 0.8 }}
-                whileInView={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 50 }}
+                whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 1 }}
+                viewport={{ once: true }}
               >
                 <Image 
                   src={src}
