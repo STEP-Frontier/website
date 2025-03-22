@@ -1,6 +1,6 @@
 "use client";
 import { useState, useEffect } from "react";
-import newsData from "@/newsData.json"; // ✅ 直接导入 JSON 数据
+import newsData from "@/newsData.json"; 
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
@@ -10,19 +10,21 @@ export default function News() {
   const featuredNewsIds = ["2"];
   const featuredNews = newsData.filter((news) => featuredNewsIds.includes(news.id));
 
-    const [opacity, setOpacity] = useState(1);
-    
-    useEffect(() => {
-        const handleScroll = () => {
-        const maxScroll = 300; // 300px 后箭头完全消失
-        let newOpacity = 1 - window.scrollY / maxScroll;
-        if (newOpacity < 0) newOpacity = 0; // 防止负数
-        setOpacity(newOpacity);
-        };
-    
-        window.addEventListener("scroll", handleScroll);
-        return () => window.removeEventListener("scroll", handleScroll);
-    }, []);
+  const sortedNews = [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date));
+
+  const [opacity, setOpacity] = useState(1);
+  
+  useEffect(() => {
+      const handleScroll = () => {
+      const maxScroll = 300; 
+      let newOpacity = 1 - window.scrollY / maxScroll;
+      if (newOpacity < 0) newOpacity = 0; 
+      setOpacity(newOpacity);
+      };
+  
+      window.addEventListener("scroll", handleScroll);
+      return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   return (
     <div className="w-full">
@@ -47,7 +49,7 @@ export default function News() {
                 xmlns="http://www.w3.org/2000/svg"
                 width="15.5"
                 height="20.2"
-                fill="white"  // ✅ 让箭头变成白色
+                fill="white"
                 className="svg-arrow-down"
                 viewport={{ once: true }}
             >
@@ -61,13 +63,13 @@ export default function News() {
         
         {/* 📌 普通新闻列表 */}
         <div className="md:col-span-2 space-y-6">
-          {newsData.sort((a, b) => new Date(b.date) - new Date(a.date)).map((news, index) => (
+          {sortedNews.map((news, index) => (
             <motion.div
               key={news.id}
               className="p-6 rounded-lg shadow-lg"
               initial={{ opacity: 0, y: 50 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.05 }} // 让 framer-motion 处理悬停动画
+              whileHover={{ scale: 1.05 }} 
               transition={{ duration: 0.3, delay: index * 0.1 }}
               viewport={{ once: true }}
             >
