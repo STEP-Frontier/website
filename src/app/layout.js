@@ -4,9 +4,9 @@ import "./globals.css"; // 确保 Tailwind CSS 生效
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="zh-CN">
+    <html lang="ja">
       <body className="bg-black text-white">
-        <Navbar /> {/* ✅ 添加导航栏 */}
+        <Navbar /> 
         <main>{children}</main>
         <Footer /> 
       </body>
