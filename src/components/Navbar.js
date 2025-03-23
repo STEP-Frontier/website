@@ -8,6 +8,7 @@ export default function Navbar({ isDark = false }) {
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
+  const menuButtonRef = useRef(null);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -22,7 +23,9 @@ export default function Navbar({ isDark = false }) {
 
   useEffect(() => {
     const handleClickOutside = (event) => {
-      if (menuRef.current && !menuRef.current.contains(event.target)) {
+      const clickedOutsideMenu = menuRef.current && !menuRef.current.contains(event.target);
+      const clickedOutsideButton = menuButtonRef.current && !menuButtonRef.current.contains(event.target);
+      if (clickedOutsideMenu && clickedOutsideButton) {
         setIsOpen(false);
       }
     };
@@ -63,7 +66,7 @@ export default function Navbar({ isDark = false }) {
               alt="STEP LOGO"
               width={200}
               height={100}
-              className="w-36 sm:w-42 md:w-45 lg:w-50 h-auto"
+              className="w-32 sm:w-40 md:w-45 lg:w-50 h-auto"
               priority
             />
           </Link>
@@ -79,6 +82,7 @@ export default function Navbar({ isDark = false }) {
 
           {/* Mobile menu button */}
           <button
+            ref={menuButtonRef}
             className="md:hidden text-2xl sm:text-3xl cursor-pointer"
             onClick={() => setIsOpen(!isOpen)}
             aria-label="Toggle Menu"
@@ -88,7 +92,6 @@ export default function Navbar({ isDark = false }) {
         </div>
       </div>
       
-
       {/* Mobile menu content */}
       <AnimatePresence>
         {isOpen && (
@@ -116,9 +119,6 @@ export default function Navbar({ isDark = false }) {
           </motion.div>
         )}
       </AnimatePresence>
-
-
-
 
     </nav>
   );
