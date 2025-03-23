@@ -32,3 +32,8 @@ Then `/out` will be generated. (The tutorial still not finished, to be continued
 - Optimize navbar
 - Sort news in mobile device (No problem with PC device)
 - Complete readme tutorial
+
+# Memo
+**03-23**\
+Completed better navbar design\
+Users are now able to close menu by clicking other place on the screen
