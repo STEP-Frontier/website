@@ -30,21 +30,8 @@ const departments = [
 const currentYear = 2025; // 这里你可以用 `new Date().getFullYear()` 让它变成动态的
 
 export default function About() {
-  const [opacity, setOpacity] = useState(1);
   const [members, setMembers] = useState([]);
   const [representativeText, setRepresentativeText] = useState("");
-
-  useEffect(() => {
-    const handleScroll = () => {
-      const maxScroll = 300; 
-      let newOpacity = 1 - window.scrollY / maxScroll;
-      if (newOpacity < 0) newOpacity = 0; 
-      setOpacity(newOpacity);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
 
   const groupedByYear = members.reduce((acc, member) => {
     const grade = currentYear - member.year + 1;

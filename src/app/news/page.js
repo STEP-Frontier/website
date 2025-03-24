@@ -13,20 +13,6 @@ export default function News() {
 
   const sortedNews = [...newsData].sort((a, b) => new Date(b.date) - new Date(a.date));
 
-  const [opacity, setOpacity] = useState(1);
-  
-  useEffect(() => {
-      const handleScroll = () => {
-      const maxScroll = 300; 
-      let newOpacity = 1 - window.scrollY / maxScroll;
-      if (newOpacity < 0) newOpacity = 0; 
-      setOpacity(newOpacity);
-      };
-  
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <div className="w-full">
       {/* 🔥 1. Hero Section */}

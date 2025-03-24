@@ -35,20 +35,6 @@ const rocketProjects = [
 ];
 
 export default function Rocket() {
-  const [opacity, setOpacity] = useState(1);
-    
-  useEffect(() => {
-      const handleScroll = () => {
-      const maxScroll = 300; // 300px 后箭头完全消失
-      let newOpacity = 1 - window.scrollY / maxScroll;
-      if (newOpacity < 0) newOpacity = 0; // 防止负数
-      setOpacity(newOpacity);
-      };
-  
-      window.addEventListener("scroll", handleScroll);
-      return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <div className="w-full">
       {/* 🔥 1. Hero Section */}

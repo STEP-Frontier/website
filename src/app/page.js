@@ -18,13 +18,13 @@ export default function Home() {
       />
       <Section
         title="ロケットプロジェクト"
-        content="現在STEPロケット班が開発中のロケットです。（まだ名前すらつけてないけど）"
+        content="学生自ら設計・製作したハイブリッドロケットの開発を行っています。打上げ実験を通じて、構造設計・エンジン・電装・シミュレーションなど多岐にわたる技術を学びます。"
         image="/images/rocket.jpg"
         learnMoreLink="/rocket"
       />
       <Section
         title="衛星プロジェクト"
-        content="現在STEP衛星班が開発中のCanSatです。（図がなーい）"
+        content="模擬人工衛星「CanSat」の開発を行い、各種コンテストに挑戦しています。機体設計からプログラミングまでを学生主体で取り組み、宇宙機システムの基礎を実践的に学びます。"
         image="/images/cansat.jpg"
         learnMoreLink="/cansat"
         reverse
