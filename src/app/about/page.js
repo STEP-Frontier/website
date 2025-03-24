@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-// import membersData from "@/membersData.json";
 import { motion } from "framer-motion";
 import Image from "next/image";
 
@@ -32,12 +31,13 @@ const currentYear = 2025; // 这里你可以用 `new Date().getFullYear()` 让�
 export default function About() {
   const [opacity, setOpacity] = useState(1);
   const [members, setMembers] = useState([]);
+  const [representativeText, setRepresentativeText] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
-      const maxScroll = 300; // 300px 后箭头完全消失
+      const maxScroll = 300; 
       let newOpacity = 1 - window.scrollY / maxScroll;
-      if (newOpacity < 0) newOpacity = 0; // 防止负数
+      if (newOpacity < 0) newOpacity = 0; 
       setOpacity(newOpacity);
     };
 
@@ -55,11 +55,20 @@ export default function About() {
 
   useEffect(() => {
     async function fetchMembers() {
-      const res = await fetch("/data/members.json"); // ✅ 来自 public 文件夹
+      const res = await fetch("/data/members.json"); 
       const data = await res.json();
       setMembers(data);
     }
     fetchMembers();
+  }, []);
+
+  useEffect(() => {
+    async function fetchText() {
+      const res = await fetch("/data/representative.txt"); 
+      const text = await res.text();
+      setRepresentativeText(text);
+    }
+    fetchText();
   }, []);
 
 
@@ -85,7 +94,7 @@ export default function About() {
                 xmlns="http://www.w3.org/2000/svg"
                 width="15.5"
                 height="20.2"
-                fill="white"  // ✅ 让箭头变成白色
+                fill="white" 
                 className="svg-arrow-down"
                 viewport={{ once: true }}
             >
@@ -94,7 +103,7 @@ export default function About() {
         </motion.div>
       </section>
 
-      {/* 🔥 2. 关于我们的介绍 */}
+      {/* 🔥 2. Introduction */}
       <section className="max-w-7xl mx-auto px-8 md:px-16 py-20">
         <motion.div
         //   className="text-center"
@@ -121,9 +130,8 @@ export default function About() {
         </motion.div>
       </section>
 
-      {/* 🔥 3. 交错布局的 Section */}
+      {/* 🔥 3. Representative */}
       <section className="max-w-7xl mx-auto px-8 md:px-16 py-20">
-        {/* 🚀 左文右图 */}
         <motion.div
           className="flex flex-col lg:flex-row gap-10"
           initial={{ opacity: 0, y: 50 }}
@@ -133,8 +141,8 @@ export default function About() {
         >
           <div className="lg:w-1/2">
             <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">代表挨拶</h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-300">
-              昨日4時まで起きてたので今めっちゃ眠いです
+            <p className="text-sm sm:text-base md:text-lg text-gray-300 whitespace-pre-line">
+              {representativeText}
             </p>
           </div>
           <div className="lg:w-1/2">
@@ -187,13 +195,13 @@ export default function About() {
           Our Team
         </motion.h2>
 
-        {/* 🚀 主体部分：左边成员列表 + 右边团队照片 */}
+        {/* 🚀 Left members, Right photos */}
         <div className="flex flex-col lg:flex-row items-center">
-          {/* 📌 左边：成员列表 */}
+          {/* 📌 Member list */}
           <div className="lg:w-1/3">
             <div className="mb-10">
               {Object.keys(groupedByYear)
-                .sort((a, b) => parseInt(b) - parseInt(a)) // 年级降序排列
+                .sort((a, b) => parseInt(b) - parseInt(a))
                 .map((year) => (
                   <motion.div
                     key={year}
@@ -216,7 +224,7 @@ export default function About() {
             </div>
           </div>
 
-          {/* 📌 右边：团队合照 - 使用 Grid 布局 */}
+          {/* 📌 Photos */}
           <div className="lg:w-2/3 grid grid-cols-1">
             {["/images/about/team-photo-1.jpg", "/images/about/team-photo-2.jpg"].map((src, index) => (
               <motion.div
