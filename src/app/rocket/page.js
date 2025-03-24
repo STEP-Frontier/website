@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Hero from "@/components/Hero";
 
 const rocketProjects = [
   {
@@ -51,35 +52,13 @@ export default function Rocket() {
   return (
     <div className="w-full">
       {/* 🔥 1. Hero Section */}
-      <section
-        className="relative h-screen flex flex-col items-center justify-center text-white text-center bg-cover bg-top"
-        style={{ backgroundImage: "url('/images/rocket/rocket-hero.jpg')" }}
-      >
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.4)" }}
-        ></div>
-        <motion.h1
-          className="relative text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold px-8"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-        >
-          ROCKET PROJECTS
-        </motion.h1>
-        <motion.div className="absolute bottom-10 animate-bounce" style={{ opacity }}>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="15.5"
-                height="20.2"
-                fill="white"  // ✅ 让箭头变成白色
-                className="svg-arrow-down"
-            >
-                <path d="M0 12.4l7.8 7.8 7.7-7.8-1-1-6 6V0H7v17.4l-6-6z"></path>
-            </svg>
-        </motion.div>
-      </section>
+      <Hero 
+      image_path="/images/rocket/rocket-hero.jpg"
+      hero_title="ROCKET PROJECTS"
+      black_opacity={0.4}
+      center_or_top="top"
+      />
+      
 
       {/* 🔥 2. 各个火箭的详细页面 */}
       {rocketProjects.map((rocket, index) => (

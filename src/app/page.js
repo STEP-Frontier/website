@@ -4,7 +4,10 @@ import Section from "@/components/Section";
 export default function Home() {
   return (
     <div>
-      <Hero />
+      <Hero 
+      hero_title = "STEPへようこそ"
+      subtitle="Space TEchnology Project"
+      />
       <div className="max-w-[90rem] mx-auto sm:px-8 md:px-16 items-center mt-1">
       <Section
         title="宇宙技術プロジェクト STEP"

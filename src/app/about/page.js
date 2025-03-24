@@ -2,6 +2,7 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import Image from "next/image";
+import Hero from "@/components/Hero";
 
 const departments = [
   {
@@ -75,33 +76,12 @@ export default function About() {
   return (
     <div className="w-full">
       {/* 🔥 1. Hero Section */}
-      <section className="relative h-screen flex flex-col items-center justify-center text-white text-center bg-cover bg-center" 
-        style={{ backgroundImage: "url('/images/about/about-hero.jpg')" }}>
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.5)" }}
-        ></div>
-        <motion.h1
-          className="relative text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-        >
-          ABOUT US
-        </motion.h1>
-        <motion.div className="absolute bottom-10 animate-bounce" style={{ opacity }}>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="15.5"
-                height="20.2"
-                fill="white" 
-                className="svg-arrow-down"
-                viewport={{ once: true }}
-            >
-                <path d="M0 12.4l7.8 7.8 7.7-7.8-1-1-6 6V0H7v17.4l-6-6z"></path>
-            </svg>
-        </motion.div>
-      </section>
+      <Hero 
+      image_path="/images/about/about-hero.jpg"
+      hero_title="ABOUT US"
+      black_opacity={0.5}
+      center_or_top="center"
+      />
 
       {/* 🔥 2. Introduction */}
       <section className="max-w-7xl mx-auto px-8 md:px-16 py-20">

@@ -4,6 +4,7 @@ import newsData from "@/newsData.json";
 import { motion } from "framer-motion";
 import Image from "next/image";
 import Link from "next/link";
+import Hero from "@/components/Hero";
 
 
 export default function News() {
@@ -29,34 +30,12 @@ export default function News() {
   return (
     <div className="w-full">
       {/* 🔥 1. Hero Section */}
-      <section className="relative h-screen flex flex-col items-center justify-center text-white text-center bg-cover bg-center" 
-        style={{ backgroundImage: "url('/images/news/news-hero.jpg')" }}>
-        <div
-          className="absolute inset-0"
-          style={{ backgroundColor: "rgba(0, 0, 0, 0.3)" }}
-        ></div>
-        <motion.h1
-          className="relative text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold"
-          initial={{ opacity: 0, y: -50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1 }}
-          viewport={{ once: true }}
-        >
-          NEWS
-        </motion.h1>
-        <motion.div className="absolute bottom-10 animate-bounce" style={{ opacity }}>
-            <svg
-                xmlns="http://www.w3.org/2000/svg"
-                width="15.5"
-                height="20.2"
-                fill="white"
-                className="svg-arrow-down"
-                viewport={{ once: true }}
-            >
-                <path d="M0 12.4l7.8 7.8 7.7-7.8-1-1-6 6V0H7v17.4l-6-6z"></path>
-            </svg>
-        </motion.div>
-      </section>
+      <Hero 
+        image_path="/images/news/news-hero.jpg"
+        hero_title="NEWS"
+        black_opacity={0.3}
+        center_or_top="top"
+      />
 
       {/* 🔥 2. 两列布局 */}
       <div className="max-w-7xl mx-auto md:px-16 pt-20 xl:px-0 pb-20 flex flex-col-reverse lg:grid lg:grid-cols-3">
