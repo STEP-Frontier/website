@@ -17,9 +17,16 @@ export default function Navbar({ isDark = false }) {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
-
-  const effectiveOpacity = isOpen || isDark ? Math.max(Math.min(scrollY / 800, 1.0),0.5) : Math.min(scrollY / 800, 1.0);
-  const effectiveBlur = isOpen || isDark ? 0 : Math.min(scrollY / 100, 10);
+  
+  let effectiveOpacity;
+  let effectiveBlur;
+  if (isDark) {
+    effectiveOpacity = 1; 
+    effectiveBlur = 0;
+  } else {
+    effectiveOpacity = isOpen ? Math.max(Math.min(scrollY / 800, 1.0),0.5) : Math.min(scrollY / 800, 1.0);
+    effectiveBlur = isOpen ? 0 : Math.min(scrollY / 100, 10);
+  }
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -104,7 +111,7 @@ export default function Navbar({ isDark = false }) {
             transition={{ duration: 0.4 }}
             className="overflow-hidden bg-black/10 z-40"
           >
-            <div className="flex flex-col items-center font-bold divide-y divide-gray-700/50">
+            <div className="flex flex-col items-center font-bold divide-y divide-gray-700/80">
               {navItems.map((item) => (
                 <Link
                   key={item.href}
