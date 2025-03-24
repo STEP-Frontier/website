@@ -1,5 +1,5 @@
 "use client";
-import { FaTwitter, FaInstagram } from "react-icons/fa";
+import { FaXTwitter, FaInstagram } from "react-icons/fa6";
 
 export default function Footer() {
   return (
@@ -24,7 +24,7 @@ export default function Footer() {
             <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-2">Follow Us</h3>
             <div className="flex space-x-6">
               <a href="https://x.com/Tsukuba_STEP" target="_blank" rel="noopener noreferrer" className="hover:text-white transition text-2xl">
-                <FaTwitter />
+                <FaXTwitter />
               </a>
               <a href="https://www.instagram.com/tsukuba_step?igsh=MWs2N2dubDk4YWZpcQ==" target="_blank" rel="noopener noreferrer" className="hover:text-white transition text-2xl">
                 <FaInstagram />
