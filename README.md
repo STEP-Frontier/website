@@ -28,12 +28,14 @@ Then `/out` will be generated. (The tutorial still not finished, to be continued
 
 ## To do
 - CanSat page
-- Main page
-- Optimize navbar
 - Sort news in mobile device (No problem with PC device)
+- Arrange rocket project info into json file
 - Complete readme tutorial
 
 # Memo
+**03-24**\
+Completed main page
+
 **03-23**\
 Completed better navbar design\
 Users are now able to close menu by clicking other place on the screen
