@@ -100,25 +100,27 @@ export default function About() {
       {/* 🔥 3. Representative */}
       <section className="max-w-7xl mx-auto px-8 md:px-16 py-20">
         <motion.div
-          className="flex flex-col lg:flex-row gap-10"
           initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
           transition={{ duration: 1 }}
           viewport={{ once: true }}
         >
-          <div className="lg:w-1/2">
-            <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">代表挨拶</h2>
-            <p className="text-sm sm:text-base md:text-lg text-gray-300 whitespace-pre-line">
-              {representativeText}
-            </p>
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold mb-4">代表挨拶</h2>
+          <div className="flex flex-col lg:flex-row gap-10">
+            <div className="lg:w-1/2">
+              <p className="text-sm sm:text-base md:text-lg text-gray-300 whitespace-pre-line">
+                {representativeText}
+              </p>
+            </div>
+            <div className="lg:w-1/2">
+              <Image src="/images/about/representative.jpg" alt="Representative" width={600} height={400} className="rounded-lg shadow-lg w-full object-cover" />
+            </div>
           </div>
-          <div className="lg:w-1/2">
-            <Image src="/images/about/representative.jpg" alt="Representative" width={600} height={400} className="rounded-lg shadow-lg w-full object-cover" />
-          </div>
+          
         </motion.div>
       </section>
 
-      {/* 🔥 各部门的活动 */}
+      {/* 🔥 各班の活動 */}
       <section className="max-w-7xl mx-auto sm:px-8 md:px-16 py-20">
         <motion.h2
           className="text-4xl font-bold text-center mb-10"
