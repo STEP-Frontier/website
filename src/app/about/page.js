@@ -34,8 +34,12 @@ export default function About() {
   const [representativeText, setRepresentativeText] = useState("");
 
   const groupedByYear = members.reduce((acc, member) => {
-    const grade = currentYear - member.year + 1;
-    if (grade > 4) return acc;
+    const stayDown = member.stay_down ?? 0;
+    const OB = member.ob ?? 0; 
+    const transfer = member.transfer ?? 1; 
+
+    const grade = currentYear - member.year - stayDown + transfer;
+    if (OB) return acc;
     if (!acc[grade]) acc[grade] = [];
     acc[grade].push(member);
     return acc;
