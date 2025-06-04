@@ -1,15 +1,15 @@
 [
     { "name": "林 崇文", "year": 2022, "department": "エンジン班 機体班" },
     { "name": "木村 護", "year": 2022, "department": "機体班 電装班" },
-    { "name": "小川 葉", "year": 2022, "department": "機体班" },
-    { "name": "中園 凌輔", "year": 2022, "department": "エンジン班 電装班" },
+    { "name": "小川 葉", "year": 2022, "department": "機体班", "stay_down": 1 },
+    { "name": "中園 凌輔", "year": 2022, "department": "エンジン班 電装班", "ob": 1 },
     { "name": "胡 洋", "year": 2022, "department": "電装班" },
 
     { "name": "村中 恵", "year": 2023, "department": "エンジン班" },
     { "name": "井田 悠花", "year": 2023, "department": "エンジン班" },
-    { "name": "松島 恵悟", "year": 2023, "department": "衛星班" },
+    { "name": "松島 恵悟", "year": 2023, "department": "衛星班", "ob": 1 },
     { "name": "瀧口 京介", "year": 2023, "department": "衛星班" },
-    { "name": "小原 虎次郞", "year": 2023, "department": "衛星班" },
+    { "name": "小原 虎仁郞", "year": 2023, "department": "衛星班" },
 
     { "name": "山田 遥己", "year": 2024, "department": "エンジン班 機体班" },
     { "name": "岡部 考喜", "year": 2024, "department": "エンジン班 機体班" },
@@ -18,7 +18,23 @@
     { "name": "田端 侑心", "year": 2024, "department": "電装班 機体班" },
     { "name": "白取 知季", "year": 2024, "department": "電装班 機体班" },
     { "name": "三好 弘晃", "year": 2024, "department": "電装班 機体班" },
-    { "name": "高瀬 愛瑠", "year": 2024, "department": "衛星班"},
-    { "name": "鈴木 遼太郎", "year": 2024, "department": "衛星班"},
-    { "name": "池本 陽飛", "year": 2024, "department": "衛星班"}
+    { "name": "高瀬 愛瑠", "year": 2024, "department": "衛星班 エンジン班" },
+    { "name": "鈴木 遼太郎", "year": 2024, "department": "衛星班 電装班" },
+    { "name": "池本 陽飛", "year": 2024, "department": "衛星班", "transfer": 3, "ob": 1 }, 
+    { "name": "矢野 達也", "year": 2024, "department": "衛星班" },
+    { "name": "久保田 和樹", "year": 2024, "department": "衛星班" },
+
+    { "name": "狩野 允俊", "year": 2025, "department": "機体班" }, 
+    { "name": "臼井 悠人", "year": 2025, "department": "機体班 電装班" }, 
+    { "name": "杉山 咲穂", "year": 2025, "department": "機体班 エンジン班" }, 
+    { "name": "大谷 康太", "year": 2025, "department": "エンジン班" }, 
+    { "name": "薬師神 佳生", "year": 2025, "department": "機体班" }, 
+    { "name": "小野 玲矢", "year": 2025, "department": "機体班" }, 
+    { "name": "且 泰成", "year": 2025, "department": "機体班" }, 
+    { "name": "植田 椋太", "year": 2025, "department": "衛星班", "transfer": 3 }, 
+    { "name": "入江 貴仁", "year": 2025, "department": "衛星班" }, 
+    { "name": "髙倉 好男", "year": 2025, "department": "衛星班" }, 
+    { "name": "外山 航平", "year": 2025, "department": "衛星班" }, 
+    { "name": "東 春樹", "year": 2025, "department": "衛星班" }
+    
   ]
