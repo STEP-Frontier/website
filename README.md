@@ -23,8 +23,15 @@ After you did some commit:
 npm run build
 ```
 
-Then `/out` will be generated. (The tutorial still not finished, to be continued)
+Then `/out` will be generated. 
 
+Next, go to `step-frontier.github.io` directory where the previous compiled website files are saved. 
+
+Delete all files inside EXCEPT FOR `.git`, `.gitignore` and `.nojekyll` (VERY IMPORTANT). 
+
+After deleted all other files, move all files you have just generated in `/out` into `step-frontier.github.io`, then commit and push. 
+
+The deployment should be completed in one or two minutes. 
 
 ## To do
 - CanSat page
