@@ -34,10 +34,12 @@ After deleted all other files, move all files you have just generated in `/out` 
 The deployment should be completed in one or two minutes. 
 
 ## To do
-- CanSat page
-- Sort news in mobile device (No problem with PC device)
-- Arrange rocket project info into json file
-- Complete readme tutorial
+- [ ] CanSat page
+- [ ] Sort news in mobile device (No problem with PC device)
+- [ ] Arrange rocket project info into json file
+- [ ] Complete how-to-update tutorial
+- [ ] Optimize for SEO
+- [x] Complete get-started tutorial
 
 # Memo
 **03-24**\
