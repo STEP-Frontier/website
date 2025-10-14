@@ -3,6 +3,7 @@ import path from "path";
 import matter from "gray-matter";
 import { remark } from "remark";
 import html from "remark-html";
+import basepath from "remark-basepath";
 import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
@@ -28,7 +29,7 @@ export default async function NewsDetailPage({ params }) {
 
   const fileContent = fs.readFileSync(filePath, "utf8");
   const { data, content } = matter(fileContent);
-  const processedContent = await remark().use(html).process(content);
+  const processedContent = await remark().use(html).use(basepath, { baseImagePath: process.env.BASE_PATH }).process(content);
   const contentHtml = processedContent.toString();
 
   return (
