@@ -10,8 +10,8 @@ const nextConfig = {
   trailingSlash: true,
   basePath: isProd ? STB_USER_DIRECTORY : '',
   assetPrefix: isProd ? STB_USER_DIRECTORY  : '',
-  publicRuntimeConfig: {
-    basePath: isProd ? STB_USER_DIRECTORY : "",
+  env: {
+    BASE_PATH: isProd ? STB_USER_DIRECTORY : "",
   }
 }
 

@@ -2,8 +2,10 @@
 import { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 
+import { url } from "@/util/url-converter";
+
 export default function Hero({
-  image_path = "/images/hero.jpg",
+  image_path = url("/images/hero.jpg"),
   hero_title = "STEPへようこそ",
   subtitle = false,
   black_opacity = 0.3,

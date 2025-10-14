@@ -70,7 +70,7 @@ export default function About() {
     <div className="w-full">
       {/* 🔥 1. Hero Section */}
       <Hero 
-      image_path="/images/about/about-hero.jpg"
+      image_path={url("/images/about/about-hero.jpg")}
       hero_title="ABOUT US"
       black_opacity={0.5}
       center_or_top="center"

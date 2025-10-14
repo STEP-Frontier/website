@@ -41,7 +41,7 @@ export default function Rocket() {
     <div className="w-full">
       {/* 🔥 1. Hero Section */}
       <Hero 
-      image_path="/images/rocket/rocket-hero.jpg"
+      image_path={url("/images/rocket/rocket-hero.jpg")}
       hero_title="ROCKET PROJECTS"
       black_opacity={0.4}
       center_or_top="top"

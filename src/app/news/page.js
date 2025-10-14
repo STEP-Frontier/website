@@ -18,7 +18,7 @@ export default function News() {
     <div className="w-full">
       {/* 🔥 1. Hero Section */}
       <Hero 
-        image_path="/images/news/news-hero.jpg"
+        image_path={url("/images/news/news-hero.jpg")}
         hero_title="NEWS"
         black_opacity={0.3}
         center_or_top="top"
