@@ -8,6 +8,8 @@ import Hero from "@/components/Hero";
 
 
 export default function News() {
+  const basePath = (publicRuntimeConfig && publicRuntimeConfig.basePath) || "";
+
   const featuredNewsIds = ["2"];
   const featuredNews = newsData.filter((news) => featuredNewsIds.includes(news.id));
 
@@ -41,7 +43,7 @@ export default function News() {
               <Link href={`/news/${news.id}`} className="block">
                 <div className="w-full h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] bg-gray-700 rounded-lg flex justify-center items-center overflow-hidden">
                   <Image 
-                    src={news.image} 
+                    src={basePath + news.image} 
                     alt={news.title} 
                     width={600} 
                     height={350} 

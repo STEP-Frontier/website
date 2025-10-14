@@ -18,6 +18,8 @@ export async function generateStaticParams() {
 }
 
 export default async function NewsDetailPage({ params }) {
+  const basePath = (publicRuntimeConfig && publicRuntimeConfig.basePath) || "";
+
   const { id } = params;
   const filePath = path.join(process.cwd(), "public/news", `${id}.md`);
 
@@ -37,7 +39,7 @@ export default async function NewsDetailPage({ params }) {
       <div className="max-w-4xl mx-auto pt-16 md:pt-22">
         <div className="relative w-full h-80 md:h-96">
           <Image
-            src={data.image}
+            src={baseUrl + data.image}
             alt={data.title}
             width={600}
             height={350}

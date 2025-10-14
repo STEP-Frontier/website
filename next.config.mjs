@@ -1,4 +1,5 @@
 const isProd = process.env.NODE_ENV === 'production';
+const STB_USER_DIRECTORY = '/~step';
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
@@ -7,8 +8,11 @@ const nextConfig = {
     unoptimized: true,
   },
   trailingSlash: true,
-  basePath: '',
-  assetPrefix: isProd ? '/~step' : ''
+  basePath: isProd ? STB_USER_DIRECTORY : '',
+  assetPrefix: isProd ? STB_USER_DIRECTORY  : '',
+  publicRuntimeConfig: {
+    basePath: isProd ? STB_USER_DIRECTORY : "",
+  }
 }
 
 export default nextConfig;

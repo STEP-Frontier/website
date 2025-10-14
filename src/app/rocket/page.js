@@ -35,6 +35,8 @@ const rocketProjects = [
 ];
 
 export default function Rocket() {
+  const basePath = (publicRuntimeConfig && publicRuntimeConfig.basePath) || "";
+
   return (
     <div className="w-full">
       {/* 🔥 1. Hero Section */}
@@ -74,7 +76,7 @@ export default function Rocket() {
               </div>
               <div className="lg:w-1/2">
                 <Image
-                  src={rocket.images[0]}
+                  src={basePath + rocket.images[0]}
                   alt={`${rocket.name} image`}
                   width={600}
                   height={400}
@@ -98,7 +100,7 @@ export default function Rocket() {
               </div>
               <div className="lg:w-1/2">
                 <Image
-                  src={rocket.images[1]}
+                  src={basePath + rocket.images[1]}
                   alt={`${rocket.name} experiment`}
                   width={600}
                   height={400}
