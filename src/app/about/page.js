@@ -49,7 +49,7 @@ export default function About() {
 
   useEffect(() => {
     async function fetchMembers() {
-      const res = await fetch("/data/members.json"); 
+      const res = await fetch(url("/data/members.json"));
       const data = await res.json();
       setMembers(data);
     }
@@ -58,7 +58,7 @@ export default function About() {
 
   useEffect(() => {
     async function fetchText() {
-      const res = await fetch("/data/representative.txt"); 
+      const res = await fetch(url("/data/representative.txt"));
       const text = await res.text();
       setRepresentativeText(text);
     }
