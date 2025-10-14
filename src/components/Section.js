@@ -2,9 +2,9 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-export default function Section({ title, content, image, reverse, learnMoreLink}) {
-  const basePath = (publicRuntimeConfig && publicRuntimeConfig.basePath) || "";
+import { url } from "@/util/url-converter";
 
+export default function Section({ title, content, image, reverse, learnMoreLink}) {
   return (
     <motion.div
       className={`flex flex-col md:flex-row ${reverse ? "md:flex-row-reverse" : ""} items-center px-6 py-20`}
@@ -30,7 +30,7 @@ export default function Section({ title, content, image, reverse, learnMoreLink}
       </div>
       <div className="md:m-5"></div>
       <div className="md:w-1/2">
-        <img src={basePath + image} alt={title} className="w-full rounded-lg shadow-lg" />
+        <img src={url(image)} alt={title} className="w-full rounded-lg shadow-lg" />
       </div>
     </motion.div>
   );

@@ -7,6 +7,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import "../news.css";
+import { url } from "@/util/url-converter";
 
 export async function generateStaticParams() {
   const newsDirectory = path.join(process.cwd(), "public/news");
@@ -18,8 +19,6 @@ export async function generateStaticParams() {
 }
 
 export default async function NewsDetailPage({ params }) {
-  const basePath = (publicRuntimeConfig && publicRuntimeConfig.basePath) || "";
-
   const { id } = params;
   const filePath = path.join(process.cwd(), "public/news", `${id}.md`);
 
@@ -39,7 +38,7 @@ export default async function NewsDetailPage({ params }) {
       <div className="max-w-4xl mx-auto pt-16 md:pt-22">
         <div className="relative w-full h-80 md:h-96">
           <Image
-            src={baseUrl + data.image}
+            src={url(data.image)}
             alt={data.title}
             width={600}
             height={350}

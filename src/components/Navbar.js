@@ -3,10 +3,9 @@ import { useState, useEffect, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
+import { url } from "@/util/url-converter";
 
 export default function Navbar({ isDark = false }) {
-  const basePath = (publicRuntimeConfig && publicRuntimeConfig.basePath) || "";
-
   const [scrollY, setScrollY] = useState(0);
   const [isOpen, setIsOpen] = useState(false);
   const menuRef = useRef(null);
@@ -71,7 +70,7 @@ export default function Navbar({ isDark = false }) {
         <div className="max-w-[90rem] mx-auto px-2 sm:px-4 md:px-8 lg:px-16 flex justify-between items-center">
           <Link href="/" onClick={() => setIsOpen(false)}>
             <Image
-              src={`${basePath}/images/logo.png`}
+              src={url("/images/logo.png")}
               alt="STEP LOGO"
               width={200}
               height={100}

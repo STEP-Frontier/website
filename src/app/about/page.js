@@ -4,6 +4,8 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 import Hero from "@/components/Hero";
 
+import { url } from "@/util/url-converter";
+
 const departments = [
   {
     name: "機体班",
@@ -30,8 +32,6 @@ const departments = [
 const currentYear = 2025; // 这里你可以用 `new Date().getFullYear()` 让它变成动态的
 
 export default function About() {
-  const basePath = (publicRuntimeConfig && publicRuntimeConfig.basePath) || "";
-
   const [members, setMembers] = useState([]);
   const [representativeText, setRepresentativeText] = useState("");
 
@@ -119,7 +119,7 @@ export default function About() {
               </p>
             </div>
             <div className="lg:w-1/2">
-              <Image src={`${basePath}/images/about/representative.jpg`} alt="Representative" width={600} height={400} className="rounded-lg shadow-lg w-full object-cover" />
+              <Image src={url("/images/about/representative.jpg")} alt="Representative" width={600} height={400} className="rounded-lg shadow-lg w-full object-cover" />
             </div>
           </div>
         </motion.div>
@@ -148,7 +148,7 @@ export default function About() {
               viewport={{ once: true }}
             >
               <div className="w-full h-[300px] sm:h-[350px] md:h-[400px] lg:h-[400px] bg-gray-700 rounded-lg flex justify-center items-center overflow-hidden mb-4">
-                <Image src={basePath + dept.image} alt={dept.name} width={600} height={350} className="w-full h-full object-cover" />
+                <Image src={url(dept.image)} alt={dept.name} width={600} height={350} className="w-full h-full object-cover" />
               </div>
               <h3 className="text-base sm:text-xl md:text-2xl font-bold text-white">{dept.name}</h3>
               <p className="text-sm sm:text-base md:text-lg text-gray-300 mt-2 ml-0 sm:ml-6 md:ml-12 mr-0 sm:mr-6 md:mr-12">{dept.description}</p>
@@ -210,7 +210,7 @@ export default function About() {
                 viewport={{ once: true }}
               >
                 <Image 
-                  src={basePath + src}
+                  src={url(src)}
                   alt={`Team Photo ${index + 1}`}
                   width={200}
                   height={200}
