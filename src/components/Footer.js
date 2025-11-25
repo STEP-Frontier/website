@@ -16,7 +16,7 @@ export default function Footer() {
           {/* 📌 联系方式 */}
           <div>
             <h3 className="text-base sm:text-lg md:text-xl font-bold text-white mb-2">Contact</h3>
-            <p className="text-xs sm:text-sm md:text-base">Email: <a href="mailto:step.tsukuba@gmail.com" className="hover:text-white transition">step.tsukuba@gmail.com</a></p>
+            <p className="text-xs sm:text-sm md:text-base">Email: <a href="mailto:step@stb.tsukuba.ac.jp" className="hover:text-white transition">step@stb.tsukuba.ac.jp</a></p>
           </div>
 
           {/* 📌 社交媒体 */}
