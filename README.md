@@ -1,50 +1,43 @@
-# STEP webpage source code
+# Astro Starter Kit: Minimal
 
-## Getting Started
-
-First, run the development server:
-
-```bash
-# Clone this repository
-git clone https://github.com/STEP-Frontier/step-webpage-code.git # Or you can use ssh
-cd step-webpage-code
-
-# Install package
-npm install
-
-# Run
-npm run dev
-```
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
-
-After you did some commit:
-
-```bash
-npm run build
+```sh
+bun create astro@latest -- --template minimal
 ```
 
-Then `/out` will be generated. 
+> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
 
-Next, go to `step-frontier.github.io` directory where the previous compiled website files are saved. 
+## 🚀 Project Structure
 
-Delete all files inside EXCEPT FOR `.git`, `.gitignore` and `.nojekyll` (VERY IMPORTANT). 
+Inside of your Astro project, you'll see the following folders and files:
 
-After deleted all other files, move all files you have just generated in `/out` into `step-frontier.github.io`, then commit and push. 
+```text
+/
+├── public/
+├── src/
+│   └── pages/
+│       └── index.astro
+└── package.json
+```
 
-The deployment should be completed in one or two minutes. 
+Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-## To do
-- [ ] CanSat page
-- [ ] Sort news in mobile device (No problem with PC device)
-- [ ] Arrange rocket project info into json file
-- [ ] Complete how-to-update tutorial
-- [ ] Optimize for SEO
-- [x] Complete get-started tutorial
+There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
 
-# Memo
-**03-24**\
-Completed main page
+Any static assets, like images, can be placed in the `public/` directory.
 
-**03-23**\
-Completed better navbar design\
-Users are now able to close menu by clicking other place on the screen
+## 🧞 Commands
+
+All commands are run from the root of the project, from a terminal:
+
+| Command                   | Action                                           |
+| :------------------------ | :----------------------------------------------- |
+| `bun install`             | Installs dependencies                            |
+| `bun dev`             | Starts local dev server at `localhost:4321`      |
+| `bun build`           | Build your production site to `./dist/`          |
+| `bun preview`         | Preview your build locally, before deploying     |
+| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
+| `bun astro -- --help` | Get help using the Astro CLI                     |
+
+## 👀 Want to learn more?
+
+Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).

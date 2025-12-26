@@ -1,31 +1,14 @@
 {
-  "name": "step-website",
-  "version": "0.1.0",
-  "private": true,
+  "name": "website",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "next dev",
-    "prebuild": "node scripts/generate-news.js",
-    "build": "next build",
-    "export": "next export",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "^4",
-    "framer-motion": "^12.5.0",
-    "gray-matter": "^4.0.3",
-    "next": "^15.2.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-icons": "^5.5.0",
-    "remark": "^15.0.1",
-    "remark-basepath": "^1.0.1",
-    "remark-html": "^16.0.1",
-    "tailwindcss": "^4"
-  },
-  "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "eslint": "^9",
-    "eslint-config-next": "15.2.2"
+    "astro": "^5.16.6"
   }
 }
