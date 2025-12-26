@@ -1,0 +1,56 @@
+name: CD-preview
+on:
+  push:
+env:
+  CLOUDFLARE_ACCOUNT_NAME: step-frontier
+jobs:
+  deploy-preview:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock', 'package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
+      - name: Cache static assets
+        uses: actions/cache@v4
+        with:
+          path: |
+            node_modules/.astro/_astro
+            node_modules/.astro/assets
+          key: static
+          restore-keys: static
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+      - run: bun install --frozen-lockfile
+      - run: bun run build
+      - name: Set branch preview url
+        run: |
+          # アンダーバーとスラッシュをハイフンに変換
+          replaced=$(echo ${{ github.ref_name }} | sed "s/[_\/]/-/g")
+          # すべて小文字に変換
+          link=${replaced,,}
+          echo "BRANCH_PREVIEW_ALIAS=${link}" >> $GITHUB_ENV
+      - name: Deploy
+        id: deploy
+        uses: cloudflare/wrangler-action@v3
+        with:
+          apiToken: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          accountId: ${{ vars.CLOUDFLARE_ACCOUNT_ID }}
+          command: versions upload --preview-alias ${{ env.BRANCH_PREVIEW_ALIAS }}
+          gitHubToken: ${{ secrets.GITHUB_TOKEN }}
+      - name: Update summary
+        env:
+          PREVIEW_URL: ${{ steps.deploy.outputs.deployment-url}}
+          BRANCH_PREVIEW_URL: https://${{ env.BRANCH_PREVIEW_ALIAS }}-${{ github.event.repository.name }}.${{ env.CLOUDFLARE_ACCOUNT_NAME }}.workers.dev
+        run: |
+          echo "## 🚀 Deployed successfully" >> "$GITHUB_STEP_SUMMARY"
+          echo "| Preview URL: | Branch Preview URL: |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| :--- | :--- |" >> "$GITHUB_STEP_SUMMARY"
+          echo "| $PREVIEW_URL | $BRANCH_PREVIEW_URL |" >> "$GITHUB_STEP_SUMMARY"
