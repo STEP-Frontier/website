@@ -1,24 +1,30 @@
 {
-	"name": "website",
-	"type": "module",
-	"version": "0.0.1",
-	"scripts": {
-		"dev": "astro dev",
-		"build": "astro build",
-		"preview": "astro preview",
-		"astro": "astro",
-		"check": "biome check --write ."
-	},
-	"dependencies": {
-		"@iconify-json/fa": "^1.2.2",
-		"@iconify-json/fa6-brands": "^1.2.6",
-		"@tailwindcss/vite": "^4.1.18",
-		"astro": "^5.16.6",
-		"astro-icon": "^1.1.5",
-		"tailwindcss": "^4.1.18"
-	},
-	"devDependencies": {
-		"@biomejs/biome": "2.3.10",
-		"wrangler": "^4.54.0"
-	}
+  "name": "website",
+  "type": "module",
+  "version": "0.0.1",
+  "scripts": {
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "eslint ./**/*.{js,ts,astro}",
+    "format": "prettier . --write"
+  },
+  "dependencies": {
+    "@iconify-json/fa": "^1.2.2",
+    "@iconify-json/fa6-brands": "^1.2.6",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.16.6",
+    "astro-icon": "^1.1.5",
+    "tailwindcss": "^4.1.18"
+  },
+  "devDependencies": {
+    "@typescript-eslint/parser": "^8.50.1",
+    "eslint": "^9.39.2",
+    "eslint-plugin-astro": "^1.5.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "prettier": "3.7.4",
+    "prettier-plugin-astro": "0.14.1",
+    "wrangler": "^4.54.0"
+  }
 }
