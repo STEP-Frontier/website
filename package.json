@@ -1,22 +1,24 @@
 {
-  "name": "website",
-  "type": "module",
-  "version": "0.0.1",
-  "scripts": {
-    "dev": "astro dev",
-    "build": "astro build",
-    "preview": "astro preview",
-    "astro": "astro"
-  },
-  "dependencies": {
-    "@iconify-json/fa": "^1.2.2",
-    "@iconify-json/fa6-brands": "^1.2.6",
-    "@tailwindcss/vite": "^4.1.18",
-    "astro": "^5.16.6",
-    "astro-icon": "^1.1.5",
-    "tailwindcss": "^4.1.18"
-  },
-  "devDependencies": {
-    "wrangler": "^4.54.0"
-  }
+	"name": "website",
+	"type": "module",
+	"version": "0.0.1",
+	"scripts": {
+		"dev": "astro dev",
+		"build": "astro build",
+		"preview": "astro preview",
+		"astro": "astro",
+		"check": "biome check --write ."
+	},
+	"dependencies": {
+		"@iconify-json/fa": "^1.2.2",
+		"@iconify-json/fa6-brands": "^1.2.6",
+		"@tailwindcss/vite": "^4.1.18",
+		"astro": "^5.16.6",
+		"astro-icon": "^1.1.5",
+		"tailwindcss": "^4.1.18"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "2.3.10",
+		"wrangler": "^4.54.0"
+	}
 }
