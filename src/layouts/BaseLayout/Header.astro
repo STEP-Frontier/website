@@ -1,0 +1,179 @@
+---
+import { Image } from 'astro:assets';
+import logoImage from '../../assets/logo.png';
+
+interface Props {
+    isDark?: boolean;
+}
+
+const { isDark = false } = Astro.props;
+
+const navItems = [
+    { href: "/about", label: "About" },
+    { href: "/rocket", label: "Rocket" },
+    { href: "/cansat", label: "CanSat" },
+    { href: "/news", label: "News" },
+];
+---
+
+<nav
+    id="navbar"
+    class="fixed top-0 left-0 w-full text-white z-50"
+    data-is-dark={isDark}
+>
+    <div class="p-4">
+        <!-- Logo + menu button -->
+        <div
+            class="max-w-[90rem] mx-auto px-2 sm:px-4 md:px-8 lg:px-16 flex justify-between items-center"
+        >
+            <a href="/" id="logo-link">
+                <Image
+                    src={logoImage}
+                    alt="STEP LOGO"
+                    width="200"
+                    height="100"
+                    class="w-32 sm:w-40 md:w-45 lg:w-50 h-auto"
+                />
+            </a>
+
+            <!-- Desktop -->
+            <div class="md:flex hidden space-x-16 font-bold">
+                {
+                    navItems.map((item) => (
+                        <a href={item.href} class="nav-link group">
+                            {item.label}
+                        </a>
+                    ))
+                }
+            </div>
+
+            <!-- Mobile menu button -->
+            <button
+                id="menu-button"
+                class="md:hidden text-2xl sm:text-3xl cursor-pointer"
+                aria-label="Toggle Menu"
+            >
+                <span id="menu-icon">☰</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Mobile menu content -->
+    <div
+        id="mobile-menu"
+        class="overflow-hidden bg-black/10 z-40 transition-all duration-400 ease-in-out"
+        style="height: 0; opacity: 0;"
+    >
+        <div
+            class="flex flex-col items-center font-bold divide-y divide-gray-700/80"
+        >
+            {
+                navItems.map((item) => (
+                    <a
+                        href={item.href}
+                        class="mobile-nav-link w-full text-center py-4"
+                    >
+                        {item.label}
+                    </a>
+                ))
+            }
+        </div>
+    </div>
+</nav>
+
+<script>
+    document.addEventListener("astro:page-load", () => {
+        const navbar = document.getElementById("navbar");
+        const menuButton = document.getElementById("menu-button");
+        const menuIcon = document.getElementById("menu-icon");
+        const mobileMenu = document.getElementById("mobile-menu");
+        const logoLink = document.getElementById("logo-link");
+        const mobileNavLinks = document.querySelectorAll(".mobile-nav-link");
+
+        if (!navbar || !menuButton || !menuIcon || !mobileMenu) return;
+
+        const isDark = navbar.dataset.isDark === "true";
+        let isOpen = false;
+
+        const updateNavbarStyle = () => {
+            const scrollY = window.scrollY;
+
+            let effectiveOpacity: number;
+            let effectiveBlur: number;
+
+            if (isDark) {
+                effectiveOpacity = 1;
+                effectiveBlur = 0;
+            } else {
+                effectiveOpacity = isOpen
+                    ? Math.max(Math.min(scrollY / 800, 1.0), 0.5)
+                    : Math.min(scrollY / 800, 1.0);
+                effectiveBlur = isOpen ? 0 : Math.min(scrollY / 100, 10);
+            }
+
+            navbar.style.backgroundColor = `rgba(0, 0, 0, ${effectiveOpacity})`;
+            navbar.style.backdropFilter = `blur(${effectiveBlur}px)`;
+        };
+
+        const toggleMenu = () => {
+            isOpen = !isOpen;
+            menuIcon.textContent = isOpen ? "×" : "☰";
+
+            if (isOpen) {
+                mobileMenu.style.height = "auto";
+                mobileMenu.style.opacity = "1";
+            } else {
+                mobileMenu.style.height = "0";
+                mobileMenu.style.opacity = "0";
+            }
+
+            updateNavbarStyle();
+        };
+
+        const closeMenu = () => {
+            if (isOpen) {
+                isOpen = false;
+                menuIcon.textContent = "☰";
+                mobileMenu.style.height = "0";
+                mobileMenu.style.opacity = "0";
+                updateNavbarStyle();
+            }
+        };
+
+        // Event listeners
+        window.addEventListener("scroll", updateNavbarStyle);
+        menuButton.addEventListener("click", toggleMenu);
+
+        // Close menu when clicking logo
+        logoLink?.addEventListener("click", closeMenu);
+
+        // Close menu when clicking mobile nav links
+        mobileNavLinks.forEach((link) => {
+            link.addEventListener("click", closeMenu);
+        });
+
+        // Close menu when clicking outside
+        document.addEventListener("mousedown", (event) => {
+            const target = event.target as Node;
+            const clickedOutsideMenu =
+                mobileMenu && !mobileMenu.contains(target);
+            const clickedOutsideButton =
+                menuButton && !menuButton.contains(target);
+
+            if (isOpen && clickedOutsideMenu && clickedOutsideButton) {
+                closeMenu();
+            }
+        });
+
+        // Initial style
+        updateNavbarStyle();
+    });
+</script>
+
+<style>
+    #mobile-menu {
+        transition:
+            height 0.4s ease-in-out,
+            opacity 0.4s ease-in-out;
+    }
+</style>
