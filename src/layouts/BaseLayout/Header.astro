@@ -40,7 +40,7 @@ const navItems = [
       <div class="md:flex hidden space-x-16 font-bold">
         {
           navItems.map((item) => (
-            <a href={item.href} class="nav-link group">
+            <a href={item.href} class="nav-link">
               {item.label}
             </a>
           ))
@@ -69,7 +69,7 @@ const navItems = [
     >
       {
         navItems.map((item) => (
-          <a href={item.href} class="mobile-nav-link w-full text-center py-4">
+          <a href={item.href} class="mobile-nav-link">
             {item.label}
           </a>
         ))
@@ -170,5 +170,56 @@ const navItems = [
     transition:
       height 0.4s ease-in-out,
       opacity 0.4s ease-in-out;
+  }
+
+  /* Desktop nav link animation */
+  .nav-link {
+    position: relative;
+  }
+
+  /* 下線（左から右に出現 & 右から左に消失） */
+  .nav-link::after {
+    content: "";
+    position: absolute;
+    left: auto;
+    right: 0;
+    bottom: 0;
+    width: 0;
+    height: 1px;
+    background-color: white;
+    transition:
+      width 0.15s ease-in-out,
+      left 0.15s ease-in-out;
+  }
+
+  /* 上線（右から左に出現 & 左から右に消失） */
+  .nav-link::before {
+    content: "";
+    position: absolute;
+    right: auto;
+    left: 0;
+    top: 0;
+    width: 0;
+    height: 1px;
+    background-color: white;
+    transition:
+      width 0.15s ease-in-out,
+      right 0.15s ease-in-out;
+  }
+
+  /* ホバー時：両方の線を展開 */
+  .nav-link:hover::after {
+    width: 100%;
+  }
+
+  .nav-link:hover::before {
+    width: 100%;
+  }
+
+  /* Mobile nav link */
+  .mobile-nav-link {
+    width: 100%;
+    text-align: center;
+    padding: 1rem 0;
   }
 </style>
