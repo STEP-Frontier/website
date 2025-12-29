@@ -1,5 +1,8 @@
 ---
-import HeroLayout from "../layouts/HeroLayout.astro";
+import BaseLayout from "../layouts/BaseLayout/index.astro";
+import Hero from "../components/Hero.astro";
 ---
 
-<HeroLayout title="NEWS" />
+<BaseLayout title="NEWS | 筑波大学宇宙技術プロジェクト">
+  <Hero hero_title="NEWS" subtitle="ただいま工事中でございます" />
+</BaseLayout>

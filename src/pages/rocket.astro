@@ -1,5 +1,67 @@
 ---
-import HeroLayout from "../layouts/HeroLayout.astro";
+import { Image } from "astro:assets";
+import BaseLayout from "../layouts/BaseLayout/index.astro";
+import Hero from "../components/Hero.astro";
+import RocketProject from "../components/RocketProject.astro";
+
+// 画像インポート
+import rocketHeroImage from "../assets/rocket/rocket-hero.jpg";
+import progress1 from "../assets/rocket/projects/progress-1.jpg";
+import progress2 from "../assets/rocket/projects/progress-2.jpg";
+import bluerose1 from "../assets/rocket/projects/bluerose-1.jpg";
+import bluerose2 from "../assets/rocket/projects/bluerose-2.jpg";
+
+const rocketProjects = [
+  {
+    name: "STEP-17 Progress",
+    specs: [
+      "全長: 2.293 m",
+      "直径: 120 mm",
+      "使用エンジン: HyperTEK K240",
+      "予想到達高度: 374.1 m",
+    ],
+    description:
+      "この機体は高高度打ち上げを見据えた技術実証機であり、強度を向上させる構造や浮力を補う展開式フロートなどを実装しています。また、分離機構については2020洋上打ち上げに用いたものを1段のみの分離機構として改良し、搭載しています。",
+    results:
+      "8月19日10時35分頃、秋田県能代市落合浜旧能代海水浴場にて打ち上げが行われました。\n機体は安定飛行し、打ち上げは成功しました。その後、頂点付近で分離機構が正常に作動しパラシュートが放出されることで機体は減速落下しました。なお、到達高度は約330 mでした。分離の成功はSTEPとして5年ぶりのこととなります。\n当日は強風によって様々な変更が必要となりましたが、これに迅速に対応することができました。このことからも、今回目指していた打上技術の継承を十分に達成できたと団体として考えています。同時に、様々な反省点や改善点を発見することができたので、次回以降のミッションで生かしていきたいと思います！",
+    images: [progress1, progress2] as [typeof progress1, typeof progress2],
+  },
+  {
+    name: "BlueROSE",
+    specs: [
+      "全長: 2.85 m",
+      "直径: 120 mm",
+      "使用エンジン: HyperTEK M1000",
+      "予想到達高度: 約3 km超",
+    ],
+    description:
+      "Astrocean社の洋上打上実験に参加し、学生主体団体として日本初のロケット洋上打上、及び学生団体の高度日本記録更新を目指します。この機体は2度パラシュートを放出する2段分離機構を搭載しており、STEP史上最長となります。",
+    results:
+      "2月24日正午ごろ、茨城県沖約80㎞の洋上より打ち上げが行われました。\n機体は安定飛行し、打ち上げは成功しました。\n機器トラブルによりデータは取得できませんでしたが、飛翔時間よりおよそ高度4㎞程度まで到達したと推測されます。",
+    images: [bluerose1, bluerose2] as [typeof bluerose1, typeof bluerose2],
+  },
+];
 ---
 
-<HeroLayout title="ROCKET PROJECTS" />
+<BaseLayout title="ROCKET PROJECTS | 筑波大学宇宙技術プロジェクト">
+  <Hero
+    image={rocketHeroImage}
+    hero_title="ROCKET PROJECTS"
+    black_opacity={0.4}
+    center_or_top="top"
+  />
+
+  {
+    rocketProjects.map((rocket) => (
+      <RocketProject
+        name={rocket.name}
+        specs={rocket.specs}
+        description={rocket.description}
+        results={rocket.results}
+        images={rocket.images}
+      />
+    ))
+  }
+
+  <div class="h-20"></div>
+</BaseLayout>
