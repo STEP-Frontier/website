@@ -26,13 +26,17 @@ const navItems = [
     <div
       class="max-w-360 mx-auto px-2 sm:px-4 md:px-8 lg:px-16 flex justify-between items-center"
     >
-      <a href="/" id="logo-link">
+      <a
+        href="/"
+        id="logo-link"
+        class="block shrink-0 w-32 sm:w-40 md:w-45 lg:w-50"
+      >
         <Image
           src={logoImage}
           alt="STEP LOGO"
-          width="200"
-          height="100"
-          class="w-32 sm:w-40 md:w-45 lg:w-50 h-auto"
+          width={200}
+          height={100}
+          class="w-full h-auto max-w-full"
         />
       </a>
 

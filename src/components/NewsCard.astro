@@ -1,0 +1,85 @@
+---
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+
+interface Props {
+  title: string;
+  date: string;
+  summary: string;
+  image: ImageMetadata;
+  href: string;
+}
+
+const { title, date, summary, image, href } = Astro.props;
+---
+
+<a href={href} class="news-card block p-6 rounded-lg shadow-lg">
+  <div
+    class="w-full h-[200px] sm:h-[250px] md:h-[300px] lg:h-[350px] bg-gray-700 rounded-lg overflow-hidden"
+  >
+    <Image
+      src={image}
+      alt={title}
+      class="w-full h-full object-cover"
+      widths={[400, 600, 800, 1200]}
+      sizes="(max-width: 768px) 100vw, (max-width: 1024px) 66vw, 50vw"
+    />
+  </div>
+
+  <div class="w-full">
+    <h3 class="text-base sm:text-xl md:text-2xl font-bold text-white mt-4">
+      {title}
+    </h3>
+    <p class="text-gray-400 text-[0.625rem] sm:text-xs md:text-sm mt-2">
+      {date}
+    </p>
+    <p class="text-sm sm:text-base md:text-lg text-gray-300 mt-2">
+      {summary}
+    </p>
+  </div>
+</a>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const cards = document.querySelectorAll(".news-card");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("news-card-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    cards.forEach((card) => {
+      observer.observe(card);
+    });
+  });
+</script>
+
+<style>
+  .news-card {
+    opacity: 0;
+    transform: translateY(50px);
+    transition:
+      opacity 0.3s ease-out,
+      transform 0.3s ease-out;
+  }
+
+  .news-card.news-card-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .news-card:hover {
+    transform: scale(1.02);
+  }
+
+  .news-card.news-card-visible:hover {
+    transform: scale(1.02);
+  }
+</style>

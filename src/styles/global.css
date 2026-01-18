@@ -5,3 +5,26 @@ body {
   background-color: #000000;
   color: #ffffff;
 }
+
+/* Astro Image Layout Styles */
+[data-astro-image] {
+  width: 100%;
+  height: auto;
+  object-fit: var(--fit, cover);
+  object-position: var(--pos, center);
+}
+
+[data-astro-image="constrained"] {
+  max-width: 100%;
+  height: auto;
+}
+
+[data-astro-image="fixed"] {
+  width: auto;
+  height: auto;
+}
+
+[data-astro-image="full-width"] {
+  width: 100%;
+  height: auto;
+}
