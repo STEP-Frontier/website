@@ -5,7 +5,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: ubuntu-slim
+    runs-on: ubuntu-latest
     env:
       NODE_ENV: "production"
     steps:
