@@ -5,7 +5,7 @@ env:
   CLOUDFLARE_ACCOUNT_NAME: step-frontier
 jobs:
   deploy-preview:
-    runs-on: ubuntu-latest
+    runs-on: ubuntu-slim
     steps:
       - uses: actions/checkout@v4
         with:
