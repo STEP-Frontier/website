@@ -1,0 +1,222 @@
+---
+import { Image } from "astro:assets";
+import yaml from "js-yaml";
+import fs from "node:fs";
+import path from "node:path";
+import BaseLayout from "../layouts/BaseLayout/index.astro";
+import Hero from "../components/Hero.astro";
+import AnimatedSection from "../components/AnimatedSection.astro";
+import DepartmentCard from "../components/DepartmentCard.astro";
+
+// 画像インポート
+import aboutHeroImage from "../assets/about/about-hero.jpg";
+import representativeImage from "../assets/about/representative.jpg";
+import structureImage from "../assets/about/structure.jpg";
+import avionicsImage from "../assets/about/avionics.jpg";
+import engineImage from "../assets/about/engine.jpg";
+import eiseiImage from "../assets/about/eisei.jpg";
+import teamPhoto1 from "../assets/about/team-photo-1.jpg";
+import teamPhoto2 from "../assets/about/team-photo-2.jpg";
+
+// YAML データ読み込み
+const aboutYaml = fs.readFileSync(
+  path.join(process.cwd(), "src/content/about.yaml"),
+  "utf-8",
+);
+
+interface Member {
+  name: string;
+  grade: number;
+  department: string;
+}
+
+interface AboutData {
+  representative_message: string;
+  members: Member[];
+}
+
+const aboutData = yaml.load(aboutYaml) as AboutData;
+
+const departments = [
+  {
+    name: "機体班",
+    description:
+      "ロケット本体と分離機構を作成する班であり、飛翔シミュレーションも行っている",
+    image: structureImage,
+  },
+  {
+    name: "電装班",
+    description:
+      "ロケット管理用の回路やエンジンの地上燃焼試験用の回路を作成する",
+    image: avionicsImage,
+  },
+  {
+    name: "エンジン班",
+    description:
+      "打ち上げ時の地上支援装置の運用や、ハイブリットエンジンの管理を行う",
+    image: engineImage,
+  },
+  {
+    name: "衛星班",
+    description: "模擬人工衛星CanSatを作成し、コンテストに出場する",
+    image: eiseiImage,
+  },
+];
+
+const teamPhotos = [teamPhoto1, teamPhoto2];
+
+// メンバーを学年別にグループ化
+const groupedByGrade = aboutData.members.reduce(
+  (acc: Record<number, Member[]>, member: Member) => {
+    if (!acc[member.grade]) acc[member.grade] = [];
+    acc[member.grade].push(member);
+    return acc;
+  },
+  {},
+);
+
+const sortedGrades = Object.keys(groupedByGrade)
+  .map(Number)
+  .sort((a, b) => b - a);
+---
+
+<BaseLayout title="ABOUT US | 筑波大学宇宙技術プロジェクト">
+  <Hero
+    image={aboutHeroImage}
+    hero_title="ABOUT US"
+    black_opacity={0.5}
+    center_or_top="center"
+  />
+
+  <!-- Who We Are -->
+  <section class="max-w-7xl mx-auto px-6 sm:px-8 md:px-16 py-20">
+    <AnimatedSection>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-white">
+        Who We Are
+      </h2>
+      <p class="text-sm sm:text-base md:text-lg text-gray-300">
+        私たち、筑波大学宇宙技術プロジェクト STEP
+        は、航空宇宙工学と技術の研究開発を行う学生団体です。
+      </p>
+      <p class="text-sm sm:text-base md:text-lg text-gray-300 mt-4">
+        2006年5月に筑波大学の工学を専攻にする学生有志を中心として設立され、技術者になるためのトレーニングの場として、ロケットや人工衛星といった宇宙に関する技術を題材にしたものづくりを中心とした活動を展開しています。
+      </p>
+      <ul
+        class="text-sm sm:text-base md:text-lg text-gray-300 text-left mt-6 space-y-2"
+      >
+        <li>① 実際の製作技術の習得</li>
+        <li>
+          ②
+          ものづくりをチームで行う上で裁かれるプロジェクト体制の運用を経験すること
+        </li>
+        <li>
+          ③ コミュニケーション能力やプレゼンテーション技術など個人能力向上
+        </li>
+      </ul>
+      <p class="text-sm sm:text-base md:text-lg text-gray-300 mt-4">
+        といった，机上で学ぶことのできない総合的実践力を楽しみながら養うことを目的に活動しています。
+      </p>
+    </AnimatedSection>
+  </section>
+
+  <!-- 代表挨拶 -->
+  <section class="max-w-7xl mx-auto px-6 sm:px-8 md:px-16 py-20">
+    <AnimatedSection>
+      <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold mb-6 text-white">
+        代表挨拶
+      </h2>
+      <div class="flex flex-col lg:flex-row gap-10">
+        <div class="lg:w-1/2">
+          <p
+            class="text-sm sm:text-base md:text-lg text-gray-300 whitespace-pre-line"
+          >
+            {aboutData.representative_message}
+          </p>
+        </div>
+        <div class="lg:w-1/2">
+          <Image
+            src={representativeImage}
+            alt="代表"
+            class="rounded-lg shadow-lg w-full object-cover"
+            widths={[400, 600, 800]}
+            sizes="(max-width: 1024px) 100vw, 50vw"
+          />
+        </div>
+      </div>
+    </AnimatedSection>
+  </section>
+
+  <!-- 各班の活動 -->
+  <section class="max-w-7xl mx-auto px-6 sm:px-8 md:px-16 py-20">
+    <AnimatedSection>
+      <h2
+        class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 text-white"
+      >
+        各班の活動
+      </h2>
+    </AnimatedSection>
+
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+      {
+        departments.map((dept) => (
+          <DepartmentCard
+            name={dept.name}
+            description={dept.description}
+            image={dept.image}
+          />
+        ))
+      }
+    </div>
+  </section>
+
+  <!-- Our Team -->
+  <section class="max-w-7xl mx-auto px-6 sm:px-8 md:px-16 py-20">
+    <AnimatedSection>
+      <h2
+        class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-10 text-white"
+      >
+        Our Team
+      </h2>
+    </AnimatedSection>
+
+    <div class="flex flex-col lg:flex-row items-start gap-10">
+      <!-- メンバーリスト -->
+      <div class="lg:w-1/3">
+        {
+          sortedGrades.map((grade) => (
+            <AnimatedSection class="p-6 rounded-lg mb-4">
+              <h3 class="text-base sm:text-xl md:text-2xl font-bold text-white">
+                {grade}年生
+              </h3>
+              <ul class="mt-4 space-y-2">
+                {groupedByGrade[grade].map((member: Member) => (
+                  <li class="text-sm sm:text-base md:text-lg text-gray-300">
+                    <span class="font-semibold text-white">{member.name}</span>{" "}
+                    - {member.department}
+                  </li>
+                ))}
+              </ul>
+            </AnimatedSection>
+          ))
+        }
+      </div>
+
+      <!-- チーム写真 -->
+      <div class="lg:w-2/3 grid grid-cols-1 gap-8">
+        {
+          teamPhotos.map((photo, index) => (
+            <AnimatedSection class="w-full">
+              <Image
+                src={photo}
+                alt={`Team Photo ${index + 1}`}
+                class="shadow-lg w-full object-cover rounded-lg"
+                widths={[400, 800, 1200]}
+                sizes="(max-width: 1024px) 100vw, 66vw"
+              />
+            </AnimatedSection>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</BaseLayout>

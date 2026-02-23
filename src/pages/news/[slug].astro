@@ -1,0 +1,238 @@
+---
+import { getCollection, type CollectionEntry } from "astro:content";
+import { Image } from "astro:assets";
+import type { ImageMetadata } from "astro";
+import BaseLayout from "../../layouts/BaseLayout/index.astro";
+import { resolveNewsImagePath } from "../../lib/news";
+
+export async function getStaticPaths() {
+  const newsEntries = await getCollection("news");
+  return newsEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+type NewsEntry = CollectionEntry<"news">;
+
+const { entry } = Astro.props as { entry: NewsEntry };
+const { Content } = await entry.render();
+
+// 画像をダイナミックにインポート（content 配下も含める）
+const images = import.meta.glob<{ default: ImageMetadata }>(
+  "/src/**/*.{jpg,jpeg,png,gif,webp}",
+);
+
+async function getImage(newsEntry: NewsEntry) {
+  const rawPath = newsEntry.data.image;
+  const imagePath = rawPath
+    ? resolveNewsImagePath(rawPath, newsEntry.id)
+    : null;
+  if (!imagePath) return null;
+
+  const imageLoader = images[imagePath];
+  if (!imageLoader) return null;
+
+  const image = await imageLoader();
+  return image.default;
+}
+
+const heroImage = await getImage(entry);
+---
+
+<BaseLayout title={`${entry.data.title} | NEWS | 筑波大学宇宙技術プロジェクト`}>
+  <div class="max-w-4xl mx-auto pt-16 md:pt-22">
+    <div class="relative w-full h-80 md:h-96">
+      {
+        heroImage && (
+          <Image
+            src={heroImage}
+            alt={entry.data.title}
+            class="w-full h-full object-cover"
+            widths={[400, 800, 1200]}
+            sizes="100vw"
+          />
+        )
+      }
+    </div>
+  </div>
+
+  <div class="text-center mt-6">
+    <h1 class="text-2xl sm:text-3xl md:text-4xl px-8 font-bold text-white">
+      {entry.data.title}
+    </h1>
+    <p class="text-xs sm:text-sm text-gray-400 mt-2">{entry.data.date}</p>
+  </div>
+
+  <div class="max-w-4xl mx-auto px-8 py-6 text-lg leading-relaxed">
+    <div class="news-content">
+      <Content />
+    </div>
+  </div>
+
+  <div class="flex justify-center mt-10 mb-10">
+    <a href="/news">
+      <button
+        class="px-6 py-3 border-2 border-gray-700 text-gray-500 rounded-full transition duration-300 ease-in-out hover:border-blue-800 hover:text-white hover:cursor-pointer"
+      >
+        ← Back to News
+      </button>
+    </a>
+  </div>
+</BaseLayout>
+
+<style>
+  /* タイトルスタイル */
+  .news-content :global(h1) {
+    font-size: 1.5rem;
+    font-weight: 700;
+    margin-top: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  @media (min-width: 640px) {
+    .news-content :global(h1) {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .news-content :global(h1) {
+      font-size: 2rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .news-content :global(h1) {
+      font-size: 2.25rem;
+    }
+  }
+
+  .news-content :global(h2) {
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin-top: 1.5rem;
+    margin-bottom: 1rem;
+    border-bottom: 2px solid #444;
+    padding-bottom: 0.5rem;
+  }
+
+  @media (min-width: 640px) {
+    .news-content :global(h2) {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .news-content :global(h2) {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .news-content :global(h2) {
+      font-size: 2rem;
+    }
+  }
+
+  .news-content :global(h3) {
+    font-size: 1rem;
+    font-weight: 500;
+    margin-top: 1.25rem;
+    margin-bottom: 0.75rem;
+  }
+
+  @media (min-width: 640px) {
+    .news-content :global(h3) {
+      font-size: 1.25rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .news-content :global(h3) {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .news-content :global(h3) {
+      font-size: 1.75rem;
+    }
+  }
+
+  /* デフォルトテキスト */
+  .news-content {
+    font-size: 0.875rem;
+    line-height: 1.8;
+    margin-bottom: 1rem;
+    color: #d1d5db;
+  }
+
+  @media (min-width: 640px) {
+    .news-content {
+      font-size: 1rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    .news-content {
+      font-size: 1.125rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .news-content {
+      font-size: 1.25rem;
+    }
+  }
+
+  /* リスト */
+  .news-content :global(ul) {
+    list-style-type: disc;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .news-content :global(ol) {
+    list-style-type: decimal;
+    margin-left: 2rem;
+    margin-bottom: 1rem;
+  }
+
+  .news-content :global(li) {
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+
+  /* 引用ブロック */
+  .news-content :global(blockquote) {
+    border-left: 4px solid #666;
+    padding-left: 1rem;
+    font-style: italic;
+    margin: 1.5rem 0;
+  }
+
+  /* リンク */
+  .news-content :global(a) {
+    color: #4ea8de;
+    text-decoration: underline;
+  }
+
+  .news-content :global(a:hover) {
+    color: #6cb2eb;
+  }
+
+  /* 画像 */
+  .news-content :global(img) {
+    max-width: 100%;
+    height: auto;
+    margin: 1rem 0;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+  }
+
+  /* 段落 */
+  .news-content :global(p) {
+    margin-bottom: 1rem;
+  }
+</style>

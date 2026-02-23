@@ -1,0 +1,142 @@
+representative_message: |
+  筑波大学宇宙技術プロジェクト（STEP）令和7年度代表の杉山咲穂です。
+
+  私たちの理念は実際のものづくりでしか得られない「総合的実践力」を養うことです。学生団体として、設計・製作・運用の全工程を自らの手で一貫して行っており、宇宙に興味を持ったメンバーが集まって、ハイブリッドロケットとCanSatを日々つくっています。
+
+  私自身はロケット製作に携わっていますが、複合的要素で成り立つプロジェクトを自分たちで回していくことの難しさを痛感しています。どうやったら理想に近いものが作れるのか、どうやったら打ち上げまで漕ぎつけられるのか。実験もチームの団結も簡単にはうまく行きません。ですが、この場所で悩みながらも過ごした時間がプロジェクトを成功へと導き、チームや技術者としても成長させると信じています。
+
+  所属するメンバーには工学系以外の分野を専攻している学生も多く、多様なバックグラウンドを持っています。それが学類の垣根のない筑波大学の土壌を生かした、この団体ならではの良さです。それぞれの専攻は違っても、「ロケットを打ち上げたい」「高いミッションを達成したい」という志は同じです。その瞬間のため、私たちはこれからも進んでいきます。
+
+  最後になりますが、私たちの活動は多くの方々の温かいお力添えがあってこそ成り立っています。日頃より多大なるご支援をいただいている協賛企業、筑波大学関係者、各種大会・イベント運営関係者、ならびにOB・OGの皆様、そして私たちを応援してくださる全ての皆様方に心より感謝申し上げます。今後とも筑波大学宇宙技術プロジェクト（STEP）をよろしくお願いいたします。
+
+  筑波大学宇宙技術プロジェクト（STEP）代表
+  杉山咲穂
+
+members:
+  # 4年生
+  - name: 林 崇文
+    grade: 4
+    department: エンジン班 機体班
+
+  - name: 木村 護
+    grade: 4
+    department: 機体班 電装班
+
+  - name: 小川 葉
+    grade: 4
+    department: 機体班
+
+  - name: 胡 洋
+    grade: 4
+    department: 電装班
+
+  # 3年生
+  - name: 村中 恵
+    grade: 3
+    department: エンジン班
+
+  - name: 井田 悠花
+    grade: 3
+    department: エンジン班
+
+  - name: 瀧口 京介
+    grade: 3
+    department: 衛星班
+
+  - name: 小原 虎仁郞
+    grade: 3
+    department: 衛星班
+
+  # 2年生
+  - name: 山田 遥己
+    grade: 2
+    department: エンジン班 機体班
+
+  - name: 岡部 考喜
+    grade: 2
+    department: エンジン班 機体班
+
+  - name: 関根 美月
+    grade: 2
+    department: エンジン班 機体班
+
+  - name: 池野 雅理
+    grade: 2
+    department: 電装班 機体班
+
+  - name: 田端 侑心
+    grade: 2
+    department: 電装班 機体班
+
+  - name: 白取 知季
+    grade: 2
+    department: 電装班 機体班
+
+  - name: 三好 弘晃
+    grade: 2
+    department: 電装班 機体班
+
+  - name: 高瀬 愛瑠
+    grade: 2
+    department: 衛星班 エンジン班
+
+  - name: 鈴木 遼太郎
+    grade: 2
+    department: 衛星班 電装班
+
+  - name: 矢野 達也
+    grade: 2
+    department: 衛星班
+
+  - name: 久保田 和樹
+    grade: 2
+    department: 衛星班
+
+  # 1年生
+  - name: 狩野 允俊
+    grade: 1
+    department: 機体班
+
+  - name: 臼井 悠人
+    grade: 1
+    department: 機体班 電装班
+
+  - name: 杉山 咲穂
+    grade: 1
+    department: 機体班 エンジン班
+
+  - name: 大谷 康太
+    grade: 1
+    department: エンジン班
+
+  - name: 薬師神 佳生
+    grade: 1
+    department: 機体班
+
+  - name: 小野 玲矢
+    grade: 1
+    department: 機体班
+
+  - name: 且 泰成
+    grade: 1
+    department: 機体班
+
+  - name: 植田 椋太
+    grade: 1
+    department: 衛星班
+
+  - name: 入江 貴仁
+    grade: 1
+    department: 衛星班
+
+  - name: 髙倉 好男
+    grade: 1
+    department: 衛星班
+
+  - name: 外山 航平
+    grade: 1
+    department: 衛星班
+
+  - name: 東 春樹
+    grade: 1
+    department: 衛星班

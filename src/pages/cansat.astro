@@ -1,0 +1,15 @@
+---
+import Hero from "../components/Hero.astro";
+import BaseLayout from "../layouts/BaseLayout/index.astro";
+
+import cansatHeroImage from "../assets/cansat/cansat-hero-tmp.jpg";
+---
+
+<BaseLayout title="CANSAT PROJECTS | 筑波大学宇宙技術プロジェクト">
+  <Hero
+    image={cansatHeroImage}
+    hero_title="CANSAT PROJECTS"
+    subtitle="ただいま工事中でございます"
+    black_opacity={0.4}
+  />
+</BaseLayout>

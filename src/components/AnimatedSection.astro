@@ -1,0 +1,48 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<div class:list={["animated-section", className]}>
+  <slot />
+</div>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll(".animated-section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("animated-section-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+  });
+</script>
+
+<style>
+  .animated-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition:
+      opacity 1s ease-out,
+      transform 1s ease-out;
+  }
+
+  .animated-section.animated-section-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>

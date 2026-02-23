@@ -1,31 +1,32 @@
 {
-  "name": "step-website",
-  "version": "0.1.0",
-  "private": true,
+  "name": "website",
+  "type": "module",
+  "version": "0.0.1",
   "scripts": {
-    "dev": "next dev",
-    "prebuild": "node scripts/generate-news.js",
-    "build": "next build",
-    "export": "next export",
-    "start": "next start",
-    "lint": "next lint"
+    "dev": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro",
+    "lint": "eslint ./**/*.{js,ts,astro}",
+    "format": "prettier . --write"
   },
   "dependencies": {
-    "@tailwindcss/postcss": "^4",
-    "framer-motion": "^12.5.0",
-    "gray-matter": "^4.0.3",
-    "next": "^15.2.2",
-    "react": "^19.0.0",
-    "react-dom": "^19.0.0",
-    "react-icons": "^5.5.0",
-    "remark": "^15.0.1",
-    "remark-basepath": "^1.0.1",
-    "remark-html": "^16.0.1",
-    "tailwindcss": "^4"
+    "@iconify-json/fa": "^1.2.2",
+    "@iconify-json/fa6-brands": "^1.2.6",
+    "@tailwindcss/vite": "^4.1.18",
+    "astro": "^5.16.6",
+    "astro-icon": "^1.1.5",
+    "js-yaml": "^4.1.1",
+    "tailwindcss": "^4.1.18"
   },
   "devDependencies": {
-    "@eslint/eslintrc": "^3",
-    "eslint": "^9",
-    "eslint-config-next": "15.2.2"
+    "@types/js-yaml": "^4.0.9",
+    "@typescript-eslint/parser": "^8.50.1",
+    "eslint": "^9.39.2",
+    "eslint-plugin-astro": "^1.5.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "prettier": "3.7.4",
+    "prettier-plugin-astro": "0.14.1",
+    "wrangler": "^4.54.0"
   }
 }
