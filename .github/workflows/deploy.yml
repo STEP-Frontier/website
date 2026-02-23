@@ -1,0 +1,41 @@
+name: Deploy
+
+on:
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    env:
+      NODE_ENV: "production"
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.head_ref || github.ref_name }}
+
+      - name: Cache node_modules
+        uses: actions/cache@v4
+        with:
+          path: |
+            **/node_modules
+          key: ${{ runner.os }}-bun-${{ hashFiles('bun.lock', 'package.json') }}
+          restore-keys: |
+            ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
+
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+
+      - name: Build Astro site
+        run: |
+          bun install --frozen-lockfile
+          bun run build
+
+      - name: Deploy to STB Server
+        uses: wlixcc/SFTP-Deploy-Action@v1.2.6
+        with:
+          username: step
+          server: "www.stb.tsukuba.ac.jp"
+          ssh_private_key: ${{ secrets.STB_SSH_PRIVATE_KEY }}
+          local_path: "./dist/*"
+          remote_path: "/public_html/"
+          sftpArgs: "-o ConnectTimeout=5"
