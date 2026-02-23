@@ -28,7 +28,7 @@ jobs:
       - name: Build Astro site
         run: |
           bun install --frozen-lockfile
-          bun run build
+          bun run build:prod
 
       - name: Deploy to STB Server
         uses: wlixcc/SFTP-Deploy-Action@v1.2.6

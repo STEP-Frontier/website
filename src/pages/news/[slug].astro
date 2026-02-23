@@ -17,6 +17,7 @@ type NewsEntry = CollectionEntry<"news">;
 
 const { entry } = Astro.props as { entry: NewsEntry };
 const { Content } = await entry.render();
+const baseUrl = import.meta.env.BASE_URL;
 
 // 画像をダイナミックにインポート（content 配下も含める）
 const images = import.meta.glob<{ default: ImageMetadata }>(
@@ -71,7 +72,7 @@ const heroImage = await getImage(entry);
   </div>
 
   <div class="flex justify-center mt-10 mb-10">
-    <a href="/news">
+    <a href={`${baseUrl}news`}>
       <button
         class="px-6 py-3 border-2 border-gray-700 text-gray-500 rounded-full transition duration-300 ease-in-out hover:border-blue-800 hover:text-white hover:cursor-pointer"
       >

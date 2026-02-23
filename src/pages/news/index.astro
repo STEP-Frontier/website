@@ -8,6 +8,7 @@ import AnimatedSection from "../../components/AnimatedSection.astro";
 import { resolveNewsImagePath } from "../../lib/news";
 
 import newsHeroImage from "../../content/news/news-hero.jpg";
+const baseUrl = import.meta.env.BASE_URL;
 
 // ニュース記事を取得して日付順にソート
 const allNews = await getCollection("news");
@@ -54,7 +55,7 @@ async function getImage(imagePath: string) {
           return (
             <AnimatedSection>
               <a
-                href={`/news/${news.slug}`}
+                href={`${baseUrl}news/${news.slug}`}
                 class="news-card block p-6 rounded-lg shadow-lg"
               >
                 <div class="w-full h-50 sm:h-62.5 md:h-75 lg:h-87.5 bg-gray-700 rounded-lg overflow-hidden">
@@ -96,7 +97,7 @@ async function getImage(imagePath: string) {
         ) : (
           featuredNews.map((news) => (
             <a
-              href={`/news/${news.slug}`}
+              href={`${baseUrl}news/${news.slug}`}
               class="featured-card block bg-gray-800 p-4 rounded-lg shadow-lg"
             >
               <h3 class="text-sm sm:text-base md:text-lg font-bold text-white">
