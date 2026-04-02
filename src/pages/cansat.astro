@@ -1,15 +1,132 @@
 ---
-import Hero from "../components/Hero.astro";
+import { Image } from "astro:assets";
 import BaseLayout from "../layouts/BaseLayout/index.astro";
+import Hero from "../components/Hero.astro";
 
 import cansatHeroImage from "../assets/cansat/cansat-hero-tmp.jpg";
+import artmisImage from "../assets/cansat/artmis.png";
+import artmisGoalImage from "../assets/cansat/artmis-goal.jpg";
+
+const achievements = [
+  "2026 能代宇宙イベント出場",
+  "東京情報大学主催 Space Rover Cup 2025 準優勝",
+  "2026 種子島ロケットコンテスト出場",
+];
 ---
 
 <BaseLayout title="CANSAT PROJECTS | 筑波大学宇宙技術プロジェクト">
   <Hero
     image={cansatHeroImage}
     hero_title="CANSAT PROJECTS"
-    subtitle="ただいま工事中でございます"
     black_opacity={0.4}
+    center_or_top="top"
   />
+
+  <section class="py-20 px-6 sm:px-8 md:px-16 max-w-[90rem] mx-auto">
+    <!-- CanSatとは -->
+    <div class="text-center mb-10">
+      <h2
+        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white"
+      >
+        CanSatとは
+      </h2>
+    </div>
+
+    <div class="cansat-section flex flex-col lg:flex-row items-center gap-10">
+      <div class="lg:w-1/2 text-left">
+        <p class="text-sm sm:text-base md:text-lg text-gray-300">
+          CanSatとは飲料水の缶サイズの小型の模擬人工衛星の略称（Can-Satellite
+          の略）です。レギュレーション内での自由な設計と自分達で構想したミッションを設定できるのが魅力の一つです。
+        </p>
+        <p class="text-sm sm:text-base md:text-lg text-gray-300 mt-4">
+          ミッションの具体例としては、自律走行でゴールへと向かう自立制御カムバック部門、無線通信などを用い遠隔操作によりゴールを目指す遠隔制御カムバック部門、CanSatを用いて独自のミッションを設定し遂行するオリジナルミッションなどがあります。
+        </p>
+        <p class="text-sm sm:text-base md:text-lg text-gray-300 mt-4">
+          CanSat競技は秋田県能代市で行われる能代宇宙イベントや鹿児島県種子島で行われる種子島ロケットコンテスト、アメリカブラックロック砂漠で行われるARLISSなど、さまざまな場所で開催されています。CanSatはミッションに合わせて様々な形で設計されています。
+        </p>
+      </div>
+      <div class="lg:w-1/2">
+        <Image
+          src={artmisImage}
+          alt="CanSat機体"
+          class="shadow-lg w-full object-cover rounded-lg"
+          widths={[400, 600, 800, 1200]}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+        />
+      </div>
+    </div>
+
+    <!-- 衛星班の活動 -->
+    <div
+      class="cansat-section flex flex-col lg:flex-row-reverse items-center gap-10 mt-20"
+    >
+      <div class="lg:w-1/2 text-left">
+        <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-4">
+          衛星班の活動
+        </h3>
+        <p class="text-sm sm:text-base md:text-lg text-gray-300">
+          CanSatを通して電子工作や工学を楽しみ、CanSatの自立制御カムバック部門にて各大会で優勝を目指すことを目的としています。また、ロケット班との共同開発をし、ロケット班の作ったロケットに搭載するCanSatも作成予定です。
+        </p>
+
+        <h4
+          class="text-xl sm:text-2xl md:text-3xl font-bold text-white mt-8 mb-4"
+        >
+          昨年度の活動実績
+        </h4>
+        <ul
+          class="text-sm sm:text-base md:text-lg text-gray-300 space-y-2 list-disc list-inside"
+        >
+          {achievements.map((item) => <li>{item}</li>)}
+        </ul>
+      </div>
+      <div class="lg:w-1/2">
+        <Image
+          src={artmisGoalImage}
+          alt="CanSat競技の様子"
+          class="shadow-lg w-full object-cover rounded-lg"
+          widths={[400, 600, 800, 1200]}
+          sizes="(max-width: 1024px) 100vw, 50vw"
+        />
+      </div>
+    </div>
+  </section>
+
+  <div class="h-20"></div>
 </BaseLayout>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const sections = document.querySelectorAll(".cansat-section");
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("cansat-section-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.1 },
+    );
+
+    sections.forEach((section) => {
+      observer.observe(section);
+    });
+  });
+</script>
+
+<style>
+  .cansat-section {
+    opacity: 0;
+    transform: translateY(50px);
+    transition:
+      opacity 1s ease-out,
+      transform 1s ease-out;
+  }
+
+  .cansat-section.cansat-section-visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+</style>
