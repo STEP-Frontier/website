@@ -17,5 +17,5 @@ const base = normalizeBasePath(process.env.ASTRO_BASE);
 export default defineConfig({
   base,
   vite: { plugins: [tailwindcss()] },
-  integrations: [icon()]
+  integrations: [icon()],
 });
