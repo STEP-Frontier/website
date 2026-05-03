@@ -1,8 +1,6 @@
 ---
+import { getEntry, type CollectionEntry } from "astro:content";
 import { Image } from "astro:assets";
-import yaml from "js-yaml";
-import fs from "node:fs";
-import path from "node:path";
 import BaseLayout from "../layouts/BaseLayout/index.astro";
 import Hero from "../components/Hero.astro";
 import AnimatedSection from "../components/AnimatedSection.astro";
@@ -18,24 +16,11 @@ import eiseiImage from "../assets/about/eisei.jpg";
 import teamPhoto1 from "../assets/about/team-photo-1.jpg";
 import teamPhoto2 from "../assets/about/team-photo-2.jpg";
 
-// YAML データ読み込み
-const aboutYaml = fs.readFileSync(
-  path.join(process.cwd(), "src/content/about.yaml"),
-  "utf-8",
-);
+type AboutData = CollectionEntry<"about">["data"];
+type Member = AboutData["members"][number];
 
-interface Member {
-  name: string;
-  grade: number;
-  department: string;
-}
-
-interface AboutData {
-  representative_message: string;
-  members: Member[];
-}
-
-const aboutData = yaml.load(aboutYaml) as AboutData;
+const aboutEntry = await getEntry("about", "data");
+const aboutData = aboutEntry.data;
 
 const departments = [
   {
