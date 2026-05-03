@@ -45,12 +45,12 @@ const heroImage = await localizeImage(news.eyecatch);
       {news.title}
     </h1>
     <p class="text-xs sm:text-sm text-gray-400 mt-2">
-      {formatNewsDate(news.date)}
+      {formatNewsDate(news.createdAt)}
     </p>
   </div>
 
   <div class="max-w-4xl mx-auto px-8 py-6 text-lg leading-relaxed">
-    <div class="news-content" set:html={news.body} />
+    <div class="news-content" set:html={news.content} />
   </div>
 
   <div class="flex justify-center mt-10 mb-10">

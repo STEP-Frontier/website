@@ -18,22 +18,15 @@ export interface MicroCMSImage {
 interface MicroCMSNewsItem {
   id: string;
   title: string;
-  content?: string;
+  content: string;
   eyecatch?: MicroCMSImage;
   created_at: string;
-  publishedAt?: string;
-  revisedAt?: string;
-  updatedAt?: string;
 }
 
 export interface NewsItem
   extends Omit<MicroCMSNewsItem, "content" | "created_at"> {
-  content: string;
   createdAt: string;
-  date: string;
   summary: string;
-  featured: false;
-  body: string;
 }
 
 interface MicroCMSListResponse<T> {
@@ -154,10 +147,7 @@ function normalizeNews(news: MicroCMSNewsItem): NewsItem {
     ...rest,
     content,
     createdAt,
-    date: createdAt,
     summary: generateSummary(content),
-    featured: false,
-    body: content,
   };
 }
 

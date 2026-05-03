@@ -8,11 +8,10 @@ import {
   localizeImage,
 } from "../../lib/microcms";
 
-import newsHeroImage from "../../content/news/news-hero.jpg";
+import newsHeroImage from "../../assets/news.jpg";
 const baseUrl = import.meta.env.BASE_URL;
 
 const { contents: newsList } = await getNewsList(100);
-const featuredNews = newsList.filter((news) => news.featured);
 ---
 
 <BaseLayout title="NEWS | 筑波大学宇宙技術プロジェクト">
@@ -24,10 +23,10 @@ const featuredNews = newsList.filter((news) => news.featured);
   />
 
   <div
-    class="max-w-7xl mx-auto px-6 sm:px-8 md:px-16 pt-20 pb-20 flex flex-col-reverse lg:grid lg:grid-cols-3 gap-6"
+    class="max-w-5xl mx-auto px-6 sm:px-8 md:px-16 pt-20 pb-20"
   >
     <!-- ニュース一覧 -->
-    <div class="lg:col-span-2 space-y-6">
+    <div class="space-y-6">
       {
         newsList.map(async (news) => {
           const image = await localizeImage(news.eyecatch);
@@ -56,7 +55,7 @@ const featuredNews = newsList.filter((news) => news.featured);
                     {news.title}
                   </h3>
                   <p class="text-gray-400 text-[0.625rem] sm:text-xs md:text-sm mt-2">
-                    {formatNewsDate(news.date)}
+                    {formatNewsDate(news.createdAt)}
                   </p>
                   <p class="text-sm sm:text-base md:text-lg text-gray-300 mt-2">
                     {news.summary}
@@ -66,30 +65,6 @@ const featuredNews = newsList.filter((news) => news.featured);
             </AnimatedSection>
           );
         })
-      }
-    </div>
-
-    <!-- Featured News サイドバー -->
-    <div class="space-y-6 p-6">
-      <h2 class="text-2xl font-bold text-white">Featured News</h2>
-      {
-        featuredNews.length === 0 ? (
-          <p class="text-gray-400">No featured news available</p>
-        ) : (
-          featuredNews.map((news) => (
-            <a
-              href={`${baseUrl}news/${news.id}`}
-              class="featured-card block bg-gray-800 p-4 rounded-lg shadow-lg"
-            >
-              <h3 class="text-sm sm:text-base md:text-lg font-bold text-white">
-                {news.title}
-              </h3>
-              <p class="text-gray-400 text-[0.625rem] sm:text-xs md:text-sm">
-                {formatNewsDate(news.date)}
-              </p>
-            </a>
-          ))
-        )
       }
     </div>
   </div>
@@ -102,13 +77,5 @@ const featuredNews = newsList.filter((news) => news.featured);
 
   .news-card:hover {
     transform: scale(1.02);
-  }
-
-  .featured-card {
-    transition: transform 0.3s ease-out;
-  }
-
-  .featured-card:hover {
-    transform: scale(1.05);
   }
 </style>
