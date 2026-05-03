@@ -6,7 +6,6 @@ const endpoint = import.meta.env.MICROCMS_ENDPOINT as string | undefined;
 const apiKey = import.meta.env.MICROCMS_API_KEY as string | undefined;
 const baseUrl = import.meta.env.BASE_URL;
 
-const CMS_DATA_DIR = path.join(process.cwd(), "src", "data", "cms");
 const CMS_IMAGES_DIR = path.join(process.cwd(), "public", "cms-images");
 
 export interface MicroCMSImage {
@@ -24,7 +23,7 @@ interface MicroCMSNewsItem {
 }
 
 export interface NewsItem
-  extends Omit<MicroCMSNewsItem, "content" | "created_at"> {
+  extends Omit<MicroCMSNewsItem, "created_at"> {
   createdAt: string;
   summary: string;
 }
@@ -34,22 +33,6 @@ interface MicroCMSListResponse<T> {
   totalCount: number;
   offset: number;
   limit: number;
-}
-
-function loadCache<T>(filename: string): T | null {
-  const filePath = path.join(CMS_DATA_DIR, filename);
-  if (!fs.existsSync(filePath)) return null;
-  return JSON.parse(fs.readFileSync(filePath, "utf-8")) as T;
-}
-
-function saveCache(filename: string, data: unknown): void {
-  if (!fs.existsSync(CMS_DATA_DIR)) {
-    fs.mkdirSync(CMS_DATA_DIR, { recursive: true });
-  }
-  fs.writeFileSync(
-    path.join(CMS_DATA_DIR, filename),
-    JSON.stringify(data, null, 2),
-  );
 }
 
 async function fetchAPI<T>(
@@ -78,32 +61,16 @@ async function fetchAPI<T>(
   return res.json();
 }
 
-async function fetchListWithCache<T>(
-  filename: string,
+async function fetchList<T>(
   apiPath: string,
   orders: string,
 ): Promise<MicroCMSListResponse<T>> {
-  try {
-    const data = await fetchAPI<MicroCMSListResponse<T>>(apiPath, {
-      orders,
-      limit: 100,
-    });
-    saveCache(filename, data);
-    console.log(`[CMS] ${apiPath}: fetched from microCMS`);
-    return data;
-  } catch (e) {
-    const cached = loadCache<MicroCMSListResponse<T>>(filename);
-    if (cached) {
-      const message = e instanceof Error ? e.message : String(e);
-      console.warn(`[CMS] ${apiPath}: loaded from local cache (${message})`);
-      return cached;
-    }
-
-    throw new Error(
-      `microCMS fetch failed and no local cache available for ${apiPath}`,
-      { cause: e },
-    );
-  }
+  const data = await fetchAPI<MicroCMSListResponse<T>>(apiPath, {
+    orders,
+    limit: 100,
+  });
+  console.log(`[CMS] ${apiPath}: fetched from microCMS`);
+  return data;
 }
 
 function sliceList<T>(
@@ -137,17 +104,18 @@ function generateSummary(content = ""): string {
   return text.length > 100 ? `${text.slice(0, 100)}...` : text;
 }
 
-function normalizeNews(news: MicroCMSNewsItem): NewsItem {
+async function normalizeNews(news: MicroCMSNewsItem): Promise<NewsItem> {
   const { content = "", created_at: createdAt, ...rest } = news;
   if (!createdAt) {
     throw new Error(`News created_at is required: ${news.id}`);
   }
+  const localizedContent = await localizeContentImages(content);
 
   return {
-    ...rest,
-    content,
+    content: localizedContent,
     createdAt,
     summary: generateSummary(content),
+    ...rest,
   };
 }
 
@@ -182,7 +150,9 @@ export async function localizeImage(
     fs.mkdirSync(CMS_IMAGES_DIR, { recursive: true });
   }
 
-  if (!fs.existsSync(filePath)) {
+  if (fs.existsSync(filePath)) {
+    console.log(`[CMS] image cache hit: ${filename}`);
+  } else {
     const res = await fetch(image.url);
     if (!res.ok) {
       console.warn(`Failed to download image: ${image.url}`);
@@ -190,6 +160,7 @@ export async function localizeImage(
     }
     const buffer = Buffer.from(await res.arrayBuffer());
     fs.writeFileSync(filePath, buffer);
+    console.log(`[CMS] image cached: ${filename}`);
   }
 
   return {
@@ -198,25 +169,56 @@ export async function localizeImage(
   };
 }
 
+async function localizeImageUrl(url: string): Promise<string> {
+  if (!URL.canParse(url)) return url;
+
+  const localizedImage = await localizeImage({ url, width: 0, height: 0 });
+  return localizedImage?.url ?? url;
+}
+
+async function localizeContentImages(content: string): Promise<string> {
+  const imageSrcPattern =
+    /<img\b[^>]*\bsrc=(["'])(https?:\/\/[^"']+)\1[^>]*>/gi;
+  const matches = [...content.matchAll(imageSrcPattern)];
+
+  if (matches.length === 0) return content;
+
+  const replacements = new Map<string, string>();
+  await Promise.all(
+    matches.map(async (match) => {
+      const src = match[2];
+      if (!src || replacements.has(src)) return;
+      replacements.set(src, await localizeImageUrl(src));
+    }),
+  );
+
+  return content.replace(imageSrcPattern, (imgTag, quote, src) => {
+    const localizedSrc = replacements.get(src);
+    if (!localizedSrc) return imgTag;
+    return imgTag.replace(
+      `src=${quote}${src}${quote}`,
+      `src=${quote}${localizedSrc}${quote}`,
+    );
+  });
+}
+
 export async function getNewsList(
   limit?: number,
   offset?: number,
 ): Promise<MicroCMSListResponse<NewsItem>> {
-  const data = await fetchListWithCache<MicroCMSNewsItem>(
-    "news.json",
+  const data = await fetchList<MicroCMSNewsItem>(
     "news",
     "-created_at",
   );
   const normalizedData = {
     ...data,
-    contents: data.contents.map(normalizeNews),
+    contents: await Promise.all(data.contents.map(normalizeNews)),
   };
   return sliceList(normalizedData, limit, offset);
 }
 
 export async function getNewsDetail(id: string): Promise<NewsItem> {
-  const data = await fetchListWithCache<MicroCMSNewsItem>(
-    "news.json",
+  const data = await fetchList<MicroCMSNewsItem>(
     "news",
     "-created_at",
   );

@@ -25,6 +25,5 @@ pnpm-debug.log*
 
 .wrangler/
 
-# generated microCMS cache
-src/data/cms/
+# generated microCMS image cache
 public/cms-images/
