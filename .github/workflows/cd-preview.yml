@@ -26,10 +26,21 @@ jobs:
             node_modules/.astro/assets
           key: static
           restore-keys: static
+      - name: Cache microCMS data
+        uses: actions/cache@v4
+        with:
+          path: |
+            src/data/cms
+            public/cms-images
+          key: cms-cache-${{ github.run_id }}
+          restore-keys: cms-cache-
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
       - run: bun install --frozen-lockfile
       - run: bun run build
+        env:
+          MICROCMS_ENDPOINT: ${{ secrets.MICROCMS_ENDPOINT }}
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
       - name: Set branch preview url
         run: |
           # アンダーバーとスラッシュをハイフンに変換

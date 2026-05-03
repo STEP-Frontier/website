@@ -24,3 +24,7 @@ pnpm-debug.log*
 .idea/
 
 .wrangler/
+
+# generated microCMS cache
+src/data/cms/
+public/cms-images/

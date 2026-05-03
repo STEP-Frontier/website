@@ -4,6 +4,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { defineConfig } from "astro/config";
 
 import icon from "astro-icon";
+import cmsImages from "./src/integrations/cms-images";
 
 function normalizeBasePath(path = "/") {
   const normalized = (path ?? "").trim();
@@ -17,5 +18,5 @@ const base = normalizeBasePath(process.env.ASTRO_BASE);
 export default defineConfig({
   base,
   vite: { plugins: [tailwindcss()] },
-  integrations: [icon()],
+  integrations: [icon(), cmsImages()],
 });

@@ -2,6 +2,8 @@ name: Deploy
 
 on:
   workflow_dispatch:
+  repository_dispatch:
+    types: [microcms]
 
 jobs:
   deploy:
@@ -22,10 +24,22 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-bun-${{ hashFiles('bun.lock') }}
 
+      - name: Cache microCMS data
+        uses: actions/cache@v4
+        with:
+          path: |
+            src/data/cms
+            public/cms-images
+          key: cms-cache-${{ github.run_id }}
+          restore-keys: cms-cache-
+
       - name: Setup Bun
         uses: oven-sh/setup-bun@v2
 
       - name: Build Astro site
+        env:
+          MICROCMS_ENDPOINT: ${{ secrets.MICROCMS_ENDPOINT }}
+          MICROCMS_API_KEY: ${{ secrets.MICROCMS_API_KEY }}
         run: |
           bun install --frozen-lockfile
           bun run build:prod
