@@ -13,130 +13,157 @@ representative_message: |
   杉山咲穂
 
 members:
-  # 4年生
-  - name: 林 崇文
-    grade: 4
+  # 3年生
+  - name: 岡部 考喜
+    grade: 3
+    department: エンジン班
+
+  - name: 三好 弘晃
+    grade: 3
     department: エンジン班 機体班
 
-  - name: 木村 護
-    grade: 4
+  - name: 高瀬 愛瑠
+    grade: 3
+    department: エンジン班
+
+  - name: 池野 雅理
+    grade: 3
+    department: 機体班 電装班 総務班
+
+  - name: 田端 侑心
+    grade: 3
     department: 機体班 電装班
 
-  - name: 小川 葉
-    grade: 4
-    department: 機体班
-
-  - name: 胡 洋
-    grade: 4
-    department: 電装班
-
-  # 3年生
-  - name: 村中 恵
-    grade: 3
-    department: エンジン班
-
-  - name: 井田 悠花
-    grade: 3
-    department: エンジン班
-
-  - name: 瀧口 京介
+  - name: 鈴木 遼太郎
     grade: 3
     department: 衛星班
 
-  - name: 小原 虎仁郞
+  - name: 久保田 一樹
     grade: 3
     department: 衛星班
 
   # 2年生
-  - name: 山田 遥己
+  - name: 阿部 晃生
     grade: 2
-    department: エンジン班 機体班
+    department: 機体班 総務班
 
-  - name: 岡部 考喜
+  - name: 中野 日菜子
     grade: 2
-    department: エンジン班 機体班
-
-  - name: 関根 美月
-    grade: 2
-    department: エンジン班 機体班
-
-  - name: 池野 雅理
-    grade: 2
-    department: 電装班 機体班
-
-  - name: 田端 侑心
-    grade: 2
-    department: 電装班 機体班
-
-  - name: 白取 知季
-    grade: 2
-    department: 電装班 機体班
-
-  - name: 三好 弘晃
-    grade: 2
-    department: 電装班 機体班
-
-  - name: 高瀬 愛瑠
-    grade: 2
-    department: 衛星班 エンジン班
-
-  - name: 鈴木 遼太郎
-    grade: 2
-    department: 衛星班 電装班
-
-  - name: 矢野 達也
-    grade: 2
-    department: 衛星班
-
-  - name: 久保田 和樹
-    grade: 2
-    department: 衛星班
-
-  # 1年生
-  - name: 狩野 允俊
-    grade: 1
-    department: 機体班
-
-  - name: 臼井 悠人
-    grade: 1
-    department: 機体班 電装班
-
-  - name: 杉山 咲穂
-    grade: 1
-    department: 機体班 エンジン班
-
-  - name: 大谷 康太
-    grade: 1
-    department: エンジン班
-
-  - name: 薬師神 佳生
-    grade: 1
-    department: 機体班
-
-  - name: 小野 玲矢
-    grade: 1
-    department: 機体班
-
-  - name: 且 泰成
-    grade: 1
-    department: 機体班
-
-  - name: 植田 椋太
-    grade: 1
-    department: 衛星班
+    department: 総務班
 
   - name: 入江 貴仁
-    grade: 1
+    grade: 2
     department: 衛星班
 
-  - name: 髙倉 好男
-    grade: 1
-    department: 衛星班
+  - name: 臼井 悠人
+    grade: 2
+    department: 電装班 機体班
 
-  - name: 外山 航平
-    grade: 1
+  - name: 大谷 康太
+    grade: 2
     department: 衛星班
 
   - name: 東 春樹
+    grade: 2
+    department: 衛星班
+
+  - name: 岡田 啓斗
+    grade: 2
+    department: 総務班
+
+  - name: 狩野 允俊
+    grade: 2
+    department: 機体班 総務班
+
+  - name: 杉山 咲穂
+    grade: 2
+    department: 機体班 エンジン班 総務班
+
+  # 1年生
+  - name: 阿慈地 勇大
+    grade: 1
+    department: エンジン班
+
+  - name: 西岡 昌俊
+    grade: 1
+    department: 機体班 ロケット班
+
+  - name: 門田 優空
+    grade: 1
+    department: 総務班 機体班 エンジン班
+
+  - name: 橋口 陽名汰
+    grade: 1
+    department: エンジン班
+
+  - name: 清水 陽樹
+    grade: 1
+    department: エンジン班
+
+  - name: 竹内 滉大
+    grade: 1
+    department: 機体班
+
+  - name: 小田 佳久
     grade: 1
     department: 衛星班
+
+  - name: 木村 鉄平
+    grade: 1
+    department: 衛星班
+
+  - name: 江渕 和馬
+    grade: 1
+    department: 衛星班
+
+  - name: 藤井 彬人
+    grade: 1
+    department: 機体班
+
+  - name: 谷口 大洋
+    grade: 1
+    department: 機体班
+
+  - name: 小松 彩夏
+    grade: 1
+    department: 電装班
+
+  - name: 笠嶋 ゆう子
+    grade: 1
+    department: エンジン班
+
+  - name: 高松 龍之介
+    grade: 1
+    department: 電装班 衛星班
+
+  - name: 松島 剛
+    grade: 1
+    department: 機体班 総務班
+
+  - name: 岡部 明憲
+    grade: 1
+    department: 機体班
+
+  - name: 本橋 悠誠
+    grade: 1
+    department: エンジン班
+
+  - name: 河内 究也
+    grade: 1
+    department: 機体班
+
+  - name: 佐藤 遙
+    grade: 1
+    department: 機体班 電装班
+
+  - name: 三山 智貴
+    grade: 1
+    department: エンジン班
+
+  - name: 高橋 ユウケン
+    grade: 1
+    department: 機体班
+
+  - name: 嶋田 礼
+    grade: 1
+    department: 電装班
