@@ -10,6 +10,8 @@ import progress1 from "../assets/rocket/projects/progress-1.jpg";
 import progress2 from "../assets/rocket/projects/progress-2.jpg";
 import bluerose1 from "../assets/rocket/projects/bluerose-1.jpg";
 import bluerose2 from "../assets/rocket/projects/bluerose-2.jpg";
+import volubilis1 from "../assets/rocket/projects/volubilis-1.jpg";
+import volubilis2 from "../assets/rocket/projects/volubilis-2.jpg";
 
 const rocketProjects = [
   {
@@ -40,6 +42,26 @@ const rocketProjects = [
       "2月24日正午ごろ、茨城県沖約80㎞の洋上より打ち上げが行われました。\n機体は安定飛行し、打ち上げは成功しました。\n機器トラブルによりデータは取得できませんでしたが、飛翔時間よりおよそ高度4㎞程度まで到達したと推測されます。",
     images: [bluerose1, bluerose2] as [typeof bluerose1, typeof bluerose2],
   },
+  {
+    name: "Volubilis",
+    specs: [
+      "全長: 1,600 mm",
+      "直径: 120 mm",
+      "使用エンジン: HyperTEK J250",
+      "目標到達高度: 277 m",
+      "※数値は変更される可能性があります。",
+    ],
+    description:
+      "この機体は、新型の分離機構の技術実証を行うこと、また団体内で途切れた打ち上げ技術を再習得することを主目的として製作されました。",
+    results:
+      "2026年8月13日から21日まで秋田県で開催される、第22回能代宇宙イベントでの打ち上げを予定しています。\nまた、それに向けて筑波大学構内でロケットエンジンの地上燃焼試験も行います。",
+    resultsTitle: "実験予定",
+    imageAlts: ["Volubilisの機体", "Volubilis製作メンバーの集合写真"] as [
+      string,
+      string,
+    ],
+    images: [volubilis1, volubilis2] as [typeof volubilis1, typeof volubilis2],
+  },
 ];
 ---
 
@@ -58,6 +80,8 @@ const rocketProjects = [
         specs={rocket.specs}
         description={rocket.description}
         results={rocket.results}
+        resultsTitle={rocket.resultsTitle}
+        imageAlts={rocket.imageAlts}
         images={rocket.images}
       />
     ))

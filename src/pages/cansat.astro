@@ -6,11 +6,34 @@ import Hero from "../components/Hero.astro";
 import cansatHeroImage from "../assets/cansat/cansat-hero-tmp.jpg";
 import artmisImage from "../assets/cansat/artmis.png";
 import artmisGoalImage from "../assets/cansat/artmis-goal.jpg";
+import nse2025Image from "../assets/cansat/projects/nse2025.jpg";
+import tane2026Image from "../assets/cansat/projects/tane2026.jpg";
 
 const achievements = [
   "2026 能代宇宙イベント出場",
   "東京情報大学主催 Space Rover Cup 2025 準優勝",
   "2026 種子島ロケットコンテスト出場",
+];
+
+const cansatProjects = [
+  {
+    name: "NSE2025",
+    description:
+      "第21回能代宇宙イベントの自律走行部門に出場する際に作成した機体です。新たな展開機構を採用し、投下後に素早く展開する機体を設計しました。",
+    result:
+      "3回の投下において展開は上手く行われましたが、GPS走行フェーズで障害物にぶつかった際にスタックしてしまい、0 m ゴールを達成することができませんでした。",
+    image: nse2025Image,
+    imageAlt: "能代宇宙イベントの会場を走行するNSE2025",
+  },
+  {
+    name: "TANE2026",
+    description:
+      "2026年度の種子島ロケットコンテストに向けて作成した機体です。マイコンをRaspberry Pi 4BからRaspberry Pi Zero 2 Wに変更し、機体の軽量化と消費電力の低減を図りました。この機体をもとに、長期間走行を達成するための基礎機体を作成していきます。",
+    result:
+      "投下後、落下衝撃による電源の瞬断でプログラムが停止したため、動き出すことができませんでした。",
+    image: tane2026Image,
+    imageAlt: "TANE2026の機体",
+  },
 ];
 ---
 
@@ -89,6 +112,57 @@ const achievements = [
         />
       </div>
     </div>
+
+    <!-- 機体紹介 -->
+    <div class="text-center mt-28 mb-10">
+      <h2
+        class="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white"
+      >
+        機体紹介
+      </h2>
+    </div>
+
+    {
+      cansatProjects.map((project, index) => (
+        <div
+          class:list={[
+            "cansat-section flex flex-col items-center gap-10",
+            index > 0 && "mt-24",
+            index % 2 === 0 ? "lg:flex-row" : "lg:flex-row-reverse",
+          ]}
+        >
+          <div class="lg:w-1/2 text-left">
+            <h3 class="text-2xl sm:text-3xl md:text-4xl font-bold text-white mb-6">
+              {project.name}
+            </h3>
+
+            <h4 class="text-xl sm:text-2xl font-bold text-white mb-3">
+              機体紹介
+            </h4>
+            <p class="text-sm sm:text-base md:text-lg text-gray-300">
+              {project.description}
+            </p>
+
+            <h4 class="text-xl sm:text-2xl font-bold text-white mt-8 mb-3">
+              大会結果
+            </h4>
+            <p class="text-sm sm:text-base md:text-lg text-gray-300">
+              {project.result}
+            </p>
+          </div>
+
+          <div class="lg:w-1/2">
+            <Image
+              src={project.image}
+              alt={project.imageAlt}
+              class="shadow-lg w-full h-auto object-contain rounded-lg"
+              widths={[400, 600, 800, 1200]}
+              sizes="(max-width: 1024px) 100vw, 50vw"
+            />
+          </div>
+        </div>
+      ))
+    }
   </section>
 
   <div class="h-20"></div>
