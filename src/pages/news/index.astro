@@ -2,11 +2,7 @@
 import BaseLayout from "../../layouts/BaseLayout/index.astro";
 import Hero from "../../components/Hero.astro";
 import AnimatedSection from "../../components/AnimatedSection.astro";
-import {
-  formatNewsDate,
-  getNewsList,
-  localizeImage,
-} from "../../lib/microcms";
+import { formatNewsDate, getNewsList, localizeImage } from "../../lib/microcms";
 
 import newsHeroImage from "../../assets/news.jpg";
 const baseUrl = import.meta.env.BASE_URL;
@@ -14,7 +10,10 @@ const baseUrl = import.meta.env.BASE_URL;
 const { contents: newsList } = await getNewsList(100);
 ---
 
-<BaseLayout title="NEWS | 筑波大学宇宙技術プロジェクト">
+<BaseLayout
+  title="NEWS | 筑波大学宇宙技術プロジェクト"
+  description="筑波大学宇宙技術プロジェクトSTEPの活動、ロケット打ち上げ、CanSat大会などの最新情報をお届けします。"
+>
   <Hero
     image={newsHeroImage}
     hero_title="NEWS"
@@ -22,9 +21,7 @@ const { contents: newsList } = await getNewsList(100);
     center_or_top="top"
   />
 
-  <div
-    class="max-w-5xl mx-auto px-6 sm:px-8 md:px-16 pt-20 pb-20"
-  >
+  <div class="max-w-5xl mx-auto px-6 sm:px-8 md:px-16 pt-20 pb-20">
     <!-- ニュース一覧 -->
     <div class="space-y-6">
       {
