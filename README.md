@@ -1,43 +1,122 @@
-# Astro Starter Kit: Minimal
+# 筑波大学宇宙技術プロジェクト STEP
+
+筑波大学宇宙技術プロジェクト STEP の公式 Web サイトです。
+
+ロケットと模擬人工衛星 CanSat の活動、製作した機体、ニュースを掲載しています。
+
+![筑波大学宇宙技術プロジェクト STEP](./public/ogp.jpg)
+
+## 掲載内容
+
+- **About**：STEP の活動目的、各班の紹介、メンバー一覧
+- **Rocket**：ハイブリッドロケットの機体と打ち上げ実験
+- **CanSat**：模擬人工衛星の開発と大会への参加
+- **News**：microCMS で管理する活動報告
+
+## 技術構成
+
+- [Astro](https://astro.build/)：静的サイトの生成
+- [Tailwind CSS](https://tailwindcss.com/)：スタイルの構築
+- [Bun](https://bun.sh/)：依存関係の管理とスクリプトの実行
+- [microCMS](https://microcms.io/)：ニュースの管理
+- [Cloudflare Workers](https://workers.cloudflare.com/)：プレビュー環境
+
+## 必要な環境
+
+- Bun
+- microCMS の API エンドポイント
+- microCMS の API キー
+
+ニュースを含むページを開発・ビルドするには、microCMS の認証情報が必要です。
+
+## セットアップ
+
+依存関係をインストールします。
 
 ```sh
-bun create astro@latest -- --template minimal
+bun install
 ```
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+プロジェクトルートの `.env` に microCMS の認証情報を設定します。
 
-## 🚀 Project Structure
+```dotenv
+MICROCMS_ENDPOINT=https://example.microcms.io/api/v1
+MICROCMS_API_KEY=your-api-key
+```
 
-Inside of your Astro project, you'll see the following folders and files:
+`.env` は Git の管理対象外です。
+
+## 開発
+
+開発サーバーを起動します。
+
+```sh
+bun run dev
+```
+
+起動後に `http://localhost:4321` を開きます。
+
+## コマンド
+
+| コマンド             | 用途                                         |
+| -------------------- | -------------------------------------------- |
+| `bun run dev`        | 開発サーバーを起動する                       |
+| `bun run build`      | 通常の本番ビルドを `dist/` に生成する        |
+| `bun run build:prod` | `/~step/` 配下で公開する本番ビルドを生成する |
+| `bun run preview`    | 生成済みの本番ビルドをローカルで確認する     |
+| `bun run lint`       | ESLint を実行する                            |
+| `bun run format`     | Prettier でコードを整形する                  |
+
+本番ビルドを確認する場合は、次の順に実行します。
+
+```sh
+bun run build
+bun run preview
+```
+
+## ディレクトリ構成
 
 ```text
-/
-├── public/
+.
+├── public/                 # そのまま配信する静的ファイル
 ├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
+│   ├── assets/             # ページで使う画像
+│   ├── components/         # 共通コンポーネント
+│   ├── content/about/      # About ページのデータ
+│   ├── layouts/            # 共通レイアウト
+│   ├── lib/microcms.ts     # microCMS との通信
+│   └── pages/              # ページと URL の定義
+├── astro.config.mjs        # Astro の設定
+├── package.json            # スクリプトと依存関係
+└── wrangler.jsonc          # Cloudflare Workers の設定
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+## コンテンツの更新
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+About ページの代表挨拶とメンバー情報は `src/content/about/data.yaml` で管理します。
 
-Any static assets, like images, can be placed in the `public/` directory.
+ロケットと CanSat の紹介文は、それぞれ `src/pages/rocket.astro` と `src/pages/cansat.astro` に定義しています。
 
-## 🧞 Commands
+ニュースは microCMS の `news` API からビルド時に取得します。
 
-All commands are run from the root of the project, from a terminal:
+取得したニュース画像は `public/cms-images/` にキャッシュされますが、このディレクトリは Git の管理対象外です。
 
-| Command               | Action                                           |
-| :-------------------- | :----------------------------------------------- |
-| `bun install`         | Installs dependencies                            |
-| `bun dev`             | Starts local dev server at `localhost:4321`      |
-| `bun build`           | Build your production site to `./dist/`          |
-| `bun preview`         | Preview your build locally, before deploying     |
-| `bun astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `bun astro -- --help` | Get help using the Astro CLI                     |
+## デプロイ
 
-## 👀 Want to learn more?
+GitHub Actions でプレビュー環境と本番環境へデプロイします。
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+- ブランチへ push すると、Cloudflare Workers のプレビュー環境を生成する
+- `Deploy` ワークフローを手動実行すると、本番用のビルドを生成して STB サーバーへ転送する
+- microCMS から `repository_dispatch` を送ると、ニュース更新後の本番デプロイを実行できる
+
+GitHub Actions には次の認証情報を設定します。
+
+| 名前                    | 種別     | 用途                           |
+| ----------------------- | -------- | ------------------------------ |
+| `MICROCMS_ENDPOINT`     | Secret   | microCMS の API エンドポイント |
+| `MICROCMS_API_KEY`      | Secret   | microCMS の API キー           |
+| `CLOUDFLARE_API_TOKEN`  | Secret   | プレビュー環境のデプロイ       |
+| `CLOUDFLARE_ACCOUNT_ID` | Variable | Cloudflare アカウントの識別子  |
+| `STB_SSH_PRIVATE_KEY`   | Secret   | 本番サーバーへの SFTP 接続     |
+
+認証情報をソースコードや `.env` 以外の公開ファイルに保存しないでください。
