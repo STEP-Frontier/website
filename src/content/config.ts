@@ -18,6 +18,8 @@ const sponsorsCollection = defineCollection({
   type: "data",
   schema: ({ image }) =>
     z.object({
+      // ページ下部に出す文章（協賛のお願い・意気込みなど）。空なら表示しない
+      message: z.string().optional(),
       sponsors: z.array(
         z.object({
           // 表示名

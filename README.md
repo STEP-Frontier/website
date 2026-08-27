@@ -87,7 +87,7 @@ bun run preview
 
 About ページの代表挨拶とメンバー情報は `src/content/about/data.yaml` で管理します。
 
-スポンサーは `src/content/sponsors/data.yaml` で管理します。ロゴ画像を `src/content/sponsors/logos/` に置き、`data.yaml` の `sponsors:` に追記すると、About ページの Sponsors セクションにカードが追加されます。
+スポンサーは `src/content/sponsors/data.yaml` で管理します。ロゴ画像を `src/content/sponsors/logos/` に置き、`data.yaml` の `sponsors:` に追記すると、Sponsors ページ（`/sponsors`）に一覧が追加されます。一覧の下に出す文章は同じファイルの `message` で設定します。
 
 ```yaml
 sponsors:
@@ -98,9 +98,11 @@ sponsors:
     description: 支援内容や企業紹介。 # 任意
 ```
 
-`sponsors` が空のあいだは Sponsors セクションごと表示されません。1 件も載せない状態に戻すときは `sponsors: []` と書きます。`[]` を残したまま下に追記すると YAML が壊れてビルドが落ちるため、1 件目を書くときは `[]` を消してください。
+`sponsors` が空のあいだは一覧が、`message` が空のあいだは文章が、それぞれ表示されません。1 件も載せない状態に戻すときは `sponsors: []` と書きます。`[]` を残したまま下に追記すると YAML が壊れてビルドが落ちるため、1 件目を書くときは `[]` を消してください。
 
 ロケットと CanSat の紹介文は、それぞれ `src/pages/rocket.astro` と `src/pages/cansat.astro` に定義しています。
+
+名刺の QR コードなどから開くリンク集は `src/pages/links.astro`（`/links`）です。ヘッダーのメニューには載せていません。
 
 ニュースは microCMS の `news` API からビルド時に取得します。
 

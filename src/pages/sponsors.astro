@@ -1,0 +1,60 @@
+---
+import { getEntry, type CollectionEntry } from "astro:content";
+import BaseLayout from "../layouts/BaseLayout/index.astro";
+import Hero from "../components/Hero.astro";
+import AnimatedSection from "../components/AnimatedSection.astro";
+import SponsorRow from "../components/SponsorRow.astro";
+
+type SponsorsData = CollectionEntry<"sponsors">["data"];
+type Sponsor = SponsorsData["sponsors"][number];
+
+// スポンサーと文章は src/content/sponsors/data.yaml で管理する
+const sponsorsEntry = await getEntry("sponsors", "data");
+const sponsors: Sponsor[] = sponsorsEntry?.data.sponsors ?? [];
+const message = sponsorsEntry?.data.message?.trim() ?? "";
+---
+
+<BaseLayout
+  title="SPONSORS | 筑波大学宇宙技術プロジェクト"
+  ogTitle="スポンサー | 筑波大学宇宙技術プロジェクト"
+  description="筑波大学宇宙技術プロジェクトSTEPの活動を支えてくださっているスポンサーの皆様をご紹介します。"
+>
+  <Hero hero_title="SPONSORS" black_opacity={0.5} center_or_top="center" />
+
+  <section class="max-w-7xl mx-auto px-6 sm:px-8 md:px-16 py-20">
+    <AnimatedSection>
+      <h2
+        class="text-2xl sm:text-3xl md:text-4xl font-bold text-center text-white"
+      >
+        ご支援いただいている皆様
+      </h2>
+      <p class="text-sm sm:text-base md:text-lg text-gray-300 text-center mt-6">
+        日頃より私たちの活動を支えてくださっている皆様です。
+      </p>
+    </AnimatedSection>
+
+    <div class="mt-10">
+      {
+        sponsors.map((sponsor: Sponsor) => (
+          <SponsorRow
+            name={sponsor.name}
+            logo={sponsor.logo}
+            logoBackground={sponsor.logo_background}
+            url={sponsor.url}
+            description={sponsor.description}
+          />
+        ))
+      }
+    </div>
+
+    {
+      message && (
+        <AnimatedSection class="mt-20">
+          <p class="text-sm sm:text-base md:text-lg text-gray-300 whitespace-pre-line">
+            {message}
+          </p>
+        </AnimatedSection>
+      )
+    }
+  </section>
+</BaseLayout>
