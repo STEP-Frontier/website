@@ -5,6 +5,7 @@ import BaseLayout from "../layouts/BaseLayout/index.astro";
 import Hero from "../components/Hero.astro";
 import AnimatedSection from "../components/AnimatedSection.astro";
 import DepartmentCard from "../components/DepartmentCard.astro";
+import SponsorCard from "../components/SponsorCard.astro";
 
 // 画像インポート
 import aboutHeroImage from "../assets/about/about-hero.jpg";
@@ -18,9 +19,15 @@ import teamPhoto2 from "../assets/about/team-photo-2.jpg";
 
 type AboutData = CollectionEntry<"about">["data"];
 type Member = AboutData["members"][number];
+type SponsorsData = CollectionEntry<"sponsors">["data"];
+type Sponsor = SponsorsData["sponsors"][number];
 
 const aboutEntry = await getEntry("about", "data");
 const aboutData = aboutEntry.data;
+
+// スポンサーは src/content/sponsors/data.yaml で管理する
+const sponsorsEntry = await getEntry("sponsors", "data");
+const sponsors: Sponsor[] = sponsorsEntry?.data.sponsors ?? [];
 
 const departments = [
   {
@@ -208,4 +215,32 @@ const sortedGrades = Object.keys(groupedByGrade)
       </div>
     </div>
   </section>
+
+  <!-- Sponsors -->
+  {
+    sponsors.length > 0 && (
+      <section class="max-w-7xl mx-auto px-6 sm:px-8 md:px-16 py-20">
+        <AnimatedSection>
+          <h2 class="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-4 text-white">
+            Sponsors
+          </h2>
+          <p class="text-sm sm:text-base md:text-lg text-gray-300 text-center mb-10">
+            日頃より私たちの活動を支えてくださっている皆様です。
+          </p>
+        </AnimatedSection>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+          {sponsors.map((sponsor: Sponsor) => (
+            <SponsorCard
+              name={sponsor.name}
+              logo={sponsor.logo}
+              logoBackground={sponsor.logo_background}
+              url={sponsor.url}
+              description={sponsor.description}
+            />
+          ))}
+        </div>
+      </section>
+    )
+  }
 </BaseLayout>

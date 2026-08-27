@@ -14,6 +14,28 @@ const aboutCollection = defineCollection({
   }),
 });
 
+const sponsorsCollection = defineCollection({
+  type: "data",
+  schema: ({ image }) =>
+    z.object({
+      sponsors: z.array(
+        z.object({
+          // 表示名
+          name: z.string(),
+          // ロゴ画像。src/content/sponsors/ からの相対パスで指定する
+          logo: image(),
+          // ロゴの下地。ロゴの色に合わせて選ぶ
+          logo_background: z.enum(["light", "dark", "none"]).default("light"),
+          // 公式サイトの URL。省略するとカードはリンクにならない
+          url: z.string().url().optional(),
+          // 紹介文。省略可
+          description: z.string().optional(),
+        }),
+      ),
+    }),
+});
+
 export const collections = {
   about: aboutCollection,
+  sponsors: sponsorsCollection,
 };

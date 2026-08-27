@@ -1,0 +1,15 @@
+# スポンサー様一覧（About ページ「Sponsors」セクション）
+#
+# 追加手順
+#   1. ロゴ画像を src/content/sponsors/logos/ に置く（png / jpg / svg）
+#   2. 下の sponsors: に次の形式で追記する（記載順に表示される）
+#
+#   - name: 会社・団体名
+#     logo: ./logos/example.png     # 必須。上で置いたファイルへの相対パス
+#     logo_background: light        # 任意。light（既定・白地）/ dark（黒地）/ none（下地なし）
+#     url: https://example.com/     # 任意。指定するとカード全体がリンクになる
+#     description: 支援内容や企業紹介を1〜3文で。   # 任意
+#
+# sponsors が空のあいだは About ページの Sponsors セクションごと表示されない。
+
+sponsors: []

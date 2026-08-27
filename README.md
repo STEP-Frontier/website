@@ -74,6 +74,7 @@ bun run preview
 │   ├── assets/             # ページで使う画像
 │   ├── components/         # 共通コンポーネント
 │   ├── content/about/      # About ページのデータ
+│   ├── content/sponsors/   # スポンサーのデータとロゴ
 │   ├── layouts/            # 共通レイアウト
 │   ├── lib/microcms.ts     # microCMS との通信
 │   └── pages/              # ページと URL の定義
@@ -85,6 +86,19 @@ bun run preview
 ## コンテンツの更新
 
 About ページの代表挨拶とメンバー情報は `src/content/about/data.yaml` で管理します。
+
+スポンサーは `src/content/sponsors/data.yaml` で管理します。ロゴ画像を `src/content/sponsors/logos/` に置き、`data.yaml` の `sponsors:` に追記すると、About ページの Sponsors セクションにカードが追加されます。
+
+```yaml
+sponsors:
+  - name: 会社・団体名
+    logo: ./logos/example.png # 必須。logos/ に置いた画像への相対パス
+    logo_background: light # 任意。light（既定・白地）/ dark（黒地）/ none（下地なし）
+    url: https://example.com/ # 任意。指定するとカード全体がリンクになる
+    description: 支援内容や企業紹介。 # 任意
+```
+
+`sponsors` が空のあいだは Sponsors セクションごと表示されません。
 
 ロケットと CanSat の紹介文は、それぞれ `src/pages/rocket.astro` と `src/pages/cansat.astro` に定義しています。
 
