@@ -98,7 +98,7 @@ sponsors:
     description: 支援内容や企業紹介。 # 任意
 ```
 
-`sponsors` が空のあいだは Sponsors セクションごと表示されません。
+`sponsors` が空のあいだは Sponsors セクションごと表示されません。1 件も載せない状態に戻すときは `sponsors: []` と書きます。`[]` を残したまま下に追記すると YAML が壊れてビルドが落ちるため、1 件目を書くときは `[]` を消してください。
 
 ロケットと CanSat の紹介文は、それぞれ `src/pages/rocket.astro` と `src/pages/cansat.astro` に定義しています。
 
