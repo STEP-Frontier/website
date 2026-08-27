@@ -12,10 +12,9 @@
 #
 # sponsors が空のあいだは About ページの Sponsors セクションごと表示されない。
 
-sponsors:[ 
--name: 筑波大学宇宙技術プロジェクトSTEP
-logo: ./logos/STEPlogounuse.jpg
-logo_background: dark
-url: https://www.stb.tsukuba.ac.jp/~step/
-description: 筑波大学宇宙技術プロジェクト(STEP)は、ハイブリッドロケットや模擬人工衛星の開発を行う筑波大学の学生団体です。
-]
+sponsors:
+  - name: 筑波大学宇宙技術プロジェクトSTEP
+    logo: ./logos/STEPlogounuse.jpg
+    logo_background: dark
+    url: https://www.stb.tsukuba.ac.jp/~step/
+    description: 筑波大学宇宙技術プロジェクト(STEP)は、ハイブリッドロケットや模擬人工衛星の開発を行う筑波大学の学生団体です。
