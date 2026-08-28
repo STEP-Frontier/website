@@ -62,14 +62,12 @@ const links = [
             class="flex items-center gap-4 w-full px-6 py-4 rounded-lg border-2 border-gray-700 text-white transition duration-300 ease-in-out hover:border-blue-800 hover:bg-white/5"
           >
             <Icon name={link.icon} class="text-xl sm:text-2xl shrink-0" />
-            <span class="flex flex-col text-left">
-              <span class="text-base sm:text-lg font-bold">{link.label}</span>
-              {link.handle && (
-                <span class="text-xs sm:text-sm text-gray-400">
-                  {link.handle}
-                </span>
-              )}
-            </span>
+            <span class="text-base sm:text-lg font-bold">{link.label}</span>
+            {link.handle && (
+              <span class="ml-auto text-xs sm:text-sm text-gray-400">
+                {link.handle}
+              </span>
+            )}
           </a>
         ))
       }
