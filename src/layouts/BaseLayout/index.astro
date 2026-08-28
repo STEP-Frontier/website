@@ -16,6 +16,8 @@ export interface Props {
   publishedTime?: string;
   // ヘッダーとフッターを出さない（リンク集ページなど単体で完結する画面用）
   bare?: boolean;
+  // 正規 URL を別ページに向ける（内容が重複するページ用）。"" でトップページ
+  canonicalPath?: string;
 }
 
 const {
@@ -29,6 +31,7 @@ const {
   type = "website",
   publishedTime,
   bare = false,
+  canonicalPath,
 } = Astro.props;
 const baseUrl = import.meta.env.BASE_URL;
 const publicSiteUrl = new URL("https://www.stb.tsukuba.ac.jp/~step/");
@@ -40,7 +43,10 @@ if (baseUrl !== "/" && relativePath.startsWith(baseUrl)) {
   relativePath = relativePath.replace(/^\/+/, "");
 }
 
-const canonicalUrl = new URL(relativePath, publicSiteUrl).toString();
+const canonicalUrl = new URL(
+  canonicalPath ?? relativePath,
+  publicSiteUrl,
+).toString();
 const ogImageUrl = image
   ? URL.canParse(image)
     ? image

@@ -2,6 +2,8 @@
 import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/BaseLayout/index.astro";
+import Footer from "../layouts/BaseLayout/Footer.astro";
+import HomeSections from "../components/HomeSections.astro";
 import logoImage from "../assets/logo.png";
 
 const baseUrl = import.meta.env.BASE_URL;
@@ -36,9 +38,10 @@ const links = [
   ogTitle="リンク集 | 筑波大学宇宙技術プロジェクト"
   description="筑波大学宇宙技術プロジェクトSTEPの公式サイトとSNSのリンク集です。"
   bare
+  canonicalPath=""
 >
   <div
-    class="min-h-screen flex flex-col items-center justify-center px-6 py-16"
+    class="relative min-h-screen flex flex-col items-center justify-center px-6 py-16"
   >
     <Image
       src={logoImage}
@@ -72,5 +75,47 @@ const links = [
         ))
       }
     </nav>
+
+    <!-- 下のサイト本体へ誘導する矢印 -->
+    <a
+      href="#site-top"
+      id="scroll-hint"
+      class="absolute right-6 sm:right-10 bottom-10 flex flex-col items-center gap-2 text-gray-400 transition duration-300 ease-in-out hover:text-white"
+      aria-label="下へスクロールしてサイトを見る"
+    >
+      <span class="text-[0.625rem] sm:text-xs tracking-widest">SCROLL</span>
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="15.5"
+        height="20.2"
+        viewBox="0 0 15.5 20.2"
+        fill="currentColor"
+        class="animate-bounce"
+        aria-hidden="true"
+      >
+        <polygon
+          points="15.5,12.5 14.4,11.4 8.5,17.3 8.5,0 7,0 7,17.3 1.1,11.4 0,12.5 7.8,20.2"
+        ></polygon>
+      </svg>
+    </a>
   </div>
+
+  <div id="site-top">
+    <HomeSections />
+  </div>
+
+  <Footer />
 </BaseLayout>
+
+<script>
+  document.addEventListener("astro:page-load", () => {
+    const hint = document.getElementById("scroll-hint");
+    const target = document.getElementById("site-top");
+    if (!hint || !target) return;
+
+    hint.addEventListener("click", (event) => {
+      event.preventDefault();
+      target.scrollIntoView({ behavior: "smooth" });
+    });
+  });
+</script>
