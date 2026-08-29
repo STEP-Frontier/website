@@ -88,6 +88,8 @@ About ページの代表挨拶とメンバー情報は `src/content/about/data.y
 
 ロケットと CanSat の紹介文は、それぞれ `src/pages/rocket.astro` と `src/pages/cansat.astro` に定義しています。
 
+名刺の QR コードなどから開くリンク集は `src/pages/links.astro`（`/links`）です。ヘッダーのメニューには載せていません。
+
 ニュースは microCMS の `news` API からビルド時に取得します。
 
 取得したニュース画像は `public/cms-images/` にキャッシュされますが、このディレクトリは Git の管理対象外です。
