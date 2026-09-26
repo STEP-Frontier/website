@@ -31,5 +31,10 @@ message: |
 
   現在STEPではご協賛・ご協力いただける企業・団体の皆様を募集しています。ご興味をお持ちいただけましたら、step@stb.tsukuba.ac.jp までご連絡ください。
 
-sponsors: []
+sponsors: 
+  -name: STEP
+   logo: ./logos/STEPlogounuse.jpg
+   logo_background: dark
+   url: https://www.stb.tsukuba.ac.jp/~step/
+   description: 筑波大学宇宙技術プロジェクトSTEPは、ロケットや模擬人工衛星(CanSat)の製作・運用を行っている学生団体です。
 
