@@ -9,6 +9,7 @@
 #     logo_background: light        # 任意。light（既定・白地）/ dark（黒地）/ none（下地なし）
 #     url: https://example.com/     # 任意。指定するとカード全体がリンクになる
 #     description: 支援内容や企業紹介を1〜3文で。   # 任意
+#     published_at: 2026-12-01T10:30:00Z  # 任意。ISO 8601 形式。指定した日時以降に表示される
 #
 # インデントは半角スペース。"- " の後ろの空白を忘れないこと。
 # 全部消して 1 件も載せない状態に戻すときは sponsors: [] と書く。
@@ -32,5 +33,4 @@ message: |
   現在STEPではご協賛・ご協力いただける企業・団体の皆様を募集しています。ご興味をお持ちいただけましたら、step@stb.tsukuba.ac.jp までご連絡ください。
 
 sponsors: []
-
 
