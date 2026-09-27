@@ -8,9 +8,22 @@ interface Props {
   logoBackground?: "light" | "dark" | "none";
   url?: string;
   description?: string;
+  publishedAt?: Date;
 }
 
-const { name, logo, logoBackground = "light", url, description } = Astro.props;
+const {
+  name,
+  logo,
+  logoBackground = "light",
+  url,
+  description,
+  publishedAt,
+} = Astro.props;
+
+// published_at があるときは非表示で出力し、その日時を過ぎたらブラウザ側で表示に切り替える
+const publishedAtIso = publishedAt
+  ? new Date(publishedAt).toISOString()
+  : undefined;
 
 // url があるときだけ行全体をリンクにする
 const Tag = url ? "a" : "div";
@@ -33,7 +46,13 @@ const logoBackgroundClass = {
 const isSvg = logo.format === "svg";
 ---
 
-<div class="sponsor-row border-b border-gray-800">
+<div
+  class:list={[
+    "sponsor-row border-b border-gray-800",
+    { "sponsor-row-scheduled": publishedAtIso },
+  ]}
+  data-published-at={publishedAtIso}
+>
   <Tag
     {...linkProps}
     class:list={[
@@ -86,6 +105,16 @@ const isSvg = logo.format === "svg";
 
 <script>
   document.addEventListener("astro:page-load", () => {
+    // 公開日時を過ぎているカードだけ非表示を解除する
+    document.querySelectorAll(".sponsor-row-scheduled").forEach((row) => {
+      const publishedAt = Date.parse(
+        row.getAttribute("data-published-at") ?? "",
+      );
+      if (!Number.isNaN(publishedAt) && Date.now() >= publishedAt) {
+        row.classList.remove("sponsor-row-scheduled");
+      }
+    });
+
     const rows = document.querySelectorAll(".sponsor-row");
 
     const observer = new IntersectionObserver(
@@ -120,7 +149,17 @@ const isSvg = logo.format === "svg";
     transform: translateY(0);
   }
 
+  /* 公開日時前のカードは領域ごと出さない */
+  .sponsor-row.sponsor-row-scheduled {
+    display: none;
+  }
+
   .sponsor-row:last-child {
+    border-bottom: none;
+  }
+
+  /* 末尾が非表示のときは、その手前を最後の行として扱う */
+  .sponsor-row:has(+ .sponsor-row-scheduled:last-child) {
     border-bottom: none;
   }
 </style>

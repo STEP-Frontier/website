@@ -32,6 +32,8 @@ const sponsorsCollection = defineCollection({
           url: z.string().url().optional(),
           // 紹介文。省略可
           description: z.string().optional(),
+          // 表示を開始する日時。省略すると最初から表示される
+          published_at: z.coerce.date().optional(),
         }),
       ),
     }),
