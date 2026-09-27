@@ -14,7 +14,7 @@
 # インデントは半角スペース。"- " の後ろの空白を忘れないこと。
 # 全部消して 1 件も載せない状態に戻すときは sponsors: [] と書く。
 # 逆に [] が残ったまま下に追記すると YAML が壊れてビルドが落ちるので、
-# 1 件目を書くときは [] を消してから書く。
+# 1 件目を書くときは [] を消してから書く。published_at: 
 #
 # sponsors が空のあいだは Sponsors ページの一覧が表示されない。
 #
@@ -32,5 +32,12 @@ message: |
 
   現在STEPではご協賛・ご協力いただける企業・団体の皆様を募集しています。ご興味をお持ちいただけましたら、step@stb.tsukuba.ac.jp までご連絡ください。
 
-sponsors: []
+sponsors:
+  - name: SwiftLink
+    logo: ./logos/Swift_Horizontal_Black.png
+    logo_background: light
+    url: src/content/sponsors/logos/Swift_Horizontal_Black.png
+    description:  SwiftLink株式会社は、大企業とスタートアップ、国内外の企業同士をつなぐ事業を展開する企業です。このたびSTEPの活動に賛同いただき、協賛企業としてご支援いただいています。
+    published_at: 2026-09-28T12:00:00Z
 
+  
