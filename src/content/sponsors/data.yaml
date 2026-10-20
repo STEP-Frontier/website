@@ -40,11 +40,18 @@ message: |
   現在STEPではご協賛・ご協力いただける企業・団体の皆様を募集しています。ご興味をお持ちいただけましたら、step@stb.tsukuba.ac.jp までご連絡ください。
 
 sponsors:
-  - name: SwiftLink
+  - name: SwiftLink　様
     logo: ./logos/Swift_Horizontal_Black.png
     logo_background: light
     url: https://www.swiftlinkglobal.com/
-    description: SwiftLink株式会社は、大企業とスタートアップ、国内外の企業同士をつなぐ事業を展開する企業です。このたびSTEPの活動に賛同いただき、協賛企業としてご支援いただいています。
+    description: SwiftLink株式会社様は、大企業とスタートアップ、国内外の企業同士をつなぐ事業を展開する企業です。このたびSTEPの活動に賛同いただき、協賛企業としてご支援いただいております。
     published_at: 2026-09-28T12:00:00+09:00
 
   
+sponsors:
+  - name: フォトロン　様
+    logo: ./logos/160425_Photron_blue.png
+    logo_background: light
+    url: https://www.photron.co.jp/service/hsvcam/
+    description: 株式会社フォトロン様には、計測機材を貸出しいただき開発にご支援をいただいております。
+    published_at: 2026-11-01T12:00:00+09:00
