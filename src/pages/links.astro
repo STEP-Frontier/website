@@ -37,6 +37,15 @@ const links = [
     external: true,
   },
 ];
+
+// 写真の機体の諸元（rocket ページと同じ値）
+const specs = [
+  { label: "機体", value: "STEP-19 Volubilis" },
+  { label: "全長", value: "1,600 mm" },
+  { label: "直径", value: "120 mm" },
+  { label: "エンジン", value: "HyperTEK J250" },
+  { label: "打上", value: "2026.08.16 第22回能代宇宙イベント" },
+];
 ---
 
 <BaseLayout
@@ -45,9 +54,18 @@ const links = [
   description="筑波大学宇宙技術プロジェクトSTEPの公式サイトとSNSのリンク集です。"
   bare
 >
-  <div class="min-h-screen bg-[#f6f8fb] text-[#0e1a2b] md:flex">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+JP:wght@400;700&display=swap"
+    />
+  </Fragment>
+
+  <div class="links-page min-h-screen text-[#0e1a2b] md:flex">
     <div
-      class="relative h-[44vh] min-h-72 max-h-[520px] overflow-hidden md:h-screen md:max-h-none md:w-1/2 md:sticky md:top-0"
+      class="relative h-[34vh] min-h-56 max-h-[520px] overflow-hidden md:h-screen md:max-h-none md:w-1/2 md:sticky md:top-0"
     >
       <Image
         src={heroImage}
@@ -57,44 +75,31 @@ const links = [
         loading="eager"
         class="w-full h-full object-cover object-[50%_35%]"
       />
+    </div>
+
+    <div
+      class="w-full max-w-md mx-auto px-6 pt-10 pb-16 md:self-center md:py-16"
+    >
       <Image
         src={logoImage}
         alt="筑波大学宇宙技術プロジェクト STEP"
         width={311}
         height={100}
-        class="absolute top-6 right-6 w-32 h-auto md:hidden"
+        class="w-44 md:w-56 h-auto brightness-0"
       />
-      <p
-        class="hidden md:block absolute left-6 bottom-6 text-sm font-bold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
-      >
-        STEP-19 Volubilis
+      <p class="mt-5 text-[15px] leading-[1.8] text-[#3d4a5c]">
+        筑波大学宇宙技術プロジェクトSTEPは、ロケットや模擬人工衛星(CanSat)の製作・運用を行っている学生団体です。
       </p>
-    </div>
 
-    <div
-      class="w-full max-w-md mx-auto px-6 pt-8 pb-16 md:self-center md:py-16"
-    >
-      <div class="hidden md:block mb-12">
-        <Image
-          src={logoImage}
-          alt="筑波大学宇宙技術プロジェクト STEP"
-          width={311}
-          height={100}
-          class="w-56 h-auto brightness-0"
-        />
-        <p class="mt-6 text-base leading-[1.8] text-[#5b6779]">
-          筑波大学宇宙技術プロジェクトSTEPは、ロケットや模擬人工衛星(CanSat)の製作・運用を行っている学生団体です。
-        </p>
-      </div>
-      <ul>
+      <ul class="mt-8 border-t-2 border-[#0e1a2b]">
         {
           links.map((link) => (
-            <li class="border-b border-[#dfe5ee] last:border-b-0">
+            <li class="border-b border-[#0e1a2b]/25">
               <a
                 href={link.href}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
-                class="group flex items-center gap-4 py-5 rounded-sm outline-offset-4 focus-visible:outline-2 focus-visible:outline-[#2f5fa8]"
+                class="group flex items-center gap-4 py-4 outline-offset-2 focus-visible:outline-2 focus-visible:outline-[#2f5fa8]"
               >
                 <Icon
                   name={link.icon}
@@ -103,14 +108,60 @@ const links = [
                 <span class="shrink-0 whitespace-nowrap text-lg font-bold transition-colors duration-150 ease-out group-hover:text-[#2f5fa8] motion-reduce:transition-none">
                   {link.label}
                 </span>
-                <span class="ml-auto min-w-0 truncate text-base text-[#5b6779]">
-                  {link.handle}
-                </span>
+                {link.handle && (
+                  <span class="mono ml-auto min-w-0 truncate text-sm text-[#3d4a5c]">
+                    {link.handle}
+                  </span>
+                )}
               </a>
             </li>
           ))
         }
       </ul>
+
+      <table
+        class="mono mt-10 w-full border-2 border-[#0e1a2b] bg-[#f4f7fb] text-xs"
+      >
+        <caption class="sr-only">写真の機体の諸元</caption>
+        <tbody>
+          {
+            specs.map((spec) => (
+              <tr class="border-b border-[#0e1a2b]/40 last:border-b-0">
+                <th
+                  scope="row"
+                  class="w-20 px-3 py-2 text-left font-normal text-[#3d4a5c] border-r border-[#0e1a2b]/40"
+                >
+                  {spec.label}
+                </th>
+                <td class="px-3 py-2 font-medium">{spec.value}</td>
+              </tr>
+            ))
+          }
+        </tbody>
+      </table>
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .links-page {
+    font-family: "IBM Plex Sans JP", sans-serif;
+    /* 製図用紙の方眼：細線 8px、太線 40px */
+    background-color: #f4f7fb;
+    background-image:
+      linear-gradient(rgba(47, 95, 168, 0.14) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(47, 95, 168, 0.14) 1px, transparent 1px),
+      linear-gradient(rgba(47, 95, 168, 0.06) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(47, 95, 168, 0.06) 1px, transparent 1px);
+    background-size:
+      40px 40px,
+      40px 40px,
+      8px 8px,
+      8px 8px;
+  }
+
+  .mono {
+    font-family: "IBM Plex Mono", "IBM Plex Sans JP", monospace;
+    font-variant-numeric: tabular-nums;
+  }
+</style>
