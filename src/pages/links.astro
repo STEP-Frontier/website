@@ -47,7 +47,7 @@ const links = [
 >
   <div class="min-h-screen bg-[#f6f8fb] text-[#0e1a2b] md:flex">
     <div
-      class="relative h-[44vh] min-h-72 max-h-[520px] overflow-hidden md:h-auto md:max-h-none md:w-1/2 md:min-h-screen"
+      class="relative h-[44vh] min-h-72 max-h-[520px] overflow-hidden md:h-screen md:max-h-none md:w-1/2 md:sticky md:top-0"
     >
       <Image
         src={heroImage}
@@ -62,13 +62,30 @@ const links = [
         alt="筑波大学宇宙技術プロジェクト STEP"
         width={311}
         height={100}
-        class="absolute top-6 right-6 w-32 h-auto"
+        class="absolute top-6 right-6 w-32 h-auto md:hidden"
       />
+      <p
+        class="hidden md:block absolute left-6 bottom-6 text-sm font-bold text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)]"
+      >
+        STEP-19 Volubilis
+      </p>
     </div>
 
     <div
       class="w-full max-w-md mx-auto px-6 pt-8 pb-16 md:self-center md:py-16"
     >
+      <div class="hidden md:block mb-12">
+        <Image
+          src={logoImage}
+          alt="筑波大学宇宙技術プロジェクト STEP"
+          width={311}
+          height={100}
+          class="w-56 h-auto brightness-0"
+        />
+        <p class="mt-6 text-base leading-[1.8] text-[#5b6779]">
+          筑波大学宇宙技術プロジェクトSTEPは、ロケットや模擬人工衛星(CanSat)の製作・運用を行っている学生団体です。
+        </p>
+      </div>
       <ul>
         {
           links.map((link) => (
