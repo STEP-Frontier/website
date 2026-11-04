@@ -36,15 +36,13 @@ const links = [
     icon: "fa6-brands:github",
     external: true,
   },
-];
-
-// 写真の機体の諸元（rocket ページと同じ値）
-const specs = [
-  { label: "機体", value: "STEP-19 Volubilis" },
-  { label: "全長", value: "1,600 mm" },
-  { label: "直径", value: "120 mm" },
-  { label: "エンジン", value: "HyperTEK J250" },
-  { label: "打上", value: "2026.08.16 第22回能代宇宙イベント" },
+  {
+    label: "メール",
+    handle: "step@stb.tsukuba.ac.jp",
+    href: "mailto:step@stb.tsukuba.ac.jp",
+    icon: "fa:envelope",
+    external: false,
+  },
 ];
 ---
 
@@ -118,27 +116,6 @@ const specs = [
           ))
         }
       </ul>
-
-      <table
-        class="mono mt-10 w-full border-2 border-[#0e1a2b] bg-[#f4f7fb] text-xs"
-      >
-        <caption class="sr-only">写真の機体の諸元</caption>
-        <tbody>
-          {
-            specs.map((spec) => (
-              <tr class="border-b border-[#0e1a2b]/40 last:border-b-0">
-                <th
-                  scope="row"
-                  class="w-20 px-3 py-2 text-left font-normal text-[#3d4a5c] border-r border-[#0e1a2b]/40"
-                >
-                  {spec.label}
-                </th>
-                <td class="px-3 py-2 font-medium">{spec.value}</td>
-              </tr>
-            ))
-          }
-        </tbody>
-      </table>
     </div>
   </div>
 </BaseLayout>
