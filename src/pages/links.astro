@@ -68,9 +68,16 @@ const links = [
       widths={[640, 1108]}
       sizes="100vw"
       loading="eager"
-      class="absolute inset-0 w-full h-full object-cover object-[35%_20%]"
+      class="absolute inset-0 w-full h-full object-cover object-[35%_20%] md:object-[35%_55%]"
     />
     <div class="links-scrim absolute inset-0"></div>
+    <Image
+      src={logoImage}
+      alt="筑波大学宇宙技術プロジェクト STEP"
+      width={311}
+      height={100}
+      class="absolute top-6 right-6 w-36 h-auto md:hidden"
+    />
 
     <div
       class="relative min-h-screen flex flex-col justify-end w-full max-w-md mx-auto px-6 pb-12 md:justify-center md:mr-[8%] md:pb-0"
@@ -80,13 +87,13 @@ const links = [
         alt="筑波大学宇宙技術プロジェクト STEP"
         width={311}
         height={100}
-        class="w-44 md:w-56 h-auto"
+        class="hidden md:block w-56 h-auto"
       />
-      <p class="mt-4 text-[15px] leading-[1.8] text-white/85">
+      <p class="md:mt-4 text-[15px] leading-[1.8] text-white/85">
         筑波大学宇宙技術プロジェクトSTEPは、ロケットや模擬人工衛星(CanSat)の製作・運用を行っている学生団体です。
       </p>
 
-      <ul class="mt-8 border-t border-white/40">
+      <ul class="mt-6 md:mt-8 border-t border-white/40">
         {
           links.map((link) => (
             <li class="border-b border-white/20">
@@ -94,7 +101,7 @@ const links = [
                 href={link.href}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
-                class="group flex items-center gap-4 py-4 outline-offset-2 focus-visible:outline-2 focus-visible:outline-white"
+                class="group flex items-center gap-4 py-3 md:py-4 outline-offset-2 focus-visible:outline-2 focus-visible:outline-white"
               >
                 <Icon name={link.icon} class="w-6 h-6 shrink-0" />
                 <span class="shrink-0 whitespace-nowrap text-lg font-bold">
@@ -125,9 +132,9 @@ const links = [
     background: linear-gradient(
       to bottom,
       rgba(8, 11, 18, 0) 0%,
-      rgba(8, 11, 18, 0) 16%,
-      rgba(8, 11, 18, 0.62) 34%,
-      rgba(8, 11, 18, 0.86) 52%,
+      rgba(8, 11, 18, 0) 30%,
+      rgba(8, 11, 18, 0.6) 46%,
+      rgba(8, 11, 18, 0.88) 62%,
       rgba(8, 11, 18, 0.92) 100%
     );
   }
