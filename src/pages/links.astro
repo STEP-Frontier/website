@@ -10,12 +10,13 @@ const baseUrl = import.meta.env.BASE_URL;
 const links = [
   {
     label: "STEP公式サイト",
+    handle: "stb.tsukuba.ac.jp/~step",
     href: baseUrl,
     icon: "fa:globe",
     external: false,
   },
   {
-    label: "X（旧Twitter）",
+    label: "X",
     handle: "@Tsukuba_STEP",
     href: "https://x.com/Tsukuba_STEP",
     icon: "fa6-brands:x-twitter",
@@ -29,10 +30,10 @@ const links = [
     external: true,
   },
   {
-    label: "Github",
+    label: "GitHub",
     handle: "STEP-Frontier",
-    href: "https://github.com/STEP-Frontier"
-    icon: "",
+    href: "https://github.com/STEP-Frontier",
+    icon: "fa6-brands:github",
     external: true,
   },
 ];
@@ -44,40 +45,39 @@ const links = [
   description="筑波大学宇宙技術プロジェクトSTEPの公式サイトとSNSのリンク集です。"
   bare
 >
-  <div
-    class="min-h-screen flex flex-col items-center justify-center px-6 py-16"
-  >
-    <Image
-      src={logoImage}
-      alt="STEP LOGO"
-      width={280}
-      height={140}
-      class="w-56 sm:w-64 h-auto"
-    />
+  <div class="min-h-screen flex items-center justify-center px-6 py-16">
+    <div class="w-full max-w-md">
+      <Image
+        src={logoImage}
+        alt="筑波大学宇宙技術プロジェクト STEP"
+        width={311}
+        height={100}
+        class="w-40 h-auto"
+      />
 
-    <p class="text-sm sm:text-base text-gray-300 mt-6 text-center">
-      筑波大学宇宙技術プロジェクト STEP
-    </p>
-
-    <nav class="w-full max-w-md mt-10 space-y-4">
-      {
-        links.map((link) => (
-          <a
-            href={link.href}
-            target={link.external ? "_blank" : undefined}
-            rel={link.external ? "noopener noreferrer" : undefined}
-            class="flex items-center gap-4 w-full px-6 py-4 rounded-lg border-2 border-gray-700 text-white transition duration-300 ease-in-out hover:border-blue-800 hover:bg-white/5"
-          >
-            <Icon name={link.icon} class="text-xl sm:text-2xl shrink-0" />
-            <span class="text-base sm:text-lg font-bold">{link.label}</span>
-            {link.handle && (
-              <span class="ml-auto text-xs sm:text-sm text-gray-400">
-                {link.handle}
-              </span>
-            )}
-          </a>
-        ))
-      }
-    </nav>
+      <ul class="mt-12 border-t border-gray-800">
+        {
+          links.map((link) => (
+            <li class="border-b border-gray-800">
+              <a
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                class="group flex items-center gap-4 py-5 text-white outline-offset-4 focus-visible:outline-2 focus-visible:outline-white"
+              >
+                <Icon
+                  name={link.icon}
+                  class="w-5 h-5 shrink-0 text-gray-500 transition-colors duration-150 ease-out group-hover:text-white motion-reduce:transition-none"
+                />
+                <span class="text-base font-bold">{link.label}</span>
+                <span class="ml-auto min-w-0 truncate text-sm text-gray-400 transition-colors duration-150 ease-out group-hover:text-white motion-reduce:transition-none">
+                  {link.handle}
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </div>
 </BaseLayout>
