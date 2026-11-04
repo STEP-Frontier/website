@@ -3,6 +3,7 @@ import { Image } from "astro:assets";
 import { Icon } from "astro-icon/components";
 import BaseLayout from "../layouts/BaseLayout/index.astro";
 import logoImage from "../assets/logo.png";
+import heroImage from "../assets/links/volubilis-rail.jpg";
 
 const baseUrl = import.meta.env.BASE_URL;
 
@@ -15,7 +16,7 @@ const links = [
     external: false,
   },
   {
-    label: "X（旧Twitter）",
+    label: "X",
     handle: "@Tsukuba_STEP",
     href: "https://x.com/Tsukuba_STEP",
     icon: "fa6-brands:x-twitter",
@@ -29,10 +30,10 @@ const links = [
     external: true,
   },
   {
-    label: "Github",
+    label: "GitHub",
     handle: "STEP-Frontier",
-    href: "https://github.com/STEP-Frontier"
-    icon: "",
+    href: "https://github.com/STEP-Frontier",
+    icon: "fa6-brands:github",
     external: true,
   },
 ];
@@ -44,40 +45,55 @@ const links = [
   description="筑波大学宇宙技術プロジェクトSTEPの公式サイトとSNSのリンク集です。"
   bare
 >
-  <div
-    class="min-h-screen flex flex-col items-center justify-center px-6 py-16"
-  >
-    <Image
-      src={logoImage}
-      alt="STEP LOGO"
-      width={280}
-      height={140}
-      class="w-56 sm:w-64 h-auto"
-    />
+  <div class="min-h-screen bg-[#f6f8fb] text-[#0e1a2b] md:flex">
+    <div
+      class="relative h-[44vh] min-h-72 max-h-[520px] overflow-hidden md:h-auto md:max-h-none md:w-1/2 md:min-h-screen"
+    >
+      <Image
+        src={heroImage}
+        alt="ランチャーに載った STEP-19 Volubilis"
+        widths={[640, 1108]}
+        sizes="(max-width: 768px) 100vw, 50vw"
+        loading="eager"
+        class="w-full h-full object-cover object-[50%_35%]"
+      />
+      <Image
+        src={logoImage}
+        alt="筑波大学宇宙技術プロジェクト STEP"
+        width={311}
+        height={100}
+        class="absolute top-6 right-6 w-32 h-auto"
+      />
+    </div>
 
-    <p class="text-sm sm:text-base text-gray-300 mt-6 text-center">
-      筑波大学宇宙技術プロジェクト STEP
-    </p>
-
-    <nav class="w-full max-w-md mt-10 space-y-4">
-      {
-        links.map((link) => (
-          <a
-            href={link.href}
-            target={link.external ? "_blank" : undefined}
-            rel={link.external ? "noopener noreferrer" : undefined}
-            class="flex items-center gap-4 w-full px-6 py-4 rounded-lg border-2 border-gray-700 text-white transition duration-300 ease-in-out hover:border-blue-800 hover:bg-white/5"
-          >
-            <Icon name={link.icon} class="text-xl sm:text-2xl shrink-0" />
-            <span class="text-base sm:text-lg font-bold">{link.label}</span>
-            {link.handle && (
-              <span class="ml-auto text-xs sm:text-sm text-gray-400">
-                {link.handle}
-              </span>
-            )}
-          </a>
-        ))
-      }
-    </nav>
+    <div
+      class="w-full max-w-md mx-auto px-6 pt-8 pb-16 md:self-center md:py-16"
+    >
+      <ul>
+        {
+          links.map((link) => (
+            <li class="border-b border-[#dfe5ee] last:border-b-0">
+              <a
+                href={link.href}
+                target={link.external ? "_blank" : undefined}
+                rel={link.external ? "noopener noreferrer" : undefined}
+                class="group flex items-center gap-4 py-5 rounded-sm outline-offset-4 focus-visible:outline-2 focus-visible:outline-[#2f5fa8]"
+              >
+                <Icon
+                  name={link.icon}
+                  class="w-6 h-6 shrink-0 text-[#2f5fa8]"
+                />
+                <span class="shrink-0 whitespace-nowrap text-lg font-bold transition-colors duration-150 ease-out group-hover:text-[#2f5fa8] motion-reduce:transition-none">
+                  {link.label}
+                </span>
+                <span class="ml-auto min-w-0 truncate text-base text-[#5b6779]">
+                  {link.handle}
+                </span>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </div>
 </BaseLayout>
