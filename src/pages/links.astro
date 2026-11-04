@@ -57,57 +57,51 @@ const links = [
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
       rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans+JP:wght@400;700&display=swap"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;700&display=swap"
     />
   </Fragment>
 
-  <div class="links-page min-h-screen text-[#0e1a2b] md:flex">
-    <div
-      class="relative h-[34vh] min-h-56 max-h-[520px] overflow-hidden md:h-screen md:max-h-none md:w-1/2 md:sticky md:top-0"
-    >
-      <Image
-        src={heroImage}
-        alt="ランチャーに載った STEP-19 Volubilis"
-        widths={[640, 1108]}
-        sizes="(max-width: 768px) 100vw, 50vw"
-        loading="eager"
-        class="w-full h-full object-cover object-[50%_35%]"
-      />
-    </div>
+  <div class="links-page relative min-h-screen overflow-hidden text-white">
+    <Image
+      src={heroImage}
+      alt="ランチャーに載った STEP-19 Volubilis"
+      widths={[640, 1108]}
+      sizes="100vw"
+      loading="eager"
+      class="absolute inset-0 w-full h-full object-cover object-[35%_20%]"
+    />
+    <div class="links-scrim absolute inset-0"></div>
 
     <div
-      class="w-full max-w-md mx-auto px-6 pt-10 pb-16 md:self-center md:py-16"
+      class="relative min-h-screen flex flex-col justify-end w-full max-w-md mx-auto px-6 pb-12 md:justify-center md:mr-[8%] md:pb-0"
     >
       <Image
         src={logoImage}
         alt="筑波大学宇宙技術プロジェクト STEP"
         width={311}
         height={100}
-        class="w-44 md:w-56 h-auto brightness-0"
+        class="w-44 md:w-56 h-auto"
       />
-      <p class="mt-5 text-[15px] leading-[1.8] text-[#3d4a5c]">
+      <p class="mt-4 text-[15px] leading-[1.8] text-white/85">
         筑波大学宇宙技術プロジェクトSTEPは、ロケットや模擬人工衛星(CanSat)の製作・運用を行っている学生団体です。
       </p>
 
-      <ul class="mt-8 border-t-2 border-[#0e1a2b]">
+      <ul class="mt-8 border-t border-white/40">
         {
           links.map((link) => (
-            <li class="border-b border-[#0e1a2b]/25">
+            <li class="border-b border-white/20">
               <a
                 href={link.href}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
-                class="group flex items-center gap-4 py-4 outline-offset-2 focus-visible:outline-2 focus-visible:outline-[#2f5fa8]"
+                class="group flex items-center gap-4 py-4 outline-offset-2 focus-visible:outline-2 focus-visible:outline-white"
               >
-                <Icon
-                  name={link.icon}
-                  class="w-6 h-6 shrink-0 text-[#2f5fa8]"
-                />
-                <span class="shrink-0 whitespace-nowrap text-lg font-bold transition-colors duration-150 ease-out group-hover:text-[#2f5fa8] motion-reduce:transition-none">
+                <Icon name={link.icon} class="w-6 h-6 shrink-0" />
+                <span class="shrink-0 whitespace-nowrap text-lg font-bold">
                   {link.label}
                 </span>
                 {link.handle && (
-                  <span class="mono ml-auto min-w-0 truncate text-sm text-[#3d4a5c]">
+                  <span class="ml-auto min-w-0 truncate text-sm text-white/70 transition-colors duration-150 ease-out group-hover:text-white motion-reduce:transition-none">
                     {link.handle}
                   </span>
                 )}
@@ -123,22 +117,31 @@ const links = [
 <style>
   .links-page {
     font-family: "IBM Plex Sans JP", sans-serif;
-    /* 製図用紙の方眼：細線 8px、太線 40px */
-    background-color: #f4f7fb;
-    background-image:
-      linear-gradient(rgba(47, 95, 168, 0.14) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(47, 95, 168, 0.14) 1px, transparent 1px),
-      linear-gradient(rgba(47, 95, 168, 0.06) 1px, transparent 1px),
-      linear-gradient(90deg, rgba(47, 95, 168, 0.06) 1px, transparent 1px);
-    background-size:
-      40px 40px,
-      40px 40px,
-      8px 8px,
-      8px 8px;
+    background-color: #0b0f16;
   }
 
-  .mono {
-    font-family: "IBM Plex Mono", "IBM Plex Sans JP", monospace;
-    font-variant-numeric: tabular-nums;
+  /* 上は写真の色をそのまま見せ、文字が乗る下側だけ暗くする */
+  .links-scrim {
+    background: linear-gradient(
+      to bottom,
+      rgba(8, 11, 18, 0) 0%,
+      rgba(8, 11, 18, 0) 16%,
+      rgba(8, 11, 18, 0.62) 34%,
+      rgba(8, 11, 18, 0.86) 52%,
+      rgba(8, 11, 18, 0.92) 100%
+    );
+  }
+
+  /* PC では右側に文字を置くので、右へ向かって暗くする */
+  @media (min-width: 768px) {
+    .links-scrim {
+      background: linear-gradient(
+        to right,
+        rgba(8, 11, 18, 0) 0%,
+        rgba(8, 11, 18, 0) 35%,
+        rgba(8, 11, 18, 0.7) 60%,
+        rgba(8, 11, 18, 0.88) 100%
+      );
+    }
   }
 </style>
