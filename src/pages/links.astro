@@ -36,6 +36,13 @@ const links = [
     icon: "fa6-brands:github",
     external: true,
   },
+  {
+    label: "Mail",
+    handle: "step@stb.tsukuba.ac.jp",
+    href: "mailto:step@stb.tsukuba.ac.jp",
+    icon: "fa:envelope",
+    external: false,
+  },
 ];
 ---
 
@@ -45,50 +52,66 @@ const links = [
   description="筑波大学宇宙技術プロジェクトSTEPの公式サイトとSNSのリンク集です。"
   bare
 >
-  <div class="min-h-screen bg-[#f6f8fb] text-[#0e1a2b] md:flex">
+  <Fragment slot="head">
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans+JP:wght@400;700&display=swap"
+    />
+  </Fragment>
+
+  <div class="links-page relative min-h-screen overflow-hidden text-white">
+    <Image
+      src={heroImage}
+      alt="ランチャーに載った STEP-19 Volubilis"
+      widths={[640, 1108]}
+      sizes="100vw"
+      loading="eager"
+      class="absolute inset-0 w-full h-full object-cover object-[35%_20%] md:object-[35%_55%]"
+    />
+    <div class="links-scrim absolute inset-0"></div>
+    <Image
+      src={logoImage}
+      alt="筑波大学宇宙技術プロジェクト STEP"
+      width={311}
+      height={100}
+      class="absolute top-6 right-6 w-36 h-auto md:hidden"
+    />
+
     <div
-      class="relative h-[44vh] min-h-72 max-h-[520px] overflow-hidden md:h-auto md:max-h-none md:w-1/2 md:min-h-screen"
+      class="relative min-h-screen flex flex-col justify-end w-full max-w-md mx-auto px-6 pb-12 md:justify-center md:mr-[8%] md:pb-0"
     >
-      <Image
-        src={heroImage}
-        alt="ランチャーに載った STEP-19 Volubilis"
-        widths={[640, 1108]}
-        sizes="(max-width: 768px) 100vw, 50vw"
-        loading="eager"
-        class="w-full h-full object-cover object-[50%_35%]"
-      />
       <Image
         src={logoImage}
         alt="筑波大学宇宙技術プロジェクト STEP"
         width={311}
         height={100}
-        class="absolute top-6 right-6 w-32 h-auto"
+        class="hidden md:block w-56 h-auto"
       />
-    </div>
+      <p class="md:mt-4 text-[15px] leading-[1.8] text-white/85">
+        筑波大学宇宙技術プロジェクトSTEPは、ロケットや模擬人工衛星(CanSat)の製作・運用を行っている学生団体です。
+      </p>
 
-    <div
-      class="w-full max-w-md mx-auto px-6 pt-8 pb-16 md:self-center md:py-16"
-    >
-      <ul>
+      <ul class="mt-6 md:mt-8 border-t border-white/40">
         {
           links.map((link) => (
-            <li class="border-b border-[#dfe5ee] last:border-b-0">
+            <li class="border-b border-white/20">
               <a
                 href={link.href}
                 target={link.external ? "_blank" : undefined}
                 rel={link.external ? "noopener noreferrer" : undefined}
-                class="group flex items-center gap-4 py-5 rounded-sm outline-offset-4 focus-visible:outline-2 focus-visible:outline-[#2f5fa8]"
+                class="group flex items-center gap-4 py-3 md:py-4 outline-offset-2 focus-visible:outline-2 focus-visible:outline-white"
               >
-                <Icon
-                  name={link.icon}
-                  class="w-6 h-6 shrink-0 text-[#2f5fa8]"
-                />
-                <span class="shrink-0 whitespace-nowrap text-lg font-bold transition-colors duration-150 ease-out group-hover:text-[#2f5fa8] motion-reduce:transition-none">
+                <Icon name={link.icon} class="w-6 h-6 shrink-0" />
+                <span class="shrink-0 whitespace-nowrap text-lg font-bold">
                   {link.label}
                 </span>
-                <span class="ml-auto min-w-0 truncate text-base text-[#5b6779]">
-                  {link.handle}
-                </span>
+                {link.handle && (
+                  <span class="ml-auto min-w-0 truncate text-sm text-white/70 transition-colors duration-150 ease-out group-hover:text-white motion-reduce:transition-none">
+                    {link.handle}
+                  </span>
+                )}
               </a>
             </li>
           ))
@@ -97,3 +120,35 @@ const links = [
     </div>
   </div>
 </BaseLayout>
+
+<style>
+  .links-page {
+    font-family: "IBM Plex Sans JP", sans-serif;
+    background-color: #0b0f16;
+  }
+
+  /* 上は写真の色をそのまま見せ、文字が乗る下側だけ暗くする */
+  .links-scrim {
+    background: linear-gradient(
+      to bottom,
+      rgba(8, 11, 18, 0) 0%,
+      rgba(8, 11, 18, 0) 30%,
+      rgba(8, 11, 18, 0.6) 46%,
+      rgba(8, 11, 18, 0.88) 62%,
+      rgba(8, 11, 18, 0.92) 100%
+    );
+  }
+
+  /* PC では右側に文字を置くので、右へ向かって暗くする */
+  @media (min-width: 768px) {
+    .links-scrim {
+      background: linear-gradient(
+        to right,
+        rgba(8, 11, 18, 0) 0%,
+        rgba(8, 11, 18, 0) 35%,
+        rgba(8, 11, 18, 0.7) 60%,
+        rgba(8, 11, 18, 0.88) 100%
+      );
+    }
+  }
+</style>
